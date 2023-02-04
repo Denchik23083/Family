@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FamilyApi.Logic\Family.Logic.csproj" />
+    <ProjectReference Include="..\Family.Logic\Family.Logic.csproj" />
   </ItemGroup>
 
 </Project>

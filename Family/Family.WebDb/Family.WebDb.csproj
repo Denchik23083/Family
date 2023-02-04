@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FamilyApi.Db\Family.Db.csproj" />
-    <ProjectReference Include="..\FamilyApi.WebDb\Family.WebDb.csproj" />
+    <ProjectReference Include="..\Family.Db\Family.Db.csproj" />
   </ItemGroup>
 
 </Project>

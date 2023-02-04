@@ -1,13 +1,13 @@
-using Family.Db;
-using Family.Logic;
-using Family.WebDb;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Family.Db;
+using Family.Logic;
+using Family.WebDb;
+using Microsoft.EntityFrameworkCore;
 
 namespace Family.Web
 {
@@ -29,13 +29,13 @@ namespace Family.Web
             services.AddDbContext<FamilyContext>(options =>
             {
                 var connectionString = Configuration.GetConnectionString("Family");
-                options.UseSqlServer();
+                options.UseSqlServer(connectionString);
             });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FamilyApi.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Family.Web", Version = "v1" });
             });
         }
 
@@ -46,7 +46,7 @@ namespace Family.Web
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FamilyApi.Web v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Family.Web v1"));
             }
 
             app.UseHttpsRedirection();
@@ -66,7 +66,7 @@ namespace Family.Web
         private void EnsureDbCreated(IApplicationBuilder app)
         {
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
-            
+
             var scope = scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetService<FamilyContext>();
 
