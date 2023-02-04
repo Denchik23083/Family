@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FamilyApi.Db\Family.Db.csproj" />
+    <ProjectReference Include="..\FamilyApi.WebDb\Family.WebDb.csproj" />
+  </ItemGroup>
+
+</Project>
