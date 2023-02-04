@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Family.Db;
 using Family.Db.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Family.WebDb
 {
@@ -13,9 +15,9 @@ namespace Family.WebDb
             _context = context;
         }
 
-        public IEnumerable<Parent> GetAllParents()
+        public async Task<IEnumerable<Parent>> GetAllParents()
         {
-            return _context.Parents;
+            return await _context.Parents.ToListAsync();
         }
     }
 }

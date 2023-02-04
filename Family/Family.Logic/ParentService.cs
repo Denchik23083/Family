@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Family.Db.Entities;
 using Family.WebDb;
 
@@ -13,9 +14,9 @@ namespace Family.Logic
             _repository = repository;
         }
 
-        public IEnumerable<Parent> GetAllParents()
+        public async Task<IEnumerable<Parent>> GetAllParents()
         {
-            return _repository.GetAllParents();
+            return await _repository.GetAllParents();
         }
     }
 }

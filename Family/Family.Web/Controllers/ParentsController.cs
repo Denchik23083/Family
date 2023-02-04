@@ -1,4 +1,5 @@
-﻿using Family.Logic;
+﻿using System.Threading.Tasks;
+using Family.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Web.Controllers
@@ -15,9 +16,9 @@ namespace Family.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllParents()
+        public async Task<IActionResult> GetAllParents()
         {
-            var parents = _service.GetAllParents();
+            var parents = await _service.GetAllParents();
             
             return Ok(parents);
         }
