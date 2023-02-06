@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Family.Db\Family.Db.csproj" />
+    <ProjectReference Include="..\Family.Http\Family.Http.csproj" />
   </ItemGroup>
 
 </Project>

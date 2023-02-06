@@ -26,6 +26,16 @@ namespace Family.Web
             services.AddScoped<IParentService, ParentService>();
             services.AddScoped<IParentRepository, ParentRepository>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("devCors", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
+
             services.AddDbContext<FamilyContext>(options =>
             {
                 var connectionString = Configuration.GetConnectionString("Family");
@@ -47,6 +57,7 @@ namespace Family.Web
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Family.Web v1"));
+                app.UseCors("devCors");
             }
 
             app.UseHttpsRedirection();
