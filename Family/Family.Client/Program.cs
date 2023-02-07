@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Family.Http;
 
-namespace Family.Display
+namespace Family.Client
 {
     public class Program
     {
@@ -16,7 +16,8 @@ namespace Family.Display
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddScoped<IParentHttpRepository, ParentHttpRepository>();
+            builder.Services.AddScoped<IParentsHttpService, ParentsHttpService>();
+            builder.Services.AddScoped<IChildrenHttpService, ChildrenHttpService>();
 
             await builder.Build().RunAsync();
         }

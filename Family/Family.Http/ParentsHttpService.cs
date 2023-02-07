@@ -7,27 +7,24 @@ using Family.Db.Entities;
 
 namespace Family.Http
 {
-    public class ParentHttpRepository : IParentHttpRepository
+    public class ParentsHttpService : IParentsHttpService
     {
-        private readonly HttpClient _client;
+        private readonly HttpClient _httpClient;
 
-        public ParentHttpRepository(HttpClient client)
+        public ParentsHttpService(HttpClient httpClient)
         {
-            _client = client;
+            _httpClient = httpClient;
         }
 
         public async Task<IEnumerable<Parent>> GetAllParents()
         {
-            var response = await _client.GetAsync("products");
-            var content = await response.Content.ReadAsStringAsync();
-
-            var result = await _client.GetAsync("https://localhost:6001/api/Parents");
+            var result = await _httpClient.GetAsync("https://localhost:6001/api/Parents");
 
             var body = await result.Content.ReadAsStringAsync();
 
             if (!result.IsSuccessStatusCode)
             {
-                throw new ApplicationException(content);
+                throw new ApplicationException(body);
             }
 
             return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });

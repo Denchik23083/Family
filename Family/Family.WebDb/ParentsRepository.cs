@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Family.WebDb
 {
-    public class ParentRepository : IParentRepository
+    public class ParentsRepository : IParentsRepository
     {
         private readonly FamilyContext _context;
 
-        public ParentRepository(FamilyContext context)
+        public ParentsRepository(FamilyContext context)
         {
             _context = context;
         }

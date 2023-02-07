@@ -2,12 +2,12 @@
 
 namespace Family.Db.Migrations
 {
-    public partial class init : Migration
+    public partial class children : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Parents",
+                name: "Children",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -18,24 +18,24 @@ namespace Family.Db.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Parents", x => x.Id);
+                    table.PrimaryKey("PK_Children", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "Parents",
+                table: "Children",
                 columns: new[] { "Id", "Age", "FirstName", "LastName" },
-                values: new object[] { 1, 45, "Alex", "Kudryavov" });
+                values: new object[] { 1, 19, "Denis", "Kudryavov" });
 
             migrationBuilder.InsertData(
-                table: "Parents",
+                table: "Children",
                 columns: new[] { "Id", "Age", "FirstName", "LastName" },
-                values: new object[] { 2, 45, "Anna", "Kudryavova" });
+                values: new object[] { 2, 3, "Daria", "Kudryavova" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Parents");
+                name: "Children");
         }
     }
 }

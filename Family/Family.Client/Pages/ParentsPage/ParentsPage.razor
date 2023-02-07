@@ -1,0 +1,19 @@
+﻿@page "/parents"
+
+<h3>ParentsPage</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var parent in Parents)
+    {
+        <IndividualParentsComponent Parent="parent"/>
+    }
+    </tbody>
+</table>

@@ -4,7 +4,7 @@ using Family.Db.Entities;
 
 namespace Family.WebDb
 {
-    public interface IParentRepository
+    public interface IParentsRepository
     {
         Task<IEnumerable<Parent>> GetAllParents();
     }

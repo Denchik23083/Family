@@ -8,9 +8,9 @@ namespace Family.Web.Controllers
     [ApiController]
     public class ParentsController : ControllerBase
     {
-        private readonly IParentService _service;
+        private readonly IParentsService _service;
 
-        public ParentsController(IParentService service)
+        public ParentsController(IParentsService service)
         {
             _service = service;
         }

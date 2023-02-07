@@ -3,59 +3,22 @@ using Family.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    partial class FamilyContextModelSnapshot : ModelSnapshot
+    [Migration("20230206103554_parents")]
+    partial class parents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Family.Db.Entities.Child", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Children");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 19,
-                            FirstName = "Denis",
-                            LastName = "Kudryavov"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 3,
-                            FirstName = "Daria",
-                            LastName = "Kudryavova"
-                        });
-                });
 
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
                 {

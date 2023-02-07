@@ -5,11 +5,11 @@ using Family.WebDb;
 
 namespace Family.Logic
 {
-    public class ParentService : IParentService
+    public class ParentsService : IParentsService
     {
-        private readonly IParentRepository _repository;
+        private readonly IParentsRepository _repository;
 
-        public ParentService(IParentRepository repository)
+        public ParentsService(IParentsRepository repository)
         {
             _repository = repository;
         }

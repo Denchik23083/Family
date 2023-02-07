@@ -6,6 +6,8 @@ namespace Family.Db
     public class FamilyContext : DbContext
     {
         public DbSet<Parent> Parents { get; set; }
+        
+        public DbSet<Child> Children { get; set; }
 
         public FamilyContext(DbContextOptions options) : base(options) { }
 

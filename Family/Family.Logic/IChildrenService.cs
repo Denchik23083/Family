@@ -4,8 +4,8 @@ using Family.Db.Entities;
 
 namespace Family.Logic
 {
-    public interface IParentService
+    public interface IChildrenService
     {
-        Task<IEnumerable<Parent>> GetAllParents();
+        Task<IEnumerable<Child>> GetAllChildren();
     }
 }

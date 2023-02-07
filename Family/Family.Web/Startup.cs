@@ -23,8 +23,11 @@ namespace Family.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IParentService, ParentService>();
-            services.AddScoped<IParentRepository, ParentRepository>();
+            services.AddScoped<IParentsService, ParentsService>();
+            services.AddScoped<IParentsRepository, ParentsRepository>();
+
+            services.AddScoped<IChildrenService, ChildrenService>();
+            services.AddScoped<IChildrenRepository, ChildrenRepository>();
 
             services.AddCors(options =>
             {
