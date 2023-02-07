@@ -1,6 +1,6 @@
-﻿@page "/parents"
+﻿@page "/children"
 
-<h3>Parents</h3>
+<h3>Children</h3>
 
 <table class="table">
     <thead>
@@ -11,9 +11,9 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var parent in Parents)
+    @foreach (var child in Children)
     {
-        <IndividualParentsComponent Parent="parent"/>
+        <IndividualChildrenComponent Child="child"/>
     }
     </tbody>
 </table>

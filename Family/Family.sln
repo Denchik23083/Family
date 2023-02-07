@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.WebDb", "Family.WebD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.Http", "Family.Http\Family.Http.csproj", "{CC672E3B-ECCF-48D6-8CD4-6786D3ACD62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Family.Client", "Family.Client\Family.Client.csproj", "{02C7BE74-239B-40AD-A251-EF8DFF86D0F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.Client", "Family.Client\Family.Client.csproj", "{02C7BE74-239B-40AD-A251-EF8DFF86D0F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

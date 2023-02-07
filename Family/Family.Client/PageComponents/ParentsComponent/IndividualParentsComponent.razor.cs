@@ -1,10 +1,10 @@
 ﻿using Family.Db.Entities;
 using Microsoft.AspNetCore.Components;
 
-namespace Family.Client.PagesComponents.ParentsComponent
+namespace Family.Client.PageComponents.ParentsComponent
 {
     public partial class IndividualParentsComponent
     {
-        [Parameter] public Parent Parent { get; set; } = new();
+        [Parameter] public Parent Parent { get; set; }
     }
 }
