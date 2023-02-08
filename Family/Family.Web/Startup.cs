@@ -5,9 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Family.Db;
-using Family.Logic;
-using Family.WebDb;
 using Microsoft.EntityFrameworkCore;
+using Family.Logic.ParentsService;
+using Family.Logic.ChildrenService;
+using Family.WebDb.ParentsRepository;
+using Family.WebDb.ChildrenRepository;
 
 namespace Family.Web
 {

@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Family.Db.Entities;
 
-namespace Family.Logic
+namespace Family.WebDb.ParentsRepository
 {
-    public interface IParentsService
+    public interface IParentsRepository
     {
         Task<IEnumerable<Parent>> GetAllParents();
     }

@@ -4,7 +4,7 @@ using Family.Db;
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Family.WebDb
+namespace Family.WebDb.ChildrenRepository
 {
     public class ChildrenRepository : IChildrenRepository
     {

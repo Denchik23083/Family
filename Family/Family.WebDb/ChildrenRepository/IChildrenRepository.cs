@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Family.Db.Entities;
 
-namespace Family.Http
+namespace Family.WebDb.ChildrenRepository
 {
-    public interface IChildrenHttpService
+    public interface IChildrenRepository
     {
         Task<IEnumerable<Child>> GetAllChildren();
     }

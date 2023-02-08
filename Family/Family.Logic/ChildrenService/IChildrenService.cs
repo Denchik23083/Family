@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Family.Db.Entities;
 
-namespace Family.Logic
+namespace Family.Logic.ChildrenService
 {
     public interface IChildrenService
     {

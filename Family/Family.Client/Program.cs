@@ -3,7 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Family.Http;
+using Family.Http.ChildrenHttpService;
+using Family.Http.ParentsHttpService;
 
 namespace Family.Client
 {

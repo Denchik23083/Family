@@ -1,4 +1,6 @@
-﻿namespace Family.Db.Entities
+﻿using System.Collections.Generic;
+
+namespace Family.Db.Entities
 {
     public class Child
     {
@@ -9,5 +11,7 @@
         public string LastName { get; set; }
 
         public int Age { get; set; }
+
+        public List<ParentsChildren> ParentsChildren { get; set; }
     }
 }

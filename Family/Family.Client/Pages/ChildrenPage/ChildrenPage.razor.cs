@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
-using Family.Http;
+using Family.Http.ChildrenHttpService;
 using Microsoft.AspNetCore.Components;
 
 namespace Family.Client.Pages.ChildrenPage

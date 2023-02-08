@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Family.Logic;
+using Family.Logic.ParentsService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Web.Controllers

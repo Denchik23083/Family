@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
-using Family.WebDb;
+using Family.WebDb.ParentsRepository;
 
-namespace Family.Logic
+namespace Family.Logic.ParentsService
 {
     public class ParentsService : IParentsService
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
-using Family.WebDb;
+using Family.WebDb.ChildrenRepository;
 
-namespace Family.Logic
+namespace Family.Logic.ChildrenService
 {
     public class ChildrenService : IChildrenService
     {
@@ -13,7 +13,7 @@ namespace Family.Logic
         {
             _repository = repository;
         }
-         
+
         public async Task<IEnumerable<Child>> GetAllChildren()
         {
             return await _repository.GetAllChildren();

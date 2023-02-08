@@ -5,20 +5,20 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Family.Db.Entities;
 
-namespace Family.Http
+namespace Family.Http.ParentsHttpService
 {
-    public class ChildrenHttpService : IChildrenHttpService
+    public class ParentsHttpService : IParentsHttpService
     {
         private readonly HttpClient _httpClient;
 
-        public ChildrenHttpService(HttpClient httpClient)
+        public ParentsHttpService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Child>> GetAllChildren()
+        public async Task<IEnumerable<Parent>> GetAllParents()
         {
-            var result = await _httpClient.GetAsync("https://localhost:6001/api/Children");
+            var result = await _httpClient.GetAsync("https://localhost:6001/api/Parents");
 
             var body = await result.Content.ReadAsStringAsync();
 
@@ -27,7 +27,7 @@ namespace Family.Http
                 throw new ApplicationException(body);
             }
 
-            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
     }
 }
