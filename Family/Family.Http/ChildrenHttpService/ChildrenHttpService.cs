@@ -29,5 +29,10 @@ namespace Family.Http.ChildrenHttpService
 
             return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
+
+        public Task<IEnumerable<Child>> GetChildren(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

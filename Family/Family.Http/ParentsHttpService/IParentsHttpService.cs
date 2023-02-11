@@ -7,5 +7,7 @@ namespace Family.Http.ParentsHttpService
     public interface IParentsHttpService
     {
         Task<IEnumerable<Parent>> GetAllParents();
+
+        Task<Parent> GetParent(int parentId);
     }
 }

@@ -29,5 +29,19 @@ namespace Family.Http.ParentsHttpService
 
             return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
+
+        public async Task<Parent> GetParent(int parentId)
+        {
+            var result = await _httpClient.GetAsync($"https://localhost:6001/api/Parents/id?id={parentId}");
+
+            var body = await result.Content.ReadAsStringAsync();
+
+            if (!result.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(body);
+            }
+
+            return JsonSerializer.Deserialize<Parent>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace Family.WebDb.ParentsRepository
         {
             return await _context.Parents.ToListAsync();
         }
+
+        public async Task<Parent> GetParent(int id)
+        {
+            return await _context.Parents.FirstOrDefaultAsync(p => p.Id == id);
+        }
     }
 }

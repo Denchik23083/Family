@@ -1,14 +1,14 @@
 ﻿.block {
-    border: 3px solid #00BFFF;
-    height: 300px;
-    width: 300px;
-    color: #00BFFF;
+    border: 3px solid rgb(80, 200, 230);
+    height: 250px;
+    width: 250px;
+    color: rgb(80, 200, 230);
     border-radius: 20px;
-}
-.text {
     text-align: center;
-    vertical-align: middle;
+    font-size: 25px;
+    padding: 10px;
 }
+.block:hover{ cursor: pointer;}
 .wrapper {
     min-height: 100vh;
     background-image: url(/img/LA.jpg);

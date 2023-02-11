@@ -3,7 +3,7 @@
 <div class="wrapper">
     @foreach (var parent in Parents)
     {
-        <div class="block m-3">
+        <div class="block m-3" @onclick="() => RouteId(parent.Id)">
             <IndividualParentsComponent Parent="parent"/>
         </div>
     }
