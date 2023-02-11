@@ -7,5 +7,7 @@ namespace Family.WebDb.ChildrenRepository
     public interface IChildrenRepository
     {
         Task<IEnumerable<Child>> GetAllChildren();
+
+        Task<IEnumerable<Child>> GetParentChildren(int id);
     }
 }

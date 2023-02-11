@@ -23,7 +23,7 @@ namespace Family.Client.Pages.ParentsPage
         {
             Parent = await ParentsHttpService.GetParent(ParentId);
 
-            Children = await ChildrenHttpService.GetChildren(Parent.Id);
+            Children = await ChildrenHttpService.GetParentsChildren(Parent.Id);
         }
     }
 }

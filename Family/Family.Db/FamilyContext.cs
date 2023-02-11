@@ -9,6 +9,8 @@ namespace Family.Db
         
         public DbSet<Child> Children { get; set; }
 
+        public DbSet<ParentsChildren> ParentsChildren { get; set; }
+
         public FamilyContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

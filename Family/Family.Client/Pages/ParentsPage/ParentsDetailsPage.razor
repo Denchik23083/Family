@@ -1,8 +1,8 @@
 ﻿@page "/parents/{ParentId:int}"
 
-<span>Parent: @Parent.FirstName</span>
+<span>Parent: @Parent.FirstName</span><br/>
 
 @foreach (var child in Children)
 {
-    <span>Child: @child.FirstName</span>
+    <span>Child: @child.FirstName</span><br/>
 }

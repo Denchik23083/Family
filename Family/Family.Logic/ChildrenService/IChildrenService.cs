@@ -7,5 +7,7 @@ namespace Family.Logic.ChildrenService
     public interface IChildrenService
     {
         Task<IEnumerable<Child>> GetAllChildren();
+
+        Task<IEnumerable<Child>> GetChildren(int id);
     }
 }
