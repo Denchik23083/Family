@@ -1,0 +1,30 @@
+﻿.block {
+    border: 3px solid #00BFFF;
+    height: 300px;
+    width: 300px;
+    color: #00BFFF;
+    border-radius: 20px;
+}
+.text {
+    text-align: center;
+    vertical-align: middle;
+}
+.wrapper {
+    min-height: 100vh;
+    background-image: url(/img/LA.jpg);
+    background-size: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 250px;
+    z-index: 2;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}

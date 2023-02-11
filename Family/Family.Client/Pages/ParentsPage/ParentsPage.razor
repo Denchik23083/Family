@@ -1,19 +1,10 @@
 ﻿@page "/parents"
 
-<h3>Parents</h3>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Age</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="wrapper">
     @foreach (var parent in Parents)
     {
-        <IndividualParentsComponent Parent="parent"/>
+        <div class="block m-3">
+            <IndividualParentsComponent Parent="parent"/>
+        </div>
     }
-    </tbody>
-</table>
+</div>
