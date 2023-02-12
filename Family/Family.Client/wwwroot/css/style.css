@@ -1,14 +1,16 @@
-﻿.block {
+﻿.from_all_click {height: 200px;}
+.from_details {height: 420px;}
+.from_all_click, .from_details {
     border: 3px solid rgb(80, 200, 230);
-    height: 250px;
     width: 250px;
     color: rgb(80, 200, 230);
     border-radius: 20px;
     text-align: center;
     font-size: 25px;
     padding: 10px;
+    margin: 10px;
 }
-.block:hover{ cursor: pointer;}
+.from_all_click:hover{ cursor: pointer;}
 .wrapper {
     min-height: 100vh;
     background-image: url(/img/LA.jpg);
@@ -22,6 +24,11 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+}
+.con {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 html, body {

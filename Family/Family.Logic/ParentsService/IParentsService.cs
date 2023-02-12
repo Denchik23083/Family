@@ -8,6 +8,8 @@ namespace Family.Logic.ParentsService
     {
         Task<IEnumerable<Parent>> GetAllParents();
 
+        Task<IEnumerable<Child>> GetParentsChildren(int parentId);
+
         Task<Parent> GetParent(int id);
     }
 }

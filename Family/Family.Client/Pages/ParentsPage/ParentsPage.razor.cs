@@ -19,7 +19,7 @@ namespace Family.Client.Pages.ParentsPage
             Parents = await ParentsHttpService.GetAllParents();
         }
 
-        public void RouteId(int parentId)
+        public void RouteToParent(int parentId)
         {
             NavigationManager.NavigateTo($"/parents/{parentId}");
         }

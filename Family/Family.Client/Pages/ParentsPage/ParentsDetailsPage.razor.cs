@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
-using Family.Http.ChildrenHttpService;
 using Family.Http.ParentsHttpService;
 using Microsoft.AspNetCore.Components;
 
@@ -13,7 +12,7 @@ namespace Family.Client.Pages.ParentsPage
 
         [Inject] public IParentsHttpService ParentsHttpService { get; set; }
 
-        [Inject] public IChildrenHttpService ChildrenHttpService { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         public Parent Parent { get; set; } = new();
 
@@ -23,7 +22,12 @@ namespace Family.Client.Pages.ParentsPage
         {
             Parent = await ParentsHttpService.GetParent(ParentId);
 
-            Children = await ChildrenHttpService.GetParentsChildren(Parent.Id);
+            Children = await ParentsHttpService.GetParentsChildren(Parent.Id);
+        }
+
+        private void RouteToChild(int childId)
+        {
+            NavigationManager.NavigateTo($"/children/{childId}");
         }
     }
 }
