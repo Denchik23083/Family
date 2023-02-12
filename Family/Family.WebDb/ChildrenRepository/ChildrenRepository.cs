@@ -20,5 +20,19 @@ namespace Family.WebDb.ChildrenRepository
         {
             return await _context.Children.ToListAsync();
         }
+
+        public async Task<IEnumerable<Parent>> GetChildrenParents(int id)
+        {
+            return await _context.ParentsChildren
+                .Where(_ => _.ChildId == id)
+                .Include(_ => _.Parent)
+                .Select(_ => _.Parent)
+                .ToListAsync();
+        }
+
+        public async Task<Child> GetChild(int id)
+        {
+            return await _context.Children.FirstOrDefaultAsync(p => p.Id == id);
+        }
     }
 }

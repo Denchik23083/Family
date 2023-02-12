@@ -6,22 +6,28 @@ using Microsoft.AspNetCore.Components;
 
 namespace Family.Client.Pages.ChildrenPage
 {
-    public partial class ChildrenPage
+    public partial class ChildrenDetailsPage
     {
+        [Parameter] public int ChildId { get; set; }
+
         [Inject] public IChildrenHttpService ChildrenHttpService { get; set; }
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public IEnumerable<Child> Children { get; set; } = new List<Child>();
+        public Child Child { get; set; } = new();
+
+        public IEnumerable<Parent> Parents { get; set; } = new List<Parent>();
 
         protected override async Task OnInitializedAsync()
         {
-            Children = await ChildrenHttpService.GetAllChildren();
+            Child = await ChildrenHttpService.GetChild(ChildId);
+
+            Parents = await ChildrenHttpService.GetChildrenParents(Child.Id);
         }
 
-        public void RouteToChild(int childId)
+        public void RouteToParent(int parentId)
         {
-            NavigationManager.NavigateTo($"/children/{childId}");
+            NavigationManager.NavigateTo($"/parents/{parentId}");
         }
     }
 }

@@ -19,9 +19,9 @@ namespace Family.Logic.ParentsService
             return await _repository.GetAllParents();
         }
 
-        public async Task<IEnumerable<Child>> GetParentsChildren(int parentId)
+        public async Task<IEnumerable<Child>> GetParentsChildren(int id)
         {
-            return await _repository.GetParentsChildren(parentId);
+            return await _repository.GetParentsChildren(id);
         }
 
         public async Task<Parent> GetParent(int id)

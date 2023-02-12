@@ -25,7 +25,7 @@ namespace Family.Client.Pages.ParentsPage
             Children = await ParentsHttpService.GetParentsChildren(Parent.Id);
         }
 
-        private void RouteToChild(int childId)
+        public void RouteToChild(int childId)
         {
             NavigationManager.NavigateTo($"/children/{childId}");
         }

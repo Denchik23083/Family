@@ -8,7 +8,7 @@ namespace Family.WebDb.ParentsRepository
     {
         Task<IEnumerable<Parent>> GetAllParents();
 
-        Task<IEnumerable<Child>> GetParentsChildren(int parentId);
+        Task<IEnumerable<Child>> GetParentsChildren(int id);
 
         Task<Parent> GetParent(int id);
     }

@@ -22,5 +22,13 @@ namespace Family.Web.Controllers
 
             return Ok(children);
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetChild(int id)
+        {
+            var parent = await _service.GetChild(id);
+
+            return Ok(parent);
+        }
     }
 }

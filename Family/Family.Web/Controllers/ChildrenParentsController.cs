@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+using Family.Logic.ChildrenService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Web.Controllers
@@ -7,5 +8,19 @@ namespace Family.Web.Controllers
     [ApiController]
     public class ChildrenParentsController : ControllerBase
     {
+        private readonly IChildrenService _service;
+
+        public ChildrenParentsController(IChildrenService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetChildrenParents(int id)
+        {
+            var children = await _service.GetChildrenParents(id);
+
+            return Ok(children);
+        }
     }
 }

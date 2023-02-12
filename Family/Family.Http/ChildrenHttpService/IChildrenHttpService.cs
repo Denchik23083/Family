@@ -8,6 +8,8 @@ namespace Family.Http.ChildrenHttpService
     {
         Task<IEnumerable<Child>> GetAllChildren();
 
-        //Task<IEnumerable<Child>> GetChildrenParents(int childId);
+        Task<IEnumerable<Parent>> GetChildrenParents(int childId);
+
+        Task<Child> GetChild(int childId);
     }
 }

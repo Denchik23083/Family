@@ -21,10 +21,10 @@ namespace Family.WebDb.ParentsRepository
             return await _context.Parents.ToListAsync();
         }
 
-        public async Task<IEnumerable<Child>> GetParentsChildren(int parentId)
+        public async Task<IEnumerable<Child>> GetParentsChildren(int id)
         {
             return await _context.ParentsChildren
-                .Where(_ => _.ParentId == parentId)
+                .Where(_ => _.ParentId == id)
                 .Include(_ => _.Child)
                 .Select(_ => _.Child)
                 .ToListAsync();

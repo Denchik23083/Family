@@ -1,19 +1,10 @@
 ﻿@page "/children"
 
-<h3>Children</h3>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Age</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="wrapper">
     @foreach (var child in Children)
     {
-        <IndividualChildrenComponent Child="child"/>
+        <div class="from_all_click mt-3" @onclick="() => RouteToChild(child.Id)">
+            <IndividualChildrenComponent Child="child"/>
+        </div>
     }
-    </tbody>
-</table>
+</div>
