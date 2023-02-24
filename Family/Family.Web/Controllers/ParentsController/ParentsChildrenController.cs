@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Family.Logic.ParentsService;
@@ -25,11 +24,6 @@ namespace Family.Web.Controllers.ParentsController
         public async Task<IActionResult> GetParentsChildren(int id)
         {
             var children = await _service.GetParentsChildren(id);
-
-            if (!children.Any())
-            {
-                return NoContent();
-            }
 
             var mapperChildren = _mapper.Map<IEnumerable<ChildrenReadModel>>(children);
 

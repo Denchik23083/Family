@@ -11,5 +11,11 @@ namespace Family.WebDb.ParentsRepository
         Task<IEnumerable<Child>> GetParentsChildren(int id);
 
         Task<Parent> GetParent(int id);
+
+        Task CreateParent(Parent createdParent);
+
+        Task EditParent(Parent parentToEdit, Parent editedParent, int id);
+
+        Task DeleteParent(Parent parentToDelete, int id);
     }
 }

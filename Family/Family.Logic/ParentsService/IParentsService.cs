@@ -13,5 +13,9 @@ namespace Family.Logic.ParentsService
         Task<Parent> GetParent(int id);
 
         Task CreateParent(Parent createdParent);
+
+        Task EditParent(Parent editedParent, int id);
+
+        Task DeleteParent(int id);
     }
 }

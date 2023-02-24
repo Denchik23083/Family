@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
 using Family.WebDb.ParentsRepository;
@@ -29,9 +30,33 @@ namespace Family.Logic.ParentsService
             return await _repository.GetParent(id);
         }
 
-        public Task CreateParent(Parent createdParent)
+        public async Task CreateParent(Parent createdParent)
         {
-            throw new System.NotImplementedException();
+            await _repository.CreateParent(createdParent);
+        }
+
+        public async Task EditParent(Parent editedParent, int id)
+        {
+            var parentToEdit = await _repository.GetParent(id);
+
+            if (parentToEdit is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            await _repository.EditParent(parentToEdit, editedParent, id);
+        }
+
+        public async Task DeleteParent(int id)
+        {
+            var parentToDelete = await _repository.GetParent(id);
+
+            if (parentToDelete is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            await _repository.DeleteParent(parentToDelete, id);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Family.Db.Entities;
@@ -27,10 +26,11 @@ namespace Family.Web.Controllers.ParentsController
         {
             var parents = await _service.GetAllParents();
 
-            if (!parents.Any())
+            // С этой проверкой ошибка. Не понимает NoContent
+            /*if (!parents.Any())
             {
                 return NoContent();
-            }
+            }*/
 
             var mapperParents = _mapper.Map<IEnumerable<ParentsReadModel>>(parents);
 
@@ -42,10 +42,11 @@ namespace Family.Web.Controllers.ParentsController
         {
             var parent = await _service.GetParent(id);
 
-            if (parent is null)
+            // С этой проверкой ошибка. Не понимает NoContent. И возвращает null
+            /*if (parent is null)
             {
                 return NoContent();
-            }
+            }*/
 
             var mapperParent = _mapper.Map<ParentsReadModel>(parent);
 
@@ -63,6 +64,29 @@ namespace Family.Web.Controllers.ParentsController
             var createdParent = _mapper.Map<Parent>(model);
 
             await _service.CreateParent(createdParent);
+
+            return NoContent();
+        }
+
+        [HttpPut("id")]
+        public async Task<IActionResult> EditParent(ParentsWriteModel model, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var editedParent = _mapper.Map<Parent>(model);
+
+            await _service.EditParent(editedParent, id);
+
+            return NoContent();
+        }
+
+        [HttpDelete("id")]
+        public async Task<IActionResult> DeleteParent(int id)
+        {
+            await _service.DeleteParent(id);
 
             return NoContent();
         }
