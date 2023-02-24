@@ -11,5 +11,7 @@ namespace Family.Logic.ParentsService
         Task<IEnumerable<Child>> GetParentsChildren(int id);
 
         Task<Parent> GetParent(int id);
+
+        Task CreateParent(Parent createdParent);
     }
 }

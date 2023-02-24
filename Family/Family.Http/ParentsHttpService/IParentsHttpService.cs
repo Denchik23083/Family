@@ -11,5 +11,7 @@ namespace Family.Http.ParentsHttpService
         Task<IEnumerable<Child>> GetParentsChildren(int parentId);
 
         Task<Parent> GetParent(int parentId);
+
+        Task CreateParent(Parent parent);
     }
 }

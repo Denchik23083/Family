@@ -28,5 +28,10 @@ namespace Family.Logic.ParentsService
         {
             return await _repository.GetParent(id);
         }
+
+        public Task CreateParent(Parent createdParent)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

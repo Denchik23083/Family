@@ -2,7 +2,7 @@
 using Family.Logic.ChildrenService;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Family.Web.Controllers
+namespace Family.Web.Controllers.ChildrenController
 {
     [Route("api/[controller]")]
     [ApiController]

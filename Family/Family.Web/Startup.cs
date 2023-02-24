@@ -8,6 +8,7 @@ using Family.Db;
 using Microsoft.EntityFrameworkCore;
 using Family.Logic.ParentsService;
 using Family.Logic.ChildrenService;
+using Family.Web.Utilities;
 using Family.WebDb.ParentsRepository;
 using Family.WebDb.ChildrenRepository;
 
@@ -30,6 +31,8 @@ namespace Family.Web
 
             services.AddScoped<IChildrenService, ChildrenService>();
             services.AddScoped<IChildrenRepository, ChildrenRepository>();
+
+            services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
             services.AddCors(options =>
             {

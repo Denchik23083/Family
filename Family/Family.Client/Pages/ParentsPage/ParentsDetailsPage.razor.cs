@@ -21,7 +21,7 @@ namespace Family.Client.Pages.ParentsPage
         protected override async Task OnInitializedAsync()
         {
             Parent = await ParentsHttpService.GetParent(ParentId);
-
+            
             Children = await ParentsHttpService.GetParentsChildren(Parent.Id);
         }
 

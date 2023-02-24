@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Family.Db.Entities;
@@ -35,6 +36,13 @@ namespace Family.Http.ParentsHttpService
             var body = await GetData($"https://localhost:6001/api/Parents/id?id={parentId}");
 
             return JsonSerializer.Deserialize<Parent>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task CreateParent(Parent parent)
+        {
+            var content = JsonContent.Create(parent);
+
+            await _httpClient.PostAsync("https://localhost:6001/api/Parents", content);
         }
 
         private async Task<string> GetData(string requestUrl)
