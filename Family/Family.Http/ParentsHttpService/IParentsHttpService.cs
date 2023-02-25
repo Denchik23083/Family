@@ -12,6 +12,10 @@ namespace Family.Http.ParentsHttpService
 
         Task<Parent> GetParent(int parentId);
 
-        Task CreateParent(Parent parent);
+        Task CreateParent(Parent createdParent);
+
+        Task EditParent(Parent editedParent, int parentId);
+
+        Task DeleteParent(int parentId);
     }
 }

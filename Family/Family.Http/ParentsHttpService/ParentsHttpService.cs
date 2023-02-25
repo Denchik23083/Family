@@ -38,11 +38,23 @@ namespace Family.Http.ParentsHttpService
             return JsonSerializer.Deserialize<Parent>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task CreateParent(Parent parent)
+        public async Task CreateParent(Parent createdParent)
         {
-            var content = JsonContent.Create(parent);
+            var content = JsonContent.Create(createdParent);
 
             await _httpClient.PostAsync("https://localhost:6001/api/Parents", content);
+        }
+
+        public async Task EditParent(Parent editedParent, int parentId)
+        {
+            var content = JsonContent.Create(editedParent);
+
+            await _httpClient.PutAsync($"https://localhost:6001/api/Parents/id?id={parentId}", content);
+        }
+
+        public async Task DeleteParent(int parentId)
+        {
+            await _httpClient.DeleteAsync($"https://localhost:6001/api/Parents/id?id={parentId}");
         }
 
         private async Task<string> GetData(string requestUrl)

@@ -34,5 +34,28 @@ namespace Family.WebDb.ChildrenRepository
         {
             return await _context.Children.FirstOrDefaultAsync(p => p.Id == id);
         }
+
+        public async Task CreateChild(Child createdChild)
+        {
+            await _context.Children.AddAsync(createdChild);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task EditChild(Child childToEdit, Child editedChild, int id)
+        {
+            childToEdit.FirstName = editedChild.FirstName;
+            childToEdit.LastName = editedChild.LastName;
+            childToEdit.Age = editedChild.Age;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteParent(Child childToDelete, int id)
+        {
+            _context.Children.Remove(childToDelete);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }
