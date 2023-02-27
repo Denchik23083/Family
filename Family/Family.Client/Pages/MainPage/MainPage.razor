@@ -1,3 +1,20 @@
 ﻿@page "/"
 
-<h3>Main</h3>
+<div class="wrapper">
+    <div class="main_add_new" @onclick="AddParent">
+        <div class="row">
+            <div class="col">
+                <i class="fa-solid fa-plus"></i>
+                Add New Parent
+            </div>
+        </div>
+    </div>
+    <div class="main_add_new" @onclick="AddChild">
+        <div class="row">
+            <div class="col">
+                <i class="fa-solid fa-plus"></i>
+                Add New Child
+            </div>
+        </div>
+    </div>
+</div>
