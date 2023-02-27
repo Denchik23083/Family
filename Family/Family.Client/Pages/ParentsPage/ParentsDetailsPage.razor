@@ -3,6 +3,14 @@
 <div class="wrapper">    
     <div class="from_details">
         <IndividualParentsComponent Parent="Parent"/>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="Edit">Edit</button>
+            </div>
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="Delete">Delete</button>
+            </div>
+        </div>
     </div>
     <div class="con">
         @foreach (var child in Children)

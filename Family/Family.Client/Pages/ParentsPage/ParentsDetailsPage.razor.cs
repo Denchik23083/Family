@@ -29,5 +29,18 @@ namespace Family.Client.Pages.ParentsPage
         {
             NavigationManager.NavigateTo($"/children/{childId}");
         }
+
+        public void Edit()
+        {
+            NavigationManager.NavigateTo($"/parents/{Parent.Id}/edit");
+        }
+
+        public void Delete()
+        {
+            //TODO: Confirm Delete (EventCallBack)
+            ParentsHttpService.DeleteParent(Parent.Id);
+
+            NavigationManager.NavigateTo("/parents", true);
+        }
     }
 }
