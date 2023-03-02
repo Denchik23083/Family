@@ -1,0 +1,24 @@
+﻿<EditForm Model="Child" OnValidSubmit="Submit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col mb-2">
+            <InputText @bind-Value="Child.FirstName" placeholder="FirstName" class="input"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <InputText @bind-Value="Child.LastName" placeholder="LastName" class="input"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <InputNumber @bind-Value="Child.Age" placeholder="Age" class="input" min="0" max="100"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn submit" type="submit">Submit</button>
+        </div>
+    </div>
+</EditForm>

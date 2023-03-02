@@ -55,7 +55,7 @@
 .from_all_click:hover{ cursor: pointer;}
 .wrapper {
     min-height: 100vh;
-    background-image: url(/img/LA_sunset.jpeg);
+    background-image: url(/img/LA_night.jpg);
     background-size: 100%;
     position: absolute;
     right: 0;
@@ -84,7 +84,7 @@
     padding: 20px;
 }
 .weather {background-image: url(/img/beach.jpg);}
-.add_edit {background-image: url(/img/LA_sunset.jpeg);}
+.add_edit {background-image: url(/img/LA_night.jpg);}
 html, body {
     width: 100%;
     height: 100%;

@@ -1,8 +1,23 @@
 ﻿@page "/children/{ChildId:int}"
 
+<ConfirmRemoveChildComponent
+    @ref="ConfirmRemoveChildComponent"
+    OnShow="OnShow"
+    OnCancel="OnCancel"
+    Child="Child"
+    ChildId="ChildId"/>
+
 <div class="wrapper">    
     <div class="from_details">
         <IndividualChildrenComponent Child="Child"/>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="Edit">Edit</button>
+            </div>
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="OnShow">Delete</button>
+            </div>
+        </div>
     </div>
     <div class="con">
         @foreach (var parent in Parents)
