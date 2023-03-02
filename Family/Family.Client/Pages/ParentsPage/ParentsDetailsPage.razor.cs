@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Family.Client.PageComponents.ParentsComponent;
 using Family.Db.Entities;
 using Family.Http.ParentsHttpService;
 using Microsoft.AspNetCore.Components;
@@ -18,6 +19,8 @@ namespace Family.Client.Pages.ParentsPage
 
         public IEnumerable<Child> Children { get; set; } = new List<Child>();
 
+        public ConfirmRemoveParentComponent ConfirmRemoveParentComponent { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             Parent = await ParentsHttpService.GetParent(ParentId);
@@ -35,12 +38,8 @@ namespace Family.Client.Pages.ParentsPage
             NavigationManager.NavigateTo($"/parents/{Parent.Id}/edit");
         }
 
-        public void Delete()
-        {
-            //TODO: Confirm Delete (EventCallBack)
-            ParentsHttpService.DeleteParent(Parent.Id);
+        public void OnShow() => ConfirmRemoveParentComponent.Show();
 
-            NavigationManager.NavigateTo("/parents", true);
-        }
+        public void OnCancel() => ConfirmRemoveParentComponent.Hide();
     }
 }

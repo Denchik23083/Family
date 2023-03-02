@@ -1,5 +1,12 @@
 ﻿@page "/parents/{ParentId:int}"
 
+<ConfirmRemoveParentComponent
+    @ref="ConfirmRemoveParentComponent"
+    OnShow="OnShow"
+    OnCancel="OnCancel"
+    Parent="Parent"
+    ParentId="ParentId"/>
+
 <div class="wrapper">    
     <div class="from_details">
         <IndividualParentsComponent Parent="Parent"/>
@@ -8,7 +15,7 @@
                 <button class="btn submit" @onclick="Edit">Edit</button>
             </div>
             <div class="col-6 mb-3">
-                <button class="btn submit" @onclick="Delete">Delete</button>
+                <button class="btn submit" @onclick="OnShow">Delete</button>
             </div>
         </div>
     </div>

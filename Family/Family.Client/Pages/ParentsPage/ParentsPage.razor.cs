@@ -19,6 +19,11 @@ namespace Family.Client.Pages.ParentsPage
             Parents = await ParentsHttpService.GetAllParents();
         }
 
+        protected override async Task OnParametersSetAsync()
+        {
+            Parents = await ParentsHttpService.GetAllParents();
+        }
+
         public void RouteToParent(int parentId)
         {
             NavigationManager.NavigateTo($"/parents/{parentId}");

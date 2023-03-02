@@ -1,4 +1,10 @@
-﻿.input {
+﻿.confirmDelete {
+    background: none;
+    color: rgb(80, 200, 230);
+    border: 3px solid rgb(80, 200, 230);
+    border-radius: 15px;
+}
+.input {
     width: 100%;
     background: none;
     color: rgb(80, 200, 230);
@@ -8,7 +14,10 @@
     text-align: center;
     border: 3px solid rgb(80, 200, 230);
 }
-.input::placeholder {color: rgb(80, 200, 230); text-align: center;}
+.input::placeholder {
+    color: rgb(80, 200, 230); 
+    text-align: center;
+}
 .submit {
     width: 100%;
     color: rgb(80, 200, 230);
