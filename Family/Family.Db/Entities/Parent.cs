@@ -16,6 +16,8 @@ namespace Family.Db.Entities
         [Required]
         public int Age { get; set; }
 
-        public List<ParentsChildren> ParentsChildren { get; set; }
+        public Gender Gender { get; set; }
+
+        public int GenderId { get; set; }
     }
 }

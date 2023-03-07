@@ -28,7 +28,7 @@ namespace Family.Client.PageComponents.ChildrenComponent
         {
             ChildrenHttpService.DeleteChild(ChildId);
 
-            NavigationManager.NavigateTo("/children");
+            NavigationManager.NavigateTo("/children", true);
         }
     }
 }

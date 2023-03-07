@@ -18,7 +18,9 @@ namespace Family.WebDb.ParentsRepository
 
         public async Task<IEnumerable<Parent>> GetAllParents()
         {
-            return await _context.Parents.ToListAsync();
+            return await _context.Parents
+                .Include(_ => _.Gender)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Child>> GetParentsChildren(int id)
@@ -26,13 +28,16 @@ namespace Family.WebDb.ParentsRepository
             return await _context.ParentsChildren
                 .Where(_ => _.ParentId == id)
                 .Include(_ => _.Child)
+                .ThenInclude(_ => _.Gender)
                 .Select(_ => _.Child)
                 .ToListAsync();
         }
 
         public async Task<Parent> GetParent(int id)
         {
-            return await _context.Parents.FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Parents
+                .Include(_ => _.Gender)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task CreateParent(Parent createdParent)

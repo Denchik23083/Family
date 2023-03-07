@@ -19,16 +19,6 @@ namespace Family.Client.Pages.ChildrenPage
             Children = await ChildrenHttpService.GetAllChildren();
         }
 
-        /*protected override async Task OnParametersSetAsync()
-        {
-            Children = await ChildrenHttpService.GetAllChildren();
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            Children = await ChildrenHttpService.GetAllChildren();
-        }*/
-
         public void RouteToChild(int childId)
         {
             NavigationManager.NavigateTo($"/children/{childId}");

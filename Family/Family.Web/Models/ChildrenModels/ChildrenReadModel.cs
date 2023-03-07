@@ -1,4 +1,6 @@
-﻿namespace Family.Web.Models.ChildrenModels
+﻿using Family.Db.Entities;
+
+namespace Family.Web.Models.ChildrenModels
 {
     public class ChildrenReadModel
     {
@@ -9,5 +11,9 @@
         public string LastName { get; set; }
 
         public int Age { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public int GenderId { get; set; }
     }
 }

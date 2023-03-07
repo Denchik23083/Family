@@ -11,6 +11,8 @@ namespace Family.Db
 
         public DbSet<ParentsChildren> ParentsChildren { get; set; }
 
+        public DbSet<Gender> Genders { get; set; }
+
         public FamilyContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

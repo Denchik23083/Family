@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Family.Db.Entities
+namespace Family.Core
 {
     public class Weather
     {

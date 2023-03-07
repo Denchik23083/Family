@@ -15,7 +15,13 @@ namespace Family.Client.Pages.ParentsPage
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public Parent Parent { get; set; } = new();
+        public Parent Parent { get; set; } = new()
+        {
+            Gender = new()
+            {
+                GenderType = new()
+            }
+        };
 
         public IEnumerable<Child> Children { get; set; } = new List<Child>();
 

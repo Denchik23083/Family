@@ -1,4 +1,6 @@
-﻿namespace Family.Web.Models.ParentsModels
+﻿using Family.Db.Entities;
+
+namespace Family.Web.Models.ParentsModels
 {
     public class ParentsReadModel
     {
@@ -9,5 +11,9 @@
         public string LastName { get; set; }
 
         public int Age { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public int GenderId { get; set; }
     }
 }

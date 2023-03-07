@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities;
+﻿using System.Threading.Tasks;
+using Family.Db.Entities;
 using Microsoft.AspNetCore.Components;
 
 namespace Family.Client.PageComponents.ParentsComponent
