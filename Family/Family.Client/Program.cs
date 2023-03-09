@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Family.Http.ChildrenHttpService;
+using Family.Http.GenusHttpService;
 using Family.Http.ParentsHttpService;
 
 namespace Family.Client
@@ -19,6 +20,7 @@ namespace Family.Client
 
             builder.Services.AddScoped<IParentsHttpService, ParentsHttpService>();
             builder.Services.AddScoped<IChildrenHttpService, ChildrenHttpService>();
+            builder.Services.AddScoped<IGenusHttpService, GenusHttpService>();
 
             await builder.Build().RunAsync();
         }

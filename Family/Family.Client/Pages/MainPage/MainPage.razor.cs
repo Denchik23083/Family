@@ -6,6 +6,11 @@ namespace Family.Client.Pages.MainPage
     {
         [Inject] public NavigationManager NavigationManager { get; set; }
 
+        public void AddFamily()
+        {
+            NavigationManager.NavigateTo("/family/add");
+        }
+
         public void AddParent()
         {
             NavigationManager.NavigateTo("/parents/add");
