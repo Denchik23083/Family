@@ -6,11 +6,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Family.Db;
 using Microsoft.EntityFrameworkCore;
+using Family.Web.Utilities;
 using Family.Logic.ParentsService;
 using Family.Logic.ChildrenService;
-using Family.Web.Utilities;
+using Family.Logic.GenusService;
 using Family.WebDb.ParentsRepository;
 using Family.WebDb.ChildrenRepository;
+using Family.WebDb.GenusRepository;
 
 namespace Family.Web
 {
@@ -31,6 +33,9 @@ namespace Family.Web
 
             services.AddScoped<IChildrenService, ChildrenService>();
             services.AddScoped<IChildrenRepository, ChildrenRepository>();
+
+            services.AddScoped<IGenusService, GenusService>();
+            services.AddScoped<IGenusRepository, GenusRepository>();
 
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 

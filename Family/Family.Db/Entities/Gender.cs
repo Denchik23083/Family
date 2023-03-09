@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Family.Core;
+﻿using Family.Core;
 
 namespace Family.Db.Entities
 {

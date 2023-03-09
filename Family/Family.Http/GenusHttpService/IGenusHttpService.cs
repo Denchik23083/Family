@@ -12,7 +12,7 @@ namespace Family.Http.GenusHttpService
 
         Task<Parent> GetParent(int parentId);*/
 
-        Task<IEnumerable<Parent>> GetAllMothers();
+        Task<IEnumerable<Genus>> GetAllGenus();
 
         Task CreateGenus(Genus createdGenus);
 

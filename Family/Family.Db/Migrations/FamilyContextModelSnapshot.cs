@@ -91,6 +91,77 @@ namespace Family.Db.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Kudryavovs"
+                        });
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GenusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParentsChildrenId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GenusId");
+
+                    b.HasIndex("ParentsChildrenId");
+
+                    b.ToTable("GenusParentsChildren");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GenusId = 1,
+                            ParentsChildrenId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            GenusId = 1,
+                            ParentsChildrenId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            GenusId = 1,
+                            ParentsChildrenId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            GenusId = 1,
+                            ParentsChildrenId = 4
+                        });
+                });
+
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
                 {
                     b.Property<int>("Id")
@@ -194,6 +265,23 @@ namespace Family.Db.Migrations
                         .IsRequired();
 
                     b.Navigation("Gender");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
+                {
+                    b.HasOne("Family.Db.Entities.Genus", "Genus")
+                        .WithMany()
+                        .HasForeignKey("GenusId")
+                        .IsRequired();
+
+                    b.HasOne("Family.Db.Entities.ParentsChildren", "ParentsChildren")
+                        .WithMany()
+                        .HasForeignKey("ParentsChildrenId")
+                        .IsRequired();
+
+                    b.Navigation("Genus");
+
+                    b.Navigation("ParentsChildren");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>

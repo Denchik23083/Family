@@ -35,8 +35,8 @@ namespace Family.Client.PageComponents.GenusComponent
             else
             {
                 //Genus = await ParentsHttpService.GetParent(ParentId);
-                var parents = await GenusHttpService.GetAllMothers();
-                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
+                //var parents = await GenusHttpService.GetAllMothers();
+                //Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
             }
         }
 

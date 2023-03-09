@@ -1,0 +1,10 @@
+﻿@page "/genus"
+
+<div class="wrapper">
+    @foreach (var genus in Genus)
+    {
+        <div class="from_all_click mt-3" @onclick="() => RouteToGenus(genus.Id)">
+            <IndividualGenusComponent Genus="genus"/>
+        </div>
+    }
+</div>

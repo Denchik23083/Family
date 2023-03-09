@@ -8,9 +8,5 @@ namespace Family.Db.Entities
 
         [Required]
         public string Name { get; set; }
-
-        public int ParentsChildrenId { get; set; }
-
-        public ParentsChildren ParentsChildren { get; set; }
     }
 }

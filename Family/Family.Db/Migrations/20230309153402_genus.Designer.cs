@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    [Migration("20230307100516_init")]
-    partial class init
+    [Migration("20230309153402_genus")]
+    partial class genus
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,12 +84,83 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 1,
-                            GenderType = 0
+                            GenderType = 1
                         },
                         new
                         {
                             Id = 2,
-                            GenderType = 1
+                            GenderType = 2
+                        });
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Kudryavovs"
+                        });
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GenusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParentsChildrenId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GenusId");
+
+                    b.HasIndex("ParentsChildrenId");
+
+                    b.ToTable("GenusParentsChildren");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GenusId = 1,
+                            ParentsChildrenId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            GenusId = 1,
+                            ParentsChildrenId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            GenusId = 1,
+                            ParentsChildrenId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            GenusId = 1,
+                            ParentsChildrenId = 4
                         });
                 });
 
@@ -190,7 +261,7 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.Child", b =>
                 {
                     b.HasOne("Family.Db.Entities.Gender", "Gender")
-                        .WithMany("GenderChildren")
+                        .WithMany()
                         .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -198,10 +269,27 @@ namespace Family.Db.Migrations
                     b.Navigation("Gender");
                 });
 
+            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
+                {
+                    b.HasOne("Family.Db.Entities.Genus", "Genus")
+                        .WithMany()
+                        .HasForeignKey("GenusId")
+                        .IsRequired();
+
+                    b.HasOne("Family.Db.Entities.ParentsChildren", "ParentsChildren")
+                        .WithMany()
+                        .HasForeignKey("ParentsChildrenId")
+                        .IsRequired();
+
+                    b.Navigation("Genus");
+
+                    b.Navigation("ParentsChildren");
+                });
+
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
                 {
                     b.HasOne("Family.Db.Entities.Gender", "Gender")
-                        .WithMany("GenderParents")
+                        .WithMany()
                         .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -212,35 +300,18 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.ParentsChildren", b =>
                 {
                     b.HasOne("Family.Db.Entities.Child", "Child")
-                        .WithMany("ParentsChildren")
+                        .WithMany()
                         .HasForeignKey("ChildId")
                         .IsRequired();
 
                     b.HasOne("Family.Db.Entities.Parent", "Parent")
-                        .WithMany("ParentsChildren")
+                        .WithMany()
                         .HasForeignKey("ParentId")
                         .IsRequired();
 
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.Child", b =>
-                {
-                    b.Navigation("ParentsChildren");
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.Gender", b =>
-                {
-                    b.Navigation("GenderChildren");
-
-                    b.Navigation("GenderParents");
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.Parent", b =>
-                {
-                    b.Navigation("ParentsChildren");
                 });
 #pragma warning restore 612, 618
         }
