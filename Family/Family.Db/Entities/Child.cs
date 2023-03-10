@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Family.Db.Entities
 {
@@ -18,7 +17,7 @@ namespace Family.Db.Entities
 
         public int GenusId { get; set; }
 
-        public Genus Genus { get; set; }
+        public virtual Genus Genus { get; set; }
 
         public Gender Gender { get; set; }
 

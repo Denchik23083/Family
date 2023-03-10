@@ -6,9 +6,9 @@ namespace Family.Client.Pages.MainPage
     {
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public void AddFamily()
+        public void AddGenus()
         {
-            NavigationManager.NavigateTo("/family/add");
+            NavigationManager.NavigateTo("/genus/add");
         }
 
         public void AddParent()

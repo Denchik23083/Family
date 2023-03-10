@@ -18,6 +18,6 @@ namespace Family.Db.Entities
 
         public Parent Mother { get; set; }
 
-        public IEnumerable<Child> Children { get; set; }
+        public virtual IEnumerable<Child> Children { get; set; }
     }
 }

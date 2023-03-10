@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Family.Db;
 using Family.Db.Entities;
@@ -18,6 +19,23 @@ namespace Family.WebDb.GenusRepository
         public async Task<IEnumerable<Genus>> GetAllGenus()
         {
             return await _context.Genus.ToListAsync();
+        }
+
+        /*public async Task<IEnumerable<Genus>> GetGenusChildren(int id)
+        {
+            return await _context.Children
+                .Where(_ => _.GenusId == )
+        }*/
+
+        public async Task<Genus> GetGenus(int id)
+        {
+            return await _context.Genus
+                .Include(_ => _.Father)
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Mother)
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Children)
+                .FirstOrDefaultAsync(_ => _.Id == id);
         }
     }
 }

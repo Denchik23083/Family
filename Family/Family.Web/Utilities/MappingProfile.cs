@@ -10,6 +10,7 @@ namespace Family.Web.Utilities
     {
         public MappingProfile()
         {
+            CreateMap<Genus, GenusReadNameModel>();
             CreateMap<Genus, GenusReadModel>();
             CreateMap<GenusWriteModel, Genus>();
 

@@ -9,11 +9,18 @@ namespace Family.Console
 {
     public class Program
     {
-        private static readonly HttpClient HttpClient = new HttpClient();
+        private static readonly HttpClient HttpClient = new();
 
         public static async Task Main(string[] args)
         {
-            var result = await HttpClient.GetAsync("https://localhost:6001/api/Parents");
+            var body = await GetData($"https://localhost:6001/api/Genus/id?id=1");
+
+            var genus = JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        private static async Task<string> GetData(string requestUrl)
+        {
+            var result = await HttpClient.GetAsync(requestUrl);
 
             var body = await result.Content.ReadAsStringAsync();
 
@@ -22,7 +29,7 @@ namespace Family.Console
                 throw new ApplicationException(body);
             }
 
-            var parents = JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return body;
         }
     }
 }

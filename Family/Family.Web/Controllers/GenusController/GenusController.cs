@@ -25,7 +25,17 @@ namespace Family.Web.Controllers.GenusController
         { 
             var genus = await _service.GetAllGenus();
 
-            var mapperGenus = _mapper.Map<IEnumerable<GenusReadModel>>(genus);
+            var mapperGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
+
+            return Ok(mapperGenus);
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetGenus(int id)
+        {
+            var genus = await _service.GetGenus(id);
+
+            var mapperGenus = _mapper.Map<GenusReadModel>(genus);
 
             return Ok(mapperGenus);
         }
