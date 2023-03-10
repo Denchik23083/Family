@@ -21,20 +21,21 @@ namespace Family.WebDb.GenusRepository
             return await _context.Genus.ToListAsync();
         }
 
-        /*public async Task<IEnumerable<Genus>> GetGenusChildren(int id)
+        public async Task<IEnumerable<Child>> GetGenusChildren(int id)
         {
             return await _context.Children
-                .Where(_ => _.GenusId == )
-        }*/
+                .Include(_ => _.Gender)
+                .Where(_ => _.GenusId == id)
+                .ToListAsync();
+        }
 
-        public async Task<Genus> GetGenus(int id)
+        public async Task<Genus> GetGenusParents(int id)
         {
             return await _context.Genus
                 .Include(_ => _.Father)
                 .ThenInclude(_ => _.Gender)
                 .Include(_ => _.Mother)
                 .ThenInclude(_ => _.Gender)
-                .Include(_ => _.Children)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
     }

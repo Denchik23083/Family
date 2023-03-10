@@ -19,9 +19,14 @@ namespace Family.Logic.GenusService
             return await _repository.GetAllGenus();
         }
 
-        public async Task<Genus> GetGenus(int id)
+        public async Task<IEnumerable<Child>> GetGenusChildren(int id)
         {
-            return await _repository.GetGenus(id);
+            return await _repository.GetGenusChildren(id);
+        }
+
+        public async Task<Genus> GetGenusParents(int id)
+        {
+            return await _repository.GetGenusParents(id);
         }
     }
 }

@@ -94,7 +94,7 @@ namespace Family.Db.Migrations
                         column: x => x.GenusId,
                         principalTable: "Genus",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 
 namespace Family.Web.Models.GenusModels
 {
-    public class GenusReadModel
+    public class GenusParentsReadModel
     {
         public int Id { get; set; }
 
@@ -14,7 +13,5 @@ namespace Family.Web.Models.GenusModels
         public int MotherId { get; set; }
 
         public Parent Mother { get; set; }
-
-        public IEnumerable<Child> Children { get; set; }
     }
 }

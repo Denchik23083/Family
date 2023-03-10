@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    [Migration("20230310125031_init")]
+    [Migration("20230310132845_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -240,8 +240,9 @@ namespace Family.Db.Migrations
                         .IsRequired();
 
                     b.HasOne("Family.Db.Entities.Genus", "Genus")
-                        .WithMany("Children")
+                        .WithMany()
                         .HasForeignKey("GenusId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Gender");
@@ -292,11 +293,6 @@ namespace Family.Db.Migrations
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
-                {
-                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

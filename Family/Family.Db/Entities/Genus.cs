@@ -17,7 +17,5 @@ namespace Family.Db.Entities
         public int MotherId { get; set; }
 
         public Parent Mother { get; set; }
-
-        public virtual IEnumerable<Child> Children { get; set; }
     }
 }

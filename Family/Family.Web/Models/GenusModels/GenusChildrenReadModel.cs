@@ -1,23 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Family.Db.Entities;
 
-namespace Family.Db.Entities
+namespace Family.Web.Models.GenusModels
 {
-    public class Child
+    public class GenusChildrenReadModel
     {
         public int Id { get; set; }
-
-        [Required]
+        
         public string FirstName { get; set; }
-
-        [Required]
+        
         public string LastName { get; set; }
-
-        [Required]
+        
         public int Age { get; set; }
-
-        public int GenusId { get; set; }
-
-        public Genus Genus { get; set; }
 
         public Gender Gender { get; set; }
 
