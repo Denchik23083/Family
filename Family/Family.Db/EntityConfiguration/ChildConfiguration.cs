@@ -18,6 +18,11 @@ namespace Family.Db.EntityConfiguration
                 .WithMany()
                 .HasForeignKey(_ => _.GenderId);
 
+            builder.HasOne(_ => _.Genus)
+                .WithMany(_ => _.Children)
+                .HasForeignKey(_ => _.GenusId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
             builder.ToTable("Children").HasData(
                 new Child
                 {
@@ -25,7 +30,8 @@ namespace Family.Db.EntityConfiguration
                     FirstName = "Denis",
                     LastName = "Kudryavov",
                     Age = 19,
-                    GenderId = 2
+                    GenderId = 2,
+                    GenusId = 1,
                 },
                 new Child
                 {
@@ -33,7 +39,8 @@ namespace Family.Db.EntityConfiguration
                     FirstName = "Daria",
                     LastName = "Kudryavova",
                     Age = 3,
-                    GenderId = 1
+                    GenderId = 1,
+                    GenusId = 1
                 });
         }
     }

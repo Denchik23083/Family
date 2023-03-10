@@ -15,8 +15,6 @@ namespace Family.Db
 
         public DbSet<Genus> Genus { get; set; }
 
-        public DbSet<GenusParentsChildren> GenusParentsChildren { get; set; }
-
         public FamilyContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

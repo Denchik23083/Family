@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Family.Db.Entities
 {
@@ -14,6 +15,10 @@ namespace Family.Db.Entities
 
         [Required]
         public int Age { get; set; }
+
+        public int GenusId { get; set; }
+
+        public Genus Genus { get; set; }
 
         public Gender Gender { get; set; }
 

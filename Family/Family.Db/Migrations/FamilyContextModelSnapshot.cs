@@ -35,6 +35,9 @@ namespace Family.Db.Migrations
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
 
+                    b.Property<int>("GenusId")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -42,6 +45,8 @@ namespace Family.Db.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
+
+                    b.HasIndex("GenusId");
 
                     b.ToTable("Children");
 
@@ -52,6 +57,7 @@ namespace Family.Db.Migrations
                             Age = 19,
                             FirstName = "Denis",
                             GenderId = 2,
+                            GenusId = 1,
                             LastName = "Kudryavov"
                         },
                         new
@@ -60,6 +66,7 @@ namespace Family.Db.Migrations
                             Age = 3,
                             FirstName = "Daria",
                             GenderId = 1,
+                            GenusId = 1,
                             LastName = "Kudryavova"
                         });
                 });
@@ -98,11 +105,23 @@ namespace Family.Db.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("FatherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MotherId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FatherId")
+                        .IsUnique();
+
+                    b.HasIndex("MotherId")
+                        .IsUnique();
 
                     b.ToTable("Genus");
 
@@ -110,55 +129,9 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 1,
+                            FatherId = 1,
+                            MotherId = 2,
                             Name = "Kudryavovs"
-                        });
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GenusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParentsChildrenId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenusId");
-
-                    b.HasIndex("ParentsChildrenId");
-
-                    b.ToTable("GenusParentsChildren");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenusId = 1,
-                            ParentsChildrenId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenusId = 1,
-                            ParentsChildrenId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            GenusId = 1,
-                            ParentsChildrenId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            GenusId = 1,
-                            ParentsChildrenId = 4
                         });
                 });
 
@@ -264,24 +237,31 @@ namespace Family.Db.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Gender");
-                });
-
-            modelBuilder.Entity("Family.Db.Entities.GenusParentsChildren", b =>
-                {
                     b.HasOne("Family.Db.Entities.Genus", "Genus")
-                        .WithMany()
+                        .WithMany("Children")
                         .HasForeignKey("GenusId")
                         .IsRequired();
 
-                    b.HasOne("Family.Db.Entities.ParentsChildren", "ParentsChildren")
-                        .WithMany()
-                        .HasForeignKey("ParentsChildrenId")
-                        .IsRequired();
+                    b.Navigation("Gender");
 
                     b.Navigation("Genus");
+                });
 
-                    b.Navigation("ParentsChildren");
+            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
+                {
+                    b.HasOne("Family.Db.Entities.Parent", "Father")
+                        .WithOne()
+                        .HasForeignKey("Family.Db.Entities.Genus", "FatherId")
+                        .IsRequired();
+
+                    b.HasOne("Family.Db.Entities.Parent", "Mother")
+                        .WithOne()
+                        .HasForeignKey("Family.Db.Entities.Genus", "MotherId")
+                        .IsRequired();
+
+                    b.Navigation("Father");
+
+                    b.Navigation("Mother");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
@@ -310,6 +290,11 @@ namespace Family.Db.Migrations
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
+                {
+                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

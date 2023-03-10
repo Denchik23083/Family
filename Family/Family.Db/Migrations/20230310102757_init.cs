@@ -2,7 +2,7 @@
 
 namespace Family.Db.Migrations
 {
-    public partial class genus : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,41 +17,6 @@ namespace Family.Db.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genders", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Genus",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Genus", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Children",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    GenderId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Children", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Children_Genders_GenderId",
-                        column: x => x.GenderId,
-                        principalTable: "Genders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,6 +39,62 @@ namespace Family.Db.Migrations
                         principalTable: "Genders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Genus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FatherId = table.Column<int>(type: "int", nullable: false),
+                    MotherId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genus", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Genus_Parents_FatherId",
+                        column: x => x.FatherId,
+                        principalTable: "Parents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Genus_Parents_MotherId",
+                        column: x => x.MotherId,
+                        principalTable: "Parents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Children",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    GenusId = table.Column<int>(type: "int", nullable: false),
+                    GenderId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Children", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Children_Genders_GenderId",
+                        column: x => x.GenderId,
+                        principalTable: "Genders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Children_Genus_GenusId",
+                        column: x => x.GenusId,
+                        principalTable: "Genus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,32 +123,6 @@ namespace Family.Db.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "GenusParentsChildren",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GenusId = table.Column<int>(type: "int", nullable: false),
-                    ParentsChildrenId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GenusParentsChildren", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_GenusParentsChildren_Genus_GenusId",
-                        column: x => x.GenusId,
-                        principalTable: "Genus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_GenusParentsChildren_ParentsChildren_ParentsChildrenId",
-                        column: x => x.ParentsChildrenId,
-                        principalTable: "ParentsChildren",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.InsertData(
                 table: "Genders",
                 columns: new[] { "Id", "GenderType" },
@@ -139,48 +134,39 @@ namespace Family.Db.Migrations
                 values: new object[] { 2, 2 });
 
             migrationBuilder.InsertData(
-                table: "Genus",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "Kudryavovs" });
-
-            migrationBuilder.InsertData(
-                table: "Children",
+                table: "Parents",
                 columns: new[] { "Id", "Age", "FirstName", "GenderId", "LastName" },
-                values: new object[,]
-                {
-                    { 2, 3, "Daria", 1, "Kudryavova" },
-                    { 1, 19, "Denis", 2, "Kudryavov" }
-                });
+                values: new object[] { 2, 45, "Anna", 1, "Kudryavova" });
 
             migrationBuilder.InsertData(
                 table: "Parents",
                 columns: new[] { "Id", "Age", "FirstName", "GenderId", "LastName" },
-                values: new object[,]
-                {
-                    { 2, 45, "Anna", 1, "Kudryavova" },
-                    { 1, 45, "Alex", 2, "Kudryavov" }
-                });
+                values: new object[] { 1, 45, "Alex", 2, "Kudryavov" });
+
+            migrationBuilder.InsertData(
+                table: "Genus",
+                columns: new[] { "Id", "FatherId", "MotherId", "Name" },
+                values: new object[] { 1, 1, 2, "Kudryavovs" });
+
+            migrationBuilder.InsertData(
+                table: "Children",
+                columns: new[] { "Id", "Age", "FirstName", "GenderId", "GenusId", "LastName" },
+                values: new object[] { 1, 19, "Denis", 2, 1, "Kudryavov" });
+
+            migrationBuilder.InsertData(
+                table: "Children",
+                columns: new[] { "Id", "Age", "FirstName", "GenderId", "GenusId", "LastName" },
+                values: new object[] { 2, 3, "Daria", 1, 1, "Kudryavova" });
 
             migrationBuilder.InsertData(
                 table: "ParentsChildren",
                 columns: new[] { "Id", "ChildId", "ParentId" },
                 values: new object[,]
                 {
-                    { 4, 2, 2 },
-                    { 2, 1, 2 },
                     { 1, 1, 1 },
-                    { 3, 2, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "GenusParentsChildren",
-                columns: new[] { "Id", "GenusId", "ParentsChildrenId" },
-                values: new object[,]
-                {
-                    { 4, 1, 4 },
                     { 2, 1, 2 },
-                    { 1, 1, 1 },
-                    { 3, 1, 3 }
+                    { 3, 2, 1 },
+                    { 4, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -189,14 +175,21 @@ namespace Family.Db.Migrations
                 column: "GenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GenusParentsChildren_GenusId",
-                table: "GenusParentsChildren",
+                name: "IX_Children_GenusId",
+                table: "Children",
                 column: "GenusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GenusParentsChildren_ParentsChildrenId",
-                table: "GenusParentsChildren",
-                column: "ParentsChildrenId");
+                name: "IX_Genus_FatherId",
+                table: "Genus",
+                column: "FatherId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Genus_MotherId",
+                table: "Genus",
+                column: "MotherId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Parents_GenderId",
@@ -217,16 +210,13 @@ namespace Family.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GenusParentsChildren");
-
-            migrationBuilder.DropTable(
-                name: "Genus");
-
-            migrationBuilder.DropTable(
                 name: "ParentsChildren");
 
             migrationBuilder.DropTable(
                 name: "Children");
+
+            migrationBuilder.DropTable(
+                name: "Genus");
 
             migrationBuilder.DropTable(
                 name: "Parents");
