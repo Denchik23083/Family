@@ -6,13 +6,11 @@ namespace Family.Http.GenusHttpService
 {
     public interface IGenusHttpService
     {
-        /*Task<IEnumerable<Parent>> GetAllParents();
-
-        Task<IEnumerable<Child>> GetParentsChildren(int parentId);
-
-        Task<Parent> GetParent(int parentId);*/
-
         Task<IEnumerable<Genus>> GetAllGenus();
+        
+        Task<Genus> GetGenusParents(int genusId);
+
+        Task<IEnumerable<Child>> GetGenusChildren(int genusId);
 
         Task CreateGenus(Genus createdGenus);
 

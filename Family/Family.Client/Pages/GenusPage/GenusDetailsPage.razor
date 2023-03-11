@@ -1,0 +1,17 @@
+﻿@page "/genus/{GenusId:int}"
+
+<div class="wrapper">
+    <div class="from_all_click mt-3" @onclick="() => RouteToFather(Parents.Father.Id)">
+        <IndividualParentsComponent Parent="Parents.Father"/>
+    </div>
+    <div class="from_all_click mt-3" @onclick="() => RouteToMother(Parents.Mother.Id)">
+        <IndividualParentsComponent Parent="Parents.Mother"/>
+    </div>
+    @foreach (var child in Children)
+    {
+        <div class="from_all_click mt-3" @onclick="() => RouteToChild(child.Id)">
+            <IndividualChildrenComponent Child="child"/>
+        </div>
+    }
+</div>
+

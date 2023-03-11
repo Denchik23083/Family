@@ -17,39 +17,32 @@ namespace Family.Http.GenusHttpService
             _httpClient = httpClient;
         }
 
-        /*public async Task<IEnumerable<Parent>> GetAllParents()
-        {
-            var body = await GetData("https://localhost:6001/api/Parents");
-
-            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        public async Task<IEnumerable<Child>> GetParentsChildren(int parentId)
-        {
-            var body = await GetData($"https://localhost:6001/api/ParentsChildren/id?id={parentId}");
-
-            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        public async Task<Parent> GetParent(int parentId)
-        {
-            var body = await GetData($"https://localhost:6001/api/Parents/id?id={parentId}");
-
-            return JsonSerializer.Deserialize<Parent>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }*/
-
         public async Task<IEnumerable<Genus>> GetAllGenus()
         {
-            var body = await GetData("https://localhost:6001/api/Genus");
+            var body = await GetData("https://localhost:6001/api/GenusParents");
 
             return JsonSerializer.Deserialize<IEnumerable<Genus>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<Genus> GetGenusParents(int genusId)
+        {
+            var body = await GetData($"https://localhost:6001/api/GenusParents/id?id={genusId}");
+
+            return JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<IEnumerable<Child>> GetGenusChildren(int genusId)
+        {
+            var body = await GetData($"https://localhost:6001/api/GenusChildren/id?id={genusId}");
+
+            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public async Task CreateGenus(Genus createdGenus)
         {
             var content = JsonContent.Create(createdGenus);
 
-            await _httpClient.PostAsync("https://localhost:6001/api/Genus", content);
+            await _httpClient.PostAsync("https://localhost:6001/api/GenusParents", content);
         }
 
         /*public async Task EditParent(Parent editedParent, int parentId)
