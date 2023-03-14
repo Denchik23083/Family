@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Family.Db.Entities
 {
@@ -14,13 +15,15 @@ namespace Family.Db.Entities
 
         [Required]
         public int Age { get; set; }
-
-        public int GenusId { get; set; }
-
-        public Genus Genus { get; set; }
-
+        
         public Gender Gender { get; set; }
 
         public int GenderId { get; set; }
+
+        [JsonIgnore]
+        public int GenusId { get; set; }
+
+        [JsonIgnore]
+        public Genus Genus { get; set; }
     }
 }

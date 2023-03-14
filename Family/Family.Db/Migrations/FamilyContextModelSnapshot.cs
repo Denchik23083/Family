@@ -238,7 +238,7 @@ namespace Family.Db.Migrations
                         .IsRequired();
 
                     b.HasOne("Family.Db.Entities.Genus", "Genus")
-                        .WithMany()
+                        .WithMany("Children")
                         .HasForeignKey("GenusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -291,6 +291,11 @@ namespace Family.Db.Migrations
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Genus", b =>
+                {
+                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

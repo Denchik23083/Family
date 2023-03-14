@@ -77,8 +77,8 @@ namespace Family.Db.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    GenusId = table.Column<int>(type: "int", nullable: false),
-                    GenderId = table.Column<int>(type: "int", nullable: false)
+                    GenderId = table.Column<int>(type: "int", nullable: false),
+                    GenusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

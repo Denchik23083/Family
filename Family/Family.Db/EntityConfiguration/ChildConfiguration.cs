@@ -19,7 +19,7 @@ namespace Family.Db.EntityConfiguration
                 .HasForeignKey(_ => _.GenderId);
 
             builder.HasOne(_ => _.Genus)
-                .WithMany()
+                .WithMany(_ => _.Children)
                 .HasForeignKey(_ => _.GenusId);
 
             builder.ToTable("Children").HasData(

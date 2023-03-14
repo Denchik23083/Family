@@ -9,12 +9,12 @@ namespace Family.Web.Controllers.GenusController
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GenusParentsController : ControllerBase
+    public class GenusController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IGenusService _service;
 
-        public GenusParentsController(IMapper mapper, IGenusService service)
+        public GenusController(IMapper mapper, IGenusService service)
         {
             _mapper = mapper;
             _service = service;
@@ -22,7 +22,7 @@ namespace Family.Web.Controllers.GenusController
 
         [HttpGet]
         public async Task<IActionResult> GetAllGenus()
-        { 
+        {
             var genus = await _service.GetAllGenus();
 
             var mapperGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
@@ -31,11 +31,11 @@ namespace Family.Web.Controllers.GenusController
         }
 
         [HttpGet("id")]
-        public async Task<IActionResult> GetGenusParents(int id)
+        public async Task<IActionResult> GetGenus(int id)
         {
-            var genus = await _service.GetGenusParents(id);
+            var genus = await _service.GetGenus(id);
 
-            var mapperGenus = _mapper.Map<GenusParentsReadModel>(genus);
+            var mapperGenus = _mapper.Map<GenusReadModel>(genus);
 
             return Ok(mapperGenus);
         }

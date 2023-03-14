@@ -11,8 +11,7 @@ namespace Family.Web.Utilities
         public MappingProfile()
         {
             CreateMap<Genus, GenusReadNameModel>();
-            CreateMap<Genus, GenusParentsReadModel>();
-            CreateMap<Child, GenusChildrenReadModel>();
+            CreateMap<Genus, GenusReadModel>();
             CreateMap<GenusWriteModel, Genus>();
 
             CreateMap<Parent, ParentsReadModel>();

@@ -1,13 +1,13 @@
 ﻿@page "/genus/{GenusId:int}"
 
 <div class="wrapper">
-    <div class="from_all_click mt-3" @onclick="() => RouteToFather(Parents.Father.Id)">
-        <IndividualParentsComponent Parent="Parents.Father"/>
+    <div class="from_all_click mt-3" @onclick="() => RouteToFather(Genus.Father.Id)">
+        <IndividualParentsComponent Parent="Genus.Father"/>
     </div>
-    <div class="from_all_click mt-3" @onclick="() => RouteToMother(Parents.Mother.Id)">
-        <IndividualParentsComponent Parent="Parents.Mother"/>
+    <div class="from_all_click mt-3" @onclick="() => RouteToMother(Genus.Mother.Id)">
+        <IndividualParentsComponent Parent="Genus.Mother"/>
     </div>
-    @foreach (var child in Children)
+    @foreach (var child in Genus.Children)
     {
         <div class="from_all_click mt-3" @onclick="() => RouteToChild(child.Id)">
             <IndividualChildrenComponent Child="child"/>

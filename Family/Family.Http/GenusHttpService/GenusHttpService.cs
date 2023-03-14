@@ -19,23 +19,16 @@ namespace Family.Http.GenusHttpService
 
         public async Task<IEnumerable<Genus>> GetAllGenus()
         {
-            var body = await GetData("https://localhost:6001/api/GenusParents");
+            var body = await GetData("https://localhost:6001/api/Genus");
 
             return JsonSerializer.Deserialize<IEnumerable<Genus>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<Genus> GetGenusParents(int genusId)
+        public async Task<Genus> GetGenus(int genusId)
         {
-            var body = await GetData($"https://localhost:6001/api/GenusParents/id?id={genusId}");
+            var body = await GetData($"https://localhost:6001/api/Genus/id?id={genusId}");
 
             return JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        public async Task<IEnumerable<Child>> GetGenusChildren(int genusId)
-        {
-            var body = await GetData($"https://localhost:6001/api/GenusChildren/id?id={genusId}");
-
-            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public async Task CreateGenus(Genus createdGenus)

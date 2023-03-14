@@ -8,11 +8,10 @@ namespace Family.Http.GenusHttpService
     {
         Task<IEnumerable<Genus>> GetAllGenus();
         
-        Task<Genus> GetGenusParents(int genusId);
-
-        Task<IEnumerable<Child>> GetGenusChildren(int genusId);
+        Task<Genus> GetGenus(int genusId);
 
         Task CreateGenus(Genus createdGenus);
+
 
         /*Task EditParent(Parent editedParent, int parentId);
 

@@ -15,19 +15,16 @@ namespace Family.Client.Pages.GenusPage
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public Genus Parents { get; set; } = new()
+        public Genus Genus { get; set; } = new()
         {
             Father = new() { Gender = new() { GenderType = GenderType.Undefined } },
-            Mother = new() { Gender = new() { GenderType = GenderType.Undefined } }
+            Mother = new() { Gender = new() { GenderType = GenderType.Undefined } },
+            Children = new List<Child>()
         };
-
-        public IEnumerable<Child> Children { get; set; } = new List<Child>();
 
         protected override async Task OnInitializedAsync()
         {
-            Parents = await GenusHttpService.GetGenusParents(GenusId);
-
-            Children = await GenusHttpService.GetGenusChildren(GenusId);
+            Genus = await GenusHttpService.GetGenus(GenusId);
         }
 
         public void RouteToFather(int fatherId)
