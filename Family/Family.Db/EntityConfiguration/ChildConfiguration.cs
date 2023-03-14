@@ -15,7 +15,7 @@ namespace Family.Db.EntityConfiguration
             builder.Property(_ => _.Age).IsRequired();
 
             builder.HasOne(_ => _.Gender)
-                .WithMany()
+                .WithMany(_ => _.Children)
                 .HasForeignKey(_ => _.GenderId);
 
             builder.HasOne(_ => _.Genus)

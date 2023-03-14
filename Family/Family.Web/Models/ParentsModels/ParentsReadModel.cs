@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities;
+﻿using System.Collections.Generic;
+using Family.Db.Entities;
 
 namespace Family.Web.Models.ParentsModels
 {

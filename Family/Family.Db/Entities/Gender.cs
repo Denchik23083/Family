@@ -1,4 +1,6 @@
-﻿using Family.Core;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using Family.Core;
 
 namespace Family.Db.Entities
 {
@@ -7,5 +9,11 @@ namespace Family.Db.Entities
         public int Id { get; set; }
 
         public GenderType GenderType { get; set; }
+
+        [JsonIgnore]
+        public List<Parent> Parents { get; set; }
+
+        [JsonIgnore]
+        public List<Child> Children { get; set; }
     }
 }

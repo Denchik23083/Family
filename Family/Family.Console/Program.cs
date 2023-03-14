@@ -12,9 +12,9 @@ namespace Family.Console
 
         public static async Task Main(string[] args)
         {
-            var body = await GetData("https://localhost:6001/api/Genus/id?id=1");
+            var body = await GetData("https://localhost:6001/api/Parents/id?id=1");
 
-            var genus = JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var genus = JsonSerializer.Deserialize<Parent>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         private static async Task<string> GetData(string requestUrl)

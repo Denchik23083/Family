@@ -232,7 +232,7 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.Child", b =>
                 {
                     b.HasOne("Family.Db.Entities.Gender", "Gender")
-                        .WithMany()
+                        .WithMany("Children")
                         .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -268,7 +268,7 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
                 {
                     b.HasOne("Family.Db.Entities.Gender", "Gender")
-                        .WithMany()
+                        .WithMany("Parents")
                         .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -291,6 +291,13 @@ namespace Family.Db.Migrations
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Gender", b =>
+                {
+                    b.Navigation("Children");
+
+                    b.Navigation("Parents");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Genus", b =>
