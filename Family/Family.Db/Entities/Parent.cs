@@ -19,5 +19,7 @@ namespace Family.Db.Entities
         public Gender Gender { get; set; }
 
         public int GenderId { get; set; }
+
+        public List<ParentsChildren> ParentsChildren { get; set; }
     }
 }

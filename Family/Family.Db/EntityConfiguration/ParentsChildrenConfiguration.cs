@@ -11,12 +11,12 @@ namespace Family.Db.EntityConfiguration
             builder.HasKey(_ => _.Id);
 
             builder.HasOne(_ => _.Parent)
-                .WithMany()
+                .WithMany(_ => _.ParentsChildren)
                 .HasForeignKey(_ => _.ParentId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.HasOne(_ => _.Child)
-                .WithMany()
+                .WithMany(_ => _.ParentsChildren)
                 .HasForeignKey(_ => _.ChildId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 

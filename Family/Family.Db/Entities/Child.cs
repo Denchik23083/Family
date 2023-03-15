@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Family.Db.Entities
@@ -25,5 +26,7 @@ namespace Family.Db.Entities
 
         [JsonIgnore]
         public Genus Genus { get; set; }
+
+        public List<ParentsChildren> ParentsChildren { get; set; }
     }
 }

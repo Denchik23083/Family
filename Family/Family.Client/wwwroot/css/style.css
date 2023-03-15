@@ -39,20 +39,6 @@
     margin: 10px;
     padding-top: 30px;
 }
-.main_add_new:hover {cursor: pointer;}
-.from_all_click {min-height: 200px;}
-.from_details {min-height: 420px;}
-.from_all_click, .from_details {
-    border: 3px solid rgb(80, 200, 230);
-    width: 250px;
-    color: rgb(80, 200, 230);
-    border-radius: 15px;
-    text-align: center;
-    font-size: 20px;
-    padding: 10px;
-    margin: 10px;
-}
-.from_all_click:hover{ cursor: pointer;}
 .wrapper {
     min-height: 100vh;
     background-image: url(/img/LA_night.jpg);
@@ -67,10 +53,40 @@
     flex-wrap: wrap;
     align-content: flex-start;
 }
+.main_add_new:hover, .from_all_click:hover {cursor: pointer;}
+.from_all_click {min-height: 200px;}
+.from_details  {min-height: 420px;}
+.from_all_click, .from_details {
+    border: 3px solid rgb(80, 200, 230);
+    width: 250px;
+    color: rgb(80, 200, 230);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.genus {
+    border: 3px solid rgb(80, 200, 230);
+    width: 250px;
+    color: rgb(80, 200, 230);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    min-height: 420px;
+}
 .con {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+.children_con {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 .add_edit, .weather {
     min-height: 100vh;

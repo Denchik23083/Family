@@ -1,17 +1,19 @@
 ﻿@page "/genus/{GenusId:int}"
 
 <div class="wrapper">
-    <div class="from_all_click mt-3" @onclick="() => RouteToFather(Genus.Father.Id)">
+    <div class="genus" @onclick="() => RouteToFather(Genus.Father.Id)" style="border: 3px solid rgb(80, 200, 230);width: 250px;color: rgb(80, 200, 230);border-radius: 15px;text-align: center;font-size: 20px;padding: 10px;margin: 10px;min-height: 420px;">
         <IndividualParentsComponent Parent="Genus.Father"/>
     </div>
-    <div class="from_all_click mt-3" @onclick="() => RouteToMother(Genus.Mother.Id)">
+    <div class="genus" @onclick="() => RouteToMother(Genus.Mother.Id)" style="border: 3px solid rgb(80, 200, 230);width: 250px;color: rgb(80, 200, 230);border-radius: 15px;text-align: center;font-size: 20px;padding: 10px;margin: 10px;min-height: 420px;">
         <IndividualParentsComponent Parent="Genus.Mother"/>
     </div>
-    @foreach (var child in Genus.Children)
-    {
-        <div class="from_all_click mt-3" @onclick="() => RouteToChild(child.Id)">
-            <IndividualChildrenComponent Child="child"/>
-        </div>
-    }
+    <div class="children_con" style="display: flex;flex-direction: row;align-items: flex-start;flex-wrap: wrap;">
+        @foreach (var child in Genus.Children)
+        {
+            <div class="from_all_click" @onclick="() => RouteToChild(child.Id)">
+                <IndividualChildrenComponent Child="child"/>
+            </div>
+        }
+    </div>
 </div>
-
+    

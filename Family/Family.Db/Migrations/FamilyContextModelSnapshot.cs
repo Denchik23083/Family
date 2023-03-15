@@ -279,18 +279,23 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.ParentsChildren", b =>
                 {
                     b.HasOne("Family.Db.Entities.Child", "Child")
-                        .WithMany()
+                        .WithMany("ParentsChildren")
                         .HasForeignKey("ChildId")
                         .IsRequired();
 
                     b.HasOne("Family.Db.Entities.Parent", "Parent")
-                        .WithMany()
+                        .WithMany("ParentsChildren")
                         .HasForeignKey("ParentId")
                         .IsRequired();
 
                     b.Navigation("Child");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Child", b =>
+                {
+                    b.Navigation("ParentsChildren");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Gender", b =>
@@ -303,6 +308,11 @@ namespace Family.Db.Migrations
             modelBuilder.Entity("Family.Db.Entities.Genus", b =>
                 {
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Family.Db.Entities.Parent", b =>
+                {
+                    b.Navigation("ParentsChildren");
                 });
 #pragma warning restore 612, 618
         }
