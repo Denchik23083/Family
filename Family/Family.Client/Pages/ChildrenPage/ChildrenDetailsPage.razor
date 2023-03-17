@@ -19,12 +19,10 @@
             </div>
         </div>
     </div>
-    <div class="con">
-        @foreach (var parent in Parents)
-        {
-            <div class="from_all_click" @onclick="() => RouteToParent(parent.Id)">
-                <IndividualParentsComponent Parent="parent"/>
-            </div>
-        }
-    </div>
+    @foreach (var parent in Parents)
+    {
+        <div class="from_all_click" @onclick="() => RouteToParent(parent.Id)">
+            <IndividualParentsComponent Parent="parent"/>
+        </div>
+    }
 </div>

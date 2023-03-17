@@ -4,6 +4,7 @@
     border: 3px solid rgb(80, 200, 230);
     border-radius: 15px;
 }
+
 .input {
     width: 100%;
     background: none;
@@ -14,10 +15,12 @@
     text-align: center;
     border: 3px solid rgb(80, 200, 230);
 }
+
 .input::placeholder {
-    color: rgb(80, 200, 230); 
+    color: rgb(80, 200, 230);
     text-align: center;
 }
+
 .submit {
     width: 100%;
     color: rgb(80, 200, 230);
@@ -26,7 +29,12 @@
     font-size: 20px;
     border: 3px solid rgb(80, 200, 230);
 }
-.submit:hover{ cursor: pointer; color: rgb(80, 200, 230);}
+
+.submit:hover {
+    cursor: pointer;
+    color: rgb(80, 200, 230);
+}
+
 .main_add_new {
     height: 100px;
     border: 3px solid rgb(80, 200, 230);
@@ -39,6 +47,7 @@
     margin: 10px;
     padding-top: 30px;
 }
+
 .wrapper {
     min-height: 100vh;
     background-image: url(/img/LA_night.jpg);
@@ -53,9 +62,19 @@
     flex-wrap: wrap;
     align-content: flex-start;
 }
-.main_add_new:hover, .from_all_click:hover {cursor: pointer;}
-.from_all_click {min-height: 200px;}
-.from_details  {min-height: 420px;}
+
+.main_add_new:hover, .from_all_click:hover {
+    cursor: pointer;
+}
+
+.from_all_click {
+    height: 200px;
+}
+
+.from_details {
+    height: 420px;
+}
+
 .from_all_click, .from_details {
     border: 3px solid rgb(80, 200, 230);
     width: 250px;
@@ -66,12 +85,7 @@
     padding: 10px;
     margin: 10px;
 }
-.con {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
+
 .add_edit, .weather {
     min-height: 100vh;
     background-size: 100%;
@@ -83,8 +97,15 @@
     background-repeat: no-repeat;
     padding: 20px;
 }
-.weather {background-image: url(/img/beach.jpg);}
-.add_edit {background-image: url(/img/LA_night.jpg);}
+
+.weather {
+    background-image: url(/img/beach.jpg);
+}
+
+.add_edit {
+    background-image: url(/img/LA_night.jpg);
+}
+
 html, body {
     width: 100%;
     height: 100%;
