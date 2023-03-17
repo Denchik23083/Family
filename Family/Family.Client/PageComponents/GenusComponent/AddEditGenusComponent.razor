@@ -30,7 +30,9 @@
     </div>
     <div class="row">
         <div class="col mb-2">
-            <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Тип</div>
+            <div class="input" @onclick="() => IsShow = !IsShow">
+                <div class="mt-2">Children</div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -39,7 +41,7 @@
             {
                 @if (Children.Count is not 0)
                 {
-                    <div class="selected mb-2">
+                    <div class="input mb-2">
                         @foreach (var item in Children)
                         {
                             <span class="item mb-2" @onclick="() => AddSelectedChild(item)">@item.FirstName @item.LastName</span><br/>
@@ -55,13 +57,18 @@
     </div>
     <div class="row">
         <div class="col mb-2">
-            @foreach (var item in SelectedChildren)
+            @if (SelectedChildren.Count is not 0)
             {
-                <span class="foo">@item.FirstName @item.LastName
-                    <button class="selectedTypeClose p-0 mr-3" @onclick="() => RemoveSelectedChild(item)" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </span>
+                <div class="input mb-2">
+                    @foreach (var item in SelectedChildren)
+                    {
+                        <span class="foo">@item.FirstName @item.LastName
+                            <button class="selectedChildClose p-0 mr-3" @onclick="() => RemoveSelectedChild(item)" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span><br/>
+                    }
+                </div>
             }
         </div>
     </div>
