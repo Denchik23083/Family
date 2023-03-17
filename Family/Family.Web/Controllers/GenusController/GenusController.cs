@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Family.Db.Entities;
 using Family.Logic.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +41,7 @@ namespace Family.Web.Controllers.GenusController
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateGenus(Genus model)
+        public async Task<IActionResult> CreateGenus(GenusWriteModel model)
         {
             var genus = await _service.GetAllGenus();
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

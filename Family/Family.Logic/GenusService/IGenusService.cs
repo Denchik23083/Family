@@ -9,5 +9,9 @@ namespace Family.Logic.GenusService
         Task<IEnumerable<Genus>> GetAllGenus();
 
         Task<Genus> GetGenus(int id);
+
+        Task<IEnumerable<Parent>> GetAllGenusParents();
+
+        Task<IEnumerable<Child>> GetAllGenusChildren();
     }
 }

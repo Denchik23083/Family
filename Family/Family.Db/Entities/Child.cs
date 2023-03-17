@@ -22,7 +22,7 @@ namespace Family.Db.Entities
         public int GenderId { get; set; }
 
         [JsonIgnore]
-        public int GenusId { get; set; }
+        public int? GenusId { get; set; }
 
         [JsonIgnore]
         public Genus Genus { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Family.Db.Migrations
 {
-    public partial class init : Migration
+    public partial class relation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,7 +78,7 @@ namespace Family.Db.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     GenderId = table.Column<int>(type: "int", nullable: false),
-                    GenusId = table.Column<int>(type: "int", nullable: false)
+                    GenusId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,7 +94,7 @@ namespace Family.Db.Migrations
                         column: x => x.GenusId,
                         principalTable: "Genus",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

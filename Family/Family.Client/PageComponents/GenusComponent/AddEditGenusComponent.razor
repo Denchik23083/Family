@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col mb-2">
-            <select @bind="Genus.MotherId" class="input">
+            <select @bind="Genus.MotherId" class="input" style="cursor: pointer;">
                 <option value="0" selected="selected">Mother</option>
                 @foreach (var item in Mothers)
                 {
@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col mb-2">
-            <select @bind="Genus.FatherId" class="input">
+            <select @bind="Genus.FatherId" class="input" style="cursor: pointer;">
                 <option value="0" selected="selected">Father</option>
                 @foreach (var item in Fathers)
                 {
@@ -30,7 +30,7 @@
     </div>
     <div class="row">
         <div class="col mb-2">
-            <div class="input" @onclick="() => IsShow = !IsShow">
+            <div class="input" @onclick="() => IsShow = !IsShow" style="cursor: pointer;">
                 <div class="mt-2">Children</div>
             </div>
         </div>
