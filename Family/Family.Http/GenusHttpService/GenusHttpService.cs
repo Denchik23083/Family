@@ -35,7 +35,7 @@ namespace Family.Http.GenusHttpService
         {
             var content = JsonContent.Create(createdGenus);
 
-            await _httpClient.PostAsync("https://localhost:6001/api/GenusParents", content);
+            await _httpClient.PostAsync("https://localhost:6001/api/Genus", content);
         }
 
         /*public async Task EditParent(Parent editedParent, int parentId)

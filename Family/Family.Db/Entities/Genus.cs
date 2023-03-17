@@ -13,7 +13,7 @@ namespace Family.Db.Entities
         public int FatherId { get; set; }
 
         public Parent Father { get; set; }
-
+        
         public int MotherId { get; set; }
 
         public Parent Mother { get; set; }

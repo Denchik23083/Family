@@ -7,17 +7,62 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 mb-2">
-            <select @bind="Mother">
-                <option value="None">Mother</option>
+        <div class="col mb-2">
+            <select @bind="Genus.MotherId" class="input">
+                <option value="0" selected="selected">Mother</option>
                 @foreach (var item in Mothers)
                 {
-                    <option value="@item">@item.FirstName @item.LastName</option>
+                    <option value="@item.Id">@item.FirstName @item.LastName</option>
                 }
             </select>
         </div>
-        <div class="col-6 mb-2">
-
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <select @bind="Genus.FatherId" class="input">
+                <option value="0" selected="selected">Father</option>
+                @foreach (var item in Fathers)
+                {
+                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <div class="selectedFormResult" @onclick="() => IsShow = !IsShow">Тип</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            @if (IsShow)
+            {
+                @if (Children.Count is not 0)
+                {
+                    <div class="selected mb-2">
+                        @foreach (var item in Children)
+                        {
+                            <span class="item mb-2" @onclick="() => AddSelectedChild(item)">@item.FirstName @item.LastName</span><br/>
+                        }
+                    </div>
+                }
+                else
+                {
+                    IsShow = false;
+                }
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            @foreach (var item in SelectedChildren)
+            {
+                <span class="foo">@item.FirstName @item.LastName
+                    <button class="selectedTypeClose p-0 mr-3" @onclick="() => RemoveSelectedChild(item)" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </span>
+            }
         </div>
     </div>
     <div class="row">

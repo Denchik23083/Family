@@ -14,6 +14,7 @@
     font-size: 20px;
     text-align: center;
     border: 3px solid rgb(80, 200, 230);
+    appearance: none;
 }
 
 .input::placeholder {
@@ -28,6 +29,7 @@
     border-radius: 15px;
     font-size: 20px;
     border: 3px solid rgb(80, 200, 230);
+    background: none;
 }
 
 .submit:hover {
@@ -104,6 +106,47 @@
 
 .add_edit {
     background-image: url(/img/LA_night.jpg);
+}
+
+.selected {
+    z-index: 60;
+    color: #d3d3d3;
+    background-color: #424242;
+    border: 1px solid lightgrey;
+    padding: 5px;
+}
+
+.foo, .selectedFormResult::placeholder {
+    color: lightgrey;
+}
+
+.selectedFormResult {
+    color: lightgrey;
+    cursor: pointer;
+    border: 0;
+    background: #424242;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+}
+
+.selectedTypeClose:hover {
+    color: red;
+}
+
+.selectedTypeClose {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #cc0000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    background-color: #424242;
+    border: 0;
+}
+
+.item:hover {
+    color: #8ab4f8;
+    cursor: pointer;
 }
 
 html, body {

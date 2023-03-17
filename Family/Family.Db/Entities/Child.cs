@@ -27,6 +27,7 @@ namespace Family.Db.Entities
         [JsonIgnore]
         public Genus Genus { get; set; }
 
+        [JsonIgnore]
         public List<ParentsChildren> ParentsChildren { get; set; }
     }
 }

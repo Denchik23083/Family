@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Family.Db.Entities;
 using Family.Logic.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,16 @@ namespace Family.Web.Controllers.GenusController
             var genus = await _service.GetGenus(id);
 
             var mapperGenus = _mapper.Map<GenusReadModel>(genus);
+
+            return Ok(mapperGenus);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateGenus(Genus model)
+        {
+            var genus = await _service.GetAllGenus();
+
+            var mapperGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
 
             return Ok(mapperGenus);
         }
