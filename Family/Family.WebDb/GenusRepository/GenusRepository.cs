@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Family.Db;
 using Family.Db.Entities;
@@ -21,21 +22,8 @@ namespace Family.WebDb.GenusRepository
             return await _context.Genus.ToListAsync();
         }
 
-        public async Task<Genus> GetGenus(int id)
+        public async Task<IEnumerable<Parent>> GetAllGenusParents(IEnumerable<Genus> allGenus)
         {
-            return await _context.Genus
-                .Include(_ => _.Father)
-                .ThenInclude(_ => _.Gender)
-                .Include(_ => _.Mother)
-                .ThenInclude(_ => _.Gender)
-                .Include(_ => _.Children)
-                .FirstOrDefaultAsync(_ => _.Id == id);
-        }
-
-        public async Task<IEnumerable<Parent>> GetAllGenusParents()
-        {
-            var allGenus = await _context.Genus.ToListAsync();
-
             var parents = await _context.Parents
                 .Include(_ => _.Gender)
                 .ToListAsync();
@@ -50,10 +38,8 @@ namespace Family.WebDb.GenusRepository
             return parents;
         }
 
-        public async Task<IEnumerable<Child>> GetAllGenusChildren()
+        public async Task<IEnumerable<Child>> GetAllGenusChildren(IEnumerable<Genus> allGenus)
         {
-            var allGenus = await _context.Genus.ToListAsync();
-
             var children = await _context.Children
                 .Include(_ => _.Gender)
                 .ToListAsync();
@@ -66,6 +52,31 @@ namespace Family.WebDb.GenusRepository
             }
 
             return children;
+        }
+
+        public async Task<Genus> GetGenus(int id)
+        {
+            return await _context.Genus
+                .Include(_ => _.Father)
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Mother)
+                .ThenInclude(_ => _.Gender)
+                .Include(_ => _.Children)
+                .FirstOrDefaultAsync(_ => _.Id == id);
+        }
+
+        public async Task CreateGenus(Genus createdGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren)
+        {
+            _context.Genus.Add(createdGenus);
+
+            foreach (var listChild in listChildren)
+            {
+                listChild.Genus = createdGenus;
+            }
+
+            await _context.ParentsChildren.AddRangeAsync(parentsChildren);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

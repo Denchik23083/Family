@@ -27,15 +27,9 @@ namespace Family.Client.PageComponents.GenusComponent
 
         public Genus Genus { get; set; } = new();
 
-        public IEnumerable<Parent> Mothers { get; set; } = new List<Parent>()
-        {
-            new Parent { Id = 1, FirstName = "Hallo", LastName = "Hallo", Age = 21, GenderId = 1 }
-        };
+        public IEnumerable<Parent> Mothers { get; set; } = new List<Parent>();
 
-        public IEnumerable<Parent> Fathers { get; set; } = new List<Parent>()
-        {
-            new Parent { Id = 2, FirstName = "Hallo", LastName = "Hallo", Age = 21, GenderId = 2 }
-        };
+        public IEnumerable<Parent> Fathers { get; set; } = new List<Parent>();
 
         public List<Child> Children { get; set; } = new();
         
@@ -46,16 +40,26 @@ namespace Family.Client.PageComponents.GenusComponent
             if (GenusId == 0)
             {
                 Genus = new Genus();
-                var children = await ChildrenHttpService.GetAllChildren();
+
+                var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
+                var parents = parentsEnumerable.ToList();
+                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
+                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male);
+
+                var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
             }
             else
             {
-                var children = await ChildrenHttpService.GetAllChildren();
+                var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
+                var parents = parentsEnumerable.ToList();
+                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
+                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male);
+
+                var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
+
                 //Genus = await ParentsHttpService.GetParent(ParentId);
-                //var parents = await GenusHttpService.GetAllMothers();
-                //Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
             }
         }
 

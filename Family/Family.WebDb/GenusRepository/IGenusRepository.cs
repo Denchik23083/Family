@@ -8,10 +8,12 @@ namespace Family.WebDb.GenusRepository
     {
         Task<IEnumerable<Genus>> GetAllGenus();
 
+        Task<IEnumerable<Parent>> GetAllGenusParents(IEnumerable<Genus> allGenus);
+
+        Task<IEnumerable<Child>> GetAllGenusChildren(IEnumerable<Genus> allGenus);
+
         Task<Genus> GetGenus(int id);
 
-        Task<IEnumerable<Parent>> GetAllGenusParents();
-
-        Task<IEnumerable<Child>> GetAllGenusChildren();
+        Task CreateGenus(Genus createdGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren);
     }
 }
