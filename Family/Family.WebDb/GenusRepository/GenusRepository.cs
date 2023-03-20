@@ -78,5 +78,58 @@ namespace Family.WebDb.GenusRepository
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task EditGenus(Genus genusToEdit, Genus editedGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren)
+        {
+            var genusParents = await _context.ParentsChildren
+                .Where(_ => _.ParentId == genusToEdit.FatherId || _.ParentId == genusToEdit.MotherId)
+                .ToListAsync();
+
+            _context.ParentsChildren.RemoveRange(genusParents);
+
+            var genusChildren = await _context.Children
+                .Where(_ => _.GenusId == genusToEdit.Id)
+                .ToListAsync();
+
+            foreach (var genusChild in genusChildren)
+            {
+                genusChild.GenusId = null;
+            }
+
+            genusToEdit.Name = editedGenus.Name;
+            genusToEdit.FatherId = editedGenus.FatherId;
+            genusToEdit.MotherId = editedGenus.MotherId;
+
+            foreach (var listChild in listChildren)
+            {
+                listChild.GenusId = genusToEdit.Id;
+            }
+
+            await _context.ParentsChildren.AddRangeAsync(parentsChildren);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteGenus(Genus genusToDelete)
+        {
+            var genusParents = await _context.ParentsChildren
+                .Where(_ => _.ParentId == genusToDelete.FatherId || _.ParentId == genusToDelete.MotherId)
+                .ToListAsync();
+
+            _context.ParentsChildren.RemoveRange(genusParents);
+
+            var genusChildren = await _context.Children
+                .Where(_ => _.GenusId == genusToDelete.Id)
+                .ToListAsync();
+
+            foreach (var genusChild in genusChildren)
+            {
+                genusChild.GenusId = null;
+            }
+
+            _context.Genus.Remove(genusToDelete);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

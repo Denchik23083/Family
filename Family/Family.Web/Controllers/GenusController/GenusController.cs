@@ -55,5 +55,28 @@ namespace Family.Web.Controllers.GenusController
 
             return NoContent();
         }
+
+        [HttpPut("id")]
+        public async Task<IActionResult> EditGenus(GenusWriteModel model, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var editedGenus = _mapper.Map<Genus>(model);
+
+            await _service.EditGenus(editedGenus, id);
+
+            return NoContent();
+        }
+
+        [HttpDelete("id")]
+        public async Task<IActionResult> DeleteGenus(int id)
+        {
+            await _service.DeleteGenus(id);
+
+            return NoContent();
+        }
     }
 }

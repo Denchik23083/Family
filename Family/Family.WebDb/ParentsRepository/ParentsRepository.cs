@@ -47,7 +47,7 @@ namespace Family.WebDb.ParentsRepository
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditParent(Parent parentToEdit, Parent editedParent, int id)
+        public async Task EditParent(Parent parentToEdit, Parent editedParent)
         {
             parentToEdit.FirstName = editedParent.FirstName;
             parentToEdit.LastName = editedParent.LastName;
@@ -56,7 +56,7 @@ namespace Family.WebDb.ParentsRepository
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteParent(Parent parentToDelete, int id)
+        public async Task DeleteParent(Parent parentToDelete)
         {
             _context.Parents.Remove(parentToDelete);
 

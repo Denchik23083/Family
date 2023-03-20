@@ -14,8 +14,8 @@ namespace Family.WebDb.ParentsRepository
 
         Task CreateParent(Parent createdParent);
 
-        Task EditParent(Parent parentToEdit, Parent editedParent, int id);
+        Task EditParent(Parent parentToEdit, Parent editedParent);
 
-        Task DeleteParent(Parent parentToDelete, int id);
+        Task DeleteParent(Parent parentToDelete);
     }
 }

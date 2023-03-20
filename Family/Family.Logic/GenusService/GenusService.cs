@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Family.Db.Entities;
 using Family.WebDb.ChildrenRepository;
@@ -68,6 +69,54 @@ namespace Family.Logic.GenusService
             createdGenus.Children = null;
 
             await _repository.CreateGenus(createdGenus, parentsChildren, listChildren);
+        }
+
+        public async Task EditGenus(Genus editedGenus, int id)
+        {
+            var genusToEdit = await _repository.GetGenus(id);
+
+            if (genusToEdit is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var listChildren = new List<Child>();
+
+            var parentsChildren = new List<ParentsChildren>();
+
+            foreach (var createdGenusChild in editedGenus.Children)
+            {
+                var child = await _childrenRepository.GetChild(createdGenusChild.Id);
+
+                listChildren.Add(child);
+
+                parentsChildren.Add(new ParentsChildren
+                {
+                    ParentId = editedGenus.FatherId,
+                    ChildId = createdGenusChild.Id
+                });
+                parentsChildren.Add(new ParentsChildren
+                {
+                    ParentId = editedGenus.MotherId,
+                    ChildId = createdGenusChild.Id
+                });
+            }
+
+            editedGenus.Children = null;
+
+            await _repository.EditGenus(genusToEdit, editedGenus, parentsChildren, listChildren);
+        }
+
+        public async Task DeleteGenus(int id)
+        {
+            var genusToDelete = await _repository.GetGenus(id);
+
+            if (genusToDelete is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            await _repository.DeleteGenus(genusToDelete);
         }
     }
 }

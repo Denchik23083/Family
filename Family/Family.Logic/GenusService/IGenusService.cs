@@ -15,5 +15,9 @@ namespace Family.Logic.GenusService
         Task<Genus> GetGenus(int id);
 
         Task CreateGenus(Genus createdGenus);
+
+        Task EditGenus(Genus editedGenus, int id);
+
+        Task DeleteGenus(int id);
     }
 }

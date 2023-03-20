@@ -17,8 +17,6 @@ namespace Family.Client.PageComponents.GenusComponent
 
         [Parameter] public bool Add { get; set; }
 
-        public bool IsShow { get; set; }
-
         [Inject] public IGenusHttpService GenusHttpService { get; set; }
 
         [Inject] public IChildrenHttpService ChildrenHttpService { get; set; }
@@ -27,13 +25,15 @@ namespace Family.Client.PageComponents.GenusComponent
 
         public Genus Genus { get; set; } = new();
 
-        public IEnumerable<Parent> Mothers { get; set; } = new List<Parent>();
+        public List<Parent> Mothers { get; set; } = new();
 
-        public IEnumerable<Parent> Fathers { get; set; } = new List<Parent>();
+        public List<Parent> Fathers { get; set; } = new();
 
         public List<Child> Children { get; set; } = new();
         
         public List<Child> SelectedChildren = new();
+
+        public bool IsShow { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -43,8 +43,8 @@ namespace Family.Client.PageComponents.GenusComponent
 
                 var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
                 var parents = parentsEnumerable.ToList();
-                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
-                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male);
+                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female).ToList();
+                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male).ToList();
 
                 var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
@@ -53,13 +53,15 @@ namespace Family.Client.PageComponents.GenusComponent
             {
                 var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
                 var parents = parentsEnumerable.ToList();
-                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female);
-                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male);
+                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female).ToList();
+                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male).ToList();
 
                 var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
 
                 Genus = await GenusHttpService.GetGenus(GenusId);
+                Mothers.Add(Genus.Mother);
+                Fathers.Add(Genus.Father);
                 SelectedChildren = Genus.Children;
             }
         }

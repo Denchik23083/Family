@@ -15,5 +15,9 @@ namespace Family.WebDb.GenusRepository
         Task<Genus> GetGenus(int id);
 
         Task CreateGenus(Genus createdGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren);
+        
+        Task EditGenus(Genus genusToEdit, Genus editedGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren);
+        
+        Task DeleteGenus(Genus genusToDelete);
     }
 }

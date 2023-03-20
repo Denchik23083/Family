@@ -44,7 +44,7 @@ namespace Family.Logic.ChildrenService
                 throw new ArgumentNullException();
             }
 
-            await _repository.EditChild(childToEdit, editedChild, id);
+            await _repository.EditChild(childToEdit, editedChild);
         }
 
         public async Task DeleteChild(int id)
@@ -56,7 +56,7 @@ namespace Family.Logic.ChildrenService
                 throw new ArgumentNullException();
             }
 
-            await _repository.DeleteParent(childToDelete, id);
+            await _repository.DeleteParent(childToDelete);
         }
     }
 }
