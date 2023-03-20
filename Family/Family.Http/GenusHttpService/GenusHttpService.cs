@@ -52,17 +52,17 @@ namespace Family.Http.GenusHttpService
             await _httpClient.PostAsync("https://localhost:6001/api/Genus", content);
         }
 
-        /*public async Task EditParent(Parent editedParent, int parentId)
+        public async Task EditGenus(Genus editedGenus, int genusId)
         {
-            var content = JsonContent.Create(editedParent);
+            var content = JsonContent.Create(editedGenus);
 
-            await _httpClient.PutAsync($"https://localhost:6001/api/Parents/id?id={parentId}", content);
+            await _httpClient.PutAsync($"https://localhost:6001/api/Genus/id?id={genusId}", content);
         }
 
-        public async Task DeleteParent(int parentId)
+        public async Task DeleteGenus(int genusId)
         {
-            await _httpClient.DeleteAsync($"https://localhost:6001/api/Parents/id?id={parentId}");
-        }*/
+            await _httpClient.DeleteAsync($"https://localhost:6001/api/Genus/id?id={genusId}");
+        }
 
         private async Task<string> GetData(string requestUrl)
         {

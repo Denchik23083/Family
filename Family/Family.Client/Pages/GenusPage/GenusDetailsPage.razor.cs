@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Family.Client.PageComponents.GenusComponent;
 using Family.Core;
 using Family.Db.Entities;
 using Family.Http.GenusHttpService;
@@ -22,6 +23,8 @@ namespace Family.Client.Pages.GenusPage
             Children = new List<Child>()
         };
 
+        public ConfirmRemoveGenusComponent ConfirmRemoveGenusComponent { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             Genus = await GenusHttpService.GetGenus(GenusId);
@@ -41,5 +44,14 @@ namespace Family.Client.Pages.GenusPage
         {
             NavigationManager.NavigateTo($"/children/{childId}");
         }
+
+        public void Edit()
+        {
+            NavigationManager.NavigateTo($"/genus/{Genus.Id}/edit");
+        }
+
+        public void OnShow() => ConfirmRemoveGenusComponent.Show();
+
+        public void OnCancel() => ConfirmRemoveGenusComponent.Hide();
     }
 }

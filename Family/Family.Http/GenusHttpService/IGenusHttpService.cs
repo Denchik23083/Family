@@ -15,10 +15,9 @@ namespace Family.Http.GenusHttpService
         Task<Genus> GetGenus(int genusId);
 
         Task CreateGenus(Genus createdGenus);
+        
+        Task EditGenus(Genus editedGenus, int genusId);
 
-
-        /*Task EditParent(Parent editedParent, int parentId);
-
-        Task DeleteParent(int parentId);*/
+        Task DeleteGenus(int genusId);
     }
 }

@@ -1,6 +1,24 @@
 ﻿@page "/genus/{GenusId:int}"
 
+<ConfirmRemoveGenusComponent
+    @ref="ConfirmRemoveGenusComponent"
+    OnShow="OnShow"
+    OnCancel="OnCancel"
+    Genus="Genus"
+    GenusId="GenusId"/>
+
 <div class="wrapper">
+    <div class="from_all_click" style="cursor: default;">
+        <IndividualGenusComponent Genus="Genus"/>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="Edit">Edit</button>
+            </div>
+            <div class="col-6 mb-3">
+                <button class="btn submit" @onclick="OnShow">Delete</button>
+            </div>
+        </div>
+    </div>
     <div class="from_details" @onclick="() => RouteToFather(Genus.Father.Id)" style="cursor: pointer;">
         <IndividualParentsComponent Parent="Genus.Father"/>
     </div>

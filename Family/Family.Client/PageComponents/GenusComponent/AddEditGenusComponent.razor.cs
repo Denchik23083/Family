@@ -59,7 +59,8 @@ namespace Family.Client.PageComponents.GenusComponent
                 var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
 
-                //Genus = await ParentsHttpService.GetParent(ParentId);
+                Genus = await GenusHttpService.GetGenus(GenusId);
+                SelectedChildren = Genus.Children;
             }
         }
 
@@ -73,7 +74,7 @@ namespace Family.Client.PageComponents.GenusComponent
             }
             if (Edit)
             {
-                //await ParentsHttpService.EditParent(Parent, ParentId);
+                await GenusHttpService.EditGenus(Genus, GenusId);
 
                 NavigationManager.NavigateTo("/genus");
             }
