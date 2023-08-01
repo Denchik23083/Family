@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Family.Db.Migrations
 {
-    public partial class relation : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,14 +60,12 @@ namespace Family.Db.Migrations
                         name: "FK_Genus_Parents_FatherId",
                         column: x => x.FatherId,
                         principalTable: "Parents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Genus_Parents_MotherId",
                         column: x => x.MotherId,
                         principalTable: "Parents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -93,8 +93,7 @@ namespace Family.Db.Migrations
                         name: "FK_Children_Genus_GenusId",
                         column: x => x.GenusId,
                         principalTable: "Genus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -113,14 +112,12 @@ namespace Family.Db.Migrations
                         name: "FK_ParentsChildren_Children_ChildId",
                         column: x => x.ChildId,
                         principalTable: "Children",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ParentsChildren_Parents_ParentId",
                         column: x => x.ParentId,
                         principalTable: "Parents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -136,12 +133,12 @@ namespace Family.Db.Migrations
             migrationBuilder.InsertData(
                 table: "Parents",
                 columns: new[] { "Id", "Age", "FirstName", "GenderId", "LastName" },
-                values: new object[] { 2, 45, "Anna", 1, "Kudryavova" });
+                values: new object[] { 1, 45, "Alex", 2, "Kudryavov" });
 
             migrationBuilder.InsertData(
                 table: "Parents",
                 columns: new[] { "Id", "Age", "FirstName", "GenderId", "LastName" },
-                values: new object[] { 1, 45, "Alex", 2, "Kudryavov" });
+                values: new object[] { 2, 45, "Anna", 1, "Kudryavova" });
 
             migrationBuilder.InsertData(
                 table: "Genus",

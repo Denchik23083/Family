@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Family.Core
+﻿namespace Family.Core
 {
     public class Weather
     {

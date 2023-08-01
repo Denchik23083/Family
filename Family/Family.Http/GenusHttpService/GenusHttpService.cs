@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Family.Db.Entities;
 
 namespace Family.Http.GenusHttpService
@@ -21,28 +17,28 @@ namespace Family.Http.GenusHttpService
         {
             var body = await GetData("https://localhost:6001/api/Genus");
 
-            return JsonSerializer.Deserialize<IEnumerable<Genus>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Genus>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task<IEnumerable<Parent>> GetAllGenusParents()
         {
             var body = await GetData("https://localhost:6001/api/GenusParents");
 
-            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task<IEnumerable<Child>> GetAllGenusChildren()
         {
             var body = await GetData("https://localhost:6001/api/GenusChildren");
 
-            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task<Genus> GetGenus(int genusId)
         {
             var body = await GetData($"https://localhost:6001/api/Genus/id?id={genusId}");
 
-            return JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<Genus>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task CreateGenus(Genus createdGenus)

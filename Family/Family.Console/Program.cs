@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Family.Db.Entities;
 
 namespace Family.Console

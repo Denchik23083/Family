@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Family.Logic.ParentsService;
 using Family.Web.Models.ChildrenModels;
 using Microsoft.AspNetCore.Mvc;

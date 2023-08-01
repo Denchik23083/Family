@@ -7,26 +7,30 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    [Migration("20230317141631_relation")]
-    partial class relation
+    [Migration("20230801122834_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.17")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.20")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Family.Db.Entities.Child", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -51,7 +55,7 @@ namespace Family.Db.Migrations
 
                     b.HasIndex("GenusId");
 
-                    b.ToTable("Children");
+                    b.ToTable("Children", (string)null);
 
                     b.HasData(
                         new
@@ -78,15 +82,16 @@ namespace Family.Db.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("GenderType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genders");
+                    b.ToTable("Genders", (string)null);
 
                     b.HasData(
                         new
@@ -105,8 +110,9 @@ namespace Family.Db.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("FatherId")
                         .HasColumnType("int");
@@ -126,7 +132,7 @@ namespace Family.Db.Migrations
                     b.HasIndex("MotherId")
                         .IsUnique();
 
-                    b.ToTable("Genus");
+                    b.ToTable("Genus", (string)null);
 
                     b.HasData(
                         new
@@ -142,8 +148,9 @@ namespace Family.Db.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -163,7 +170,7 @@ namespace Family.Db.Migrations
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("Parents");
+                    b.ToTable("Parents", (string)null);
 
                     b.HasData(
                         new
@@ -188,8 +195,9 @@ namespace Family.Db.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ChildId")
                         .HasColumnType("int");
@@ -203,7 +211,7 @@ namespace Family.Db.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("ParentsChildren");
+                    b.ToTable("ParentsChildren", (string)null);
 
                     b.HasData(
                         new

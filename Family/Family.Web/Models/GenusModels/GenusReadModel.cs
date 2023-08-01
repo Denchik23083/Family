@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 
 namespace Family.Web.Models.GenusModels
 {
@@ -7,16 +6,16 @@ namespace Family.Web.Models.GenusModels
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public int FatherId { get; set; }
 
-        public Parent Father { get; set; }
+        public Parent? Father { get; set; }
 
         public int MotherId { get; set; }
 
-        public Parent Mother { get; set; }
+        public Parent? Mother { get; set; }
 
-        public List<Child> Children { get; set; }
+        public List<Child>? Children { get; set; }
     }
 }

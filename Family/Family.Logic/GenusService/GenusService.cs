@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 using Family.WebDb.ChildrenRepository;
 using Family.WebDb.GenusRepository;
 
@@ -48,7 +45,7 @@ namespace Family.Logic.GenusService
 
             var parentsChildren = new List<ParentsChildren>();
             
-            foreach (var createdGenusChild in createdGenus.Children)
+            foreach (var createdGenusChild in createdGenus.Children!)
             {
                 var child = await _childrenRepository.GetChild(createdGenusChild.Id);
 
@@ -84,7 +81,7 @@ namespace Family.Logic.GenusService
 
             var parentsChildren = new List<ParentsChildren>();
 
-            foreach (var createdGenusChild in editedGenus.Children)
+            foreach (var createdGenusChild in editedGenus.Children!)
             {
                 var child = await _childrenRepository.GetChild(createdGenusChild.Id);
 
@@ -104,7 +101,11 @@ namespace Family.Logic.GenusService
 
             editedGenus.Children = null;
 
-            await _repository.EditGenus(genusToEdit, editedGenus, parentsChildren, listChildren);
+            genusToEdit.Name = editedGenus.Name;
+            genusToEdit.FatherId = editedGenus.FatherId;
+            genusToEdit.MotherId = editedGenus.MotherId;
+
+            await _repository.EditGenus(genusToEdit,parentsChildren, listChildren);
         }
 
         public async Task DeleteGenus(int id)

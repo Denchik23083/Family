@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Family.Db.Entities;
 using Family.Logic.ParentsService;
 using Family.Web.Models.ParentsModels;

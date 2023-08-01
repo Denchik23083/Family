@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 
 namespace Family.WebDb.ParentsRepository
 {
@@ -14,7 +12,7 @@ namespace Family.WebDb.ParentsRepository
 
         Task CreateParent(Parent createdParent);
 
-        Task EditParent(Parent parentToEdit, Parent editedParent);
+        Task EditParent(Parent parentToEdit);
 
         Task DeleteParent(Parent parentToDelete);
     }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Family.Db.Entities;
 
 namespace Family.Http.ChildrenHttpService
@@ -21,21 +17,21 @@ namespace Family.Http.ChildrenHttpService
         {
             var body = await GetData("https://localhost:6001/api/Children");
 
-            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Child>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task<IEnumerable<Parent>> GetChildrenParents(int childId)
         {
             var body = await GetData($"https://localhost:6001/api/ChildrenParents/id?id={childId}");
 
-            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<IEnumerable<Parent>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task<Child> GetChild(int childId)
         {
             var body = await GetData($"https://localhost:6001/api/Children/id?id={childId}");
 
-            return JsonSerializer.Deserialize<Child>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<Child>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
 
         public async Task CreateChild(Child createdChild)

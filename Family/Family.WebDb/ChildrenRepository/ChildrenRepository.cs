@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Family.Db;
+﻿using Family.Db;
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,19 +22,19 @@ namespace Family.WebDb.ChildrenRepository
 
         public async Task<IEnumerable<Parent>> GetChildrenParents(int id)
         {
-            return await _context.ParentsChildren
+            return (await _context.ParentsChildren
                 .Where(_ => _.ChildId == id)
                 .Include(_ => _.Parent)
                 .ThenInclude(_ => _.Gender)
                 .Select(_ => _.Parent)
-                .ToListAsync();
+                .ToListAsync())!;
         }
 
         public async Task<Child> GetChild(int id)
         {
-            return await _context.Children
+            return (await _context.Children
                 .Include(_ => _.Gender)
-                .FirstOrDefaultAsync(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id))!;
         }
 
         public async Task CreateChild(Child createdChild)
@@ -47,12 +44,8 @@ namespace Family.WebDb.ChildrenRepository
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditChild(Child childToEdit, Child editedChild)
+        public async Task EditChild(Child childToEdit)
         {
-            childToEdit.FirstName = editedChild.FirstName;
-            childToEdit.LastName = editedChild.LastName;
-            childToEdit.Age = editedChild.Age;
-
             await _context.SaveChangesAsync();
         }
 

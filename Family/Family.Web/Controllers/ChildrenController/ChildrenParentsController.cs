@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Family.Logic.ChildrenService;
+﻿using Family.Logic.ChildrenService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Web.Controllers.ChildrenController

@@ -5,15 +5,15 @@ namespace Family.Db
 {
     public class FamilyContext : DbContext
     {
-        public DbSet<Parent> Parents { get; set; }
-        
-        public DbSet<Child> Children { get; set; }
+        public DbSet<Parent> Parents { get; set; } = null!;
 
-        public DbSet<ParentsChildren> ParentsChildren { get; set; }
+        public DbSet<Child> Children { get; set; } = null!;
 
-        public DbSet<Gender> Genders { get; set; }
+        public DbSet<ParentsChildren> ParentsChildren { get; set; } = null!;
 
-        public DbSet<Genus> Genus { get; set; }
+        public DbSet<Gender> Genders { get; set; } = null!;
+
+        public DbSet<Genus> Genus { get; set; } = null!;
 
         public FamilyContext(DbContextOptions options) : base(options) { }
 

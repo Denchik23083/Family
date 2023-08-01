@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Family.Db;
+﻿using Family.Db;
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,13 +52,13 @@ namespace Family.WebDb.GenusRepository
 
         public async Task<Genus> GetGenus(int id)
         {
-            return await _context.Genus
+            return (await _context.Genus
                 .Include(_ => _.Father)
                 .ThenInclude(_ => _.Gender)
                 .Include(_ => _.Mother)
                 .ThenInclude(_ => _.Gender)
                 .Include(_ => _.Children)
-                .FirstOrDefaultAsync(_ => _.Id == id);
+                .FirstOrDefaultAsync(_ => _.Id == id))!;
         }
 
         public async Task CreateGenus(Genus createdGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren)
@@ -79,7 +75,7 @@ namespace Family.WebDb.GenusRepository
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditGenus(Genus genusToEdit, Genus editedGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren)
+        public async Task EditGenus(Genus genusToEdit, List<ParentsChildren> parentsChildren, List<Child> listChildren)
         {
             var genusParents = await _context.ParentsChildren
                 .Where(_ => _.ParentId == genusToEdit.FatherId || _.ParentId == genusToEdit.MotherId)
@@ -95,10 +91,6 @@ namespace Family.WebDb.GenusRepository
             {
                 genusChild.GenusId = null;
             }
-
-            genusToEdit.Name = editedGenus.Name;
-            genusToEdit.FatherId = editedGenus.FatherId;
-            genusToEdit.MotherId = editedGenus.MotherId;
 
             foreach (var listChild in listChildren)
             {

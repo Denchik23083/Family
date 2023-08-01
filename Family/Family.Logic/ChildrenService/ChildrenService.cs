@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 using Family.WebDb.ChildrenRepository;
 
 namespace Family.Logic.ChildrenService
@@ -44,7 +41,11 @@ namespace Family.Logic.ChildrenService
                 throw new ArgumentNullException();
             }
 
-            await _repository.EditChild(childToEdit, editedChild);
+            childToEdit.FirstName = editedChild.FirstName;
+            childToEdit.LastName = editedChild.LastName;
+            childToEdit.Age = editedChild.Age;
+
+            await _repository.EditChild(childToEdit);
         }
 
         public async Task DeleteChild(int id)

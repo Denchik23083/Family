@@ -1,25 +1,19 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Family.Db.Entities
+﻿namespace Family.Db.Entities
 {
     public class Parent
     {
         public int Id { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
+        
+        public string? FirstName { get; set; }
+        
+        public string? LastName { get; set; }
+        
         public int Age { get; set; }
 
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         public int GenderId { get; set; }
 
-        public List<ParentsChildren> ParentsChildren { get; set; }
+        public List<ParentsChildren>? ParentsChildren { get; set; }
     }
 }

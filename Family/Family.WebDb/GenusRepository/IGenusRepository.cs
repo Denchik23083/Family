@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Family.Db.Entities;
+﻿using Family.Db.Entities;
 
 namespace Family.WebDb.GenusRepository
 {
@@ -16,7 +14,7 @@ namespace Family.WebDb.GenusRepository
 
         Task CreateGenus(Genus createdGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren);
         
-        Task EditGenus(Genus genusToEdit, Genus editedGenus, List<ParentsChildren> parentsChildren, List<Child> listChildren);
+        Task EditGenus(Genus genusToEdit, List<ParentsChildren> parentsChildren, List<Child> listChildren);
         
         Task DeleteGenus(Genus genusToDelete);
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Family.Client.PageComponents.GenusComponent;
+﻿using Family.Client.PageComponents.GenusComponent;
 using Family.Core;
 using Family.Db.Entities;
 using Family.Http.GenusHttpService;

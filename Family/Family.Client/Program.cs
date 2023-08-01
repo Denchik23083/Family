@@ -1,8 +1,4 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Family.Http.ChildrenHttpService;
 using Family.Http.GenusHttpService;
 using Family.Http.ParentsHttpService;
