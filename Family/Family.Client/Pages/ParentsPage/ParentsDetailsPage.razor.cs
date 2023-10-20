@@ -1,5 +1,4 @@
 ﻿using Family.Client.PageComponents.ParentsComponent;
-using Family.Core;
 using Family.Db.Entities;
 using Family.Http.ParentsHttpService;
 using Microsoft.AspNetCore.Components;
@@ -14,7 +13,7 @@ namespace Family.Client.Pages.ParentsPage
 
         [Inject] public NavigationManager NavigationManager { get; set; }
 
-        public Parent Parent { get; set; } = new() { Gender = new() { GenderType = GenderType.Undefined } };
+        public Parent Parent { get; set; } = new() { Gender = new() };
 
         public IEnumerable<Child> Children { get; set; } = new List<Child>();
 

@@ -25,11 +25,11 @@ builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("devCors", builder =>
+    options.AddPolicy("devCors", policyBuilder =>
     {
-        builder.AllowAnyOrigin();
-        builder.AllowAnyMethod();
-        builder.AllowAnyHeader();
+        policyBuilder.AllowAnyOrigin();
+        policyBuilder.AllowAnyMethod();
+        policyBuilder.AllowAnyHeader();
     });
 });
 
@@ -40,12 +40,6 @@ builder.Services.AddDbContext<FamilyContext>(options =>
 });
 
 var app = builder.Build();
-
-using var scope = app.Services.CreateScope();
-
-var context = scope.ServiceProvider.GetService<FamilyContext>();
-
-context!.Database.EnsureCreated();
 
 if (app.Environment.IsDevelopment())
 {
@@ -58,6 +52,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

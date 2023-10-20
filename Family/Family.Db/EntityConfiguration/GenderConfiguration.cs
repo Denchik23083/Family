@@ -1,4 +1,4 @@
-﻿using Family.Core;
+﻿using Family.Core.Utilities;
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

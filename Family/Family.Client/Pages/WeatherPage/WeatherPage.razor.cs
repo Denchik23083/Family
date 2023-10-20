@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using Family.Core;
+using Family.Core.Utilities;
 using Microsoft.AspNetCore.Components;
 
 namespace Family.Client.Pages.WeatherPage

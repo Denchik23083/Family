@@ -1,5 +1,5 @@
 ﻿using Family.Client.PageComponents.GenusComponent;
-using Family.Core;
+using Family.Core.Utilities;
 using Family.Db.Entities;
 using Family.Http.GenusHttpService;
 using Microsoft.AspNetCore.Components;
@@ -16,8 +16,8 @@ namespace Family.Client.Pages.GenusPage
 
         public Genus Genus { get; set; } = new()
         {
-            Father = new() { Gender = new() { GenderType = GenderType.Undefined } },
-            Mother = new() { Gender = new() { GenderType = GenderType.Undefined } },
+            Father = new() { Gender = new() },
+            Mother = new() { Gender = new() },
             Children = new List<Child>()
         };
 
