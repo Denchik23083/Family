@@ -14,13 +14,11 @@ namespace Family.Db.EntityConfiguration
             
             builder.HasOne(_ => _.Father)
                 .WithOne()
-                .HasForeignKey<Genus>(_ => _.FatherId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .HasForeignKey<Genus>(_ => _.FatherId);
 
             builder.HasOne(_ => _.Mother)
                 .WithOne()
-                .HasForeignKey<Genus>(_ => _.MotherId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .HasForeignKey<Genus>(_ => _.MotherId);
 
             builder.ToTable("Genus").HasData(
                 new Genus

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Family.Db.EntityConfiguration
 {
-    internal class ParentsChildrenConfiguration : IEntityTypeConfiguration<ParentsChildren>
+    public class ParentsChildrenConfiguration : IEntityTypeConfiguration<ParentsChildren>
     {
         public void Configure(EntityTypeBuilder<ParentsChildren> builder)
         {
@@ -12,13 +12,11 @@ namespace Family.Db.EntityConfiguration
 
             builder.HasOne(_ => _.Parent)
                 .WithMany(_ => _.ParentsChildren)
-                .HasForeignKey(_ => _.ParentId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .HasForeignKey(_ => _.ParentId);
 
             builder.HasOne(_ => _.Child)
                 .WithMany(_ => _.ParentsChildren)
-                .HasForeignKey(_ => _.ChildId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .HasForeignKey(_ => _.ChildId);
 
             builder.ToTable("ParentsChildren").HasData(
                 new ParentsChildren
