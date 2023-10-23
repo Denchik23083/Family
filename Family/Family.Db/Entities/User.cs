@@ -12,7 +12,7 @@
         
         public string? Password { get; set; }
 
-        public int Age { get; set; }
+        public DateTime BirthDay { get; set; }
 
         public Gender? Gender { get; set; }
 

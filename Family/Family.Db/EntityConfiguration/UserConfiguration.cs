@@ -14,7 +14,7 @@ namespace Family.Db.EntityConfiguration
             builder.Property(_ => _.LastName).IsRequired();
             builder.Property(_ => _.Email).IsRequired();
             builder.Property(_ => _.Password).IsRequired();
-            builder.Property(_ => _.Age).IsRequired();
+            builder.Property(_ => _.BirthDay).IsRequired();
 
             builder.HasOne(_ => _.Gender)
                 .WithMany(_ => _.Users)
@@ -32,7 +32,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Full",
                     Email = "god@gmail.com",
                     Password = "0000",
-                    Age = 5000,
+                    BirthDay = new DateTime(),
                     GenderId = 1,
                     RoleId = 1
                 },
@@ -43,7 +43,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Full",
                     Email = "admin@gmail.com",
                     Password = "0000",
-                    Age = 30,
+                    BirthDay = DateTime.Now.AddYears(-30),
                     GenderId = 1,
                     RoleId = 2
                 },
@@ -54,7 +54,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Kudryavov",
                     Email = "alex@gmail.com",
                     Password = "0000",
-                    Age = 45,
+                    BirthDay = new DateTime(1976, 10, 16),
                     GenderId = 1,
                     RoleId = 3
                 },
@@ -65,7 +65,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Kudryavova",
                     Email = "anna@gmail.com",
                     Password = "0000",
-                    Age = 45,
+                    BirthDay = new DateTime(1976, 08, 25),
                     GenderId = 2,
                     RoleId = 3
                 },
@@ -76,7 +76,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Kudryavov",
                     Email = "denis@gmail.com",
                     Password = "0000",
-                    Age = 20,
+                    BirthDay = new DateTime(2003, 08, 23),
                     GenderId = 1,
                     RoleId = 4
                 },
@@ -87,7 +87,7 @@ namespace Family.Db.EntityConfiguration
                     LastName = "Kudryavova",
                     Email = "daria@gmail.com",
                     Password = "0000",
-                    Age = 4,
+                    BirthDay = new DateTime(2019, 09, 19),
                     GenderId = 2,
                     RoleId = 4
                 });

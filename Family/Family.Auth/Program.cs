@@ -3,6 +3,10 @@ using Family.Auth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Family.WebDb.AuthRepository;
 using Family.Logic.AuthService;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +28,25 @@ builder.Services.AddCors(options =>
         policyBuilder .AllowAnyHeader();
     });
 });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+
+        var secretKey = builder.Configuration["SecretKey"];
+
+        var secret = Encoding.UTF8.GetBytes(secretKey);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false,
+            ValidateIssuer = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secret)
+        };
+    });
 
 builder.Services.AddDbContext<FamilyContext>(options =>
 {

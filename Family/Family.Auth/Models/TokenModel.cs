@@ -6,6 +6,6 @@ namespace Family.Auth.Models
     {
         public string? JwtToken { get; set; }
 
-        public RefreshToken? RefreshToken { get; set; }
+        public Guid RefreshToken { get; set; }
     }
 }

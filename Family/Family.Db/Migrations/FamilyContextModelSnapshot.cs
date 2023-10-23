@@ -64,7 +64,7 @@ namespace Family.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("GenderType")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -75,12 +75,12 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 1,
-                            GenderType = 0
+                            Type = 0
                         },
                         new
                         {
                             Id = 2,
-                            GenderType = 1
+                            Type = 1
                         });
                 });
 
@@ -377,8 +377,8 @@ namespace Family.Db.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("BirthDay")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -414,7 +414,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 1,
-                            Age = 5000,
+                            BirthDay = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "god@gmail.com",
                             FirstName = "God",
                             GenderId = 1,
@@ -425,7 +425,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 2,
-                            Age = 30,
+                            BirthDay = new DateTime(1993, 10, 23, 21, 48, 38, 814, DateTimeKind.Local).AddTicks(5933),
                             Email = "admin@gmail.com",
                             FirstName = "Admin",
                             GenderId = 1,
@@ -436,7 +436,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 3,
-                            Age = 45,
+                            BirthDay = new DateTime(1976, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alex@gmail.com",
                             FirstName = "Alex",
                             GenderId = 1,
@@ -447,7 +447,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 4,
-                            Age = 45,
+                            BirthDay = new DateTime(1976, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "anna@gmail.com",
                             FirstName = "Anna",
                             GenderId = 2,
@@ -458,7 +458,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 5,
-                            Age = 20,
+                            BirthDay = new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "denis@gmail.com",
                             FirstName = "Denis",
                             GenderId = 1,
@@ -469,7 +469,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 6,
-                            Age = 4,
+                            BirthDay = new DateTime(2019, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "daria@gmail.com",
                             FirstName = "Daria",
                             GenderId = 2,

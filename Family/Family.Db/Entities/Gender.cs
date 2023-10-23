@@ -7,7 +7,7 @@ namespace Family.Db.Entities
     {
         public int Id { get; set; }
 
-        public GenderType GenderType { get; set; }
+        public GenderType? Type { get; set; }
 
         public List<User>? Users { get; set; }
 

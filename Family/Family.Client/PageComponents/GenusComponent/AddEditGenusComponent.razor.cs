@@ -40,8 +40,8 @@ namespace Family.Client.PageComponents.GenusComponent
 
                 var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
                 var parents = parentsEnumerable.ToList();
-                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female).ToList();
-                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male).ToList();
+                Mothers = parents.Where(b => b.Gender.Type == GenderType.Female).ToList();
+                Fathers = parents.Where(b => b.Gender.Type == GenderType.Male).ToList();
 
                 var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
@@ -50,8 +50,8 @@ namespace Family.Client.PageComponents.GenusComponent
             {
                 var parentsEnumerable = await GenusHttpService.GetAllGenusParents();
                 var parents = parentsEnumerable.ToList();
-                Mothers = parents.Where(b => b.Gender.GenderType == GenderType.Female).ToList();
-                Fathers = parents.Where(b => b.Gender.GenderType == GenderType.Male).ToList();
+                Mothers = parents.Where(b => b.Gender.Type == GenderType.Female).ToList();
+                Fathers = parents.Where(b => b.Gender.Type == GenderType.Male).ToList();
 
                 var children = await GenusHttpService.GetAllGenusChildren();
                 Children = children.ToList();
