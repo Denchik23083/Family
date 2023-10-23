@@ -1,12 +1,17 @@
 using Family.Db;
-using Family.Web.Utilities;
+using Family.Auth.Utilities;
 using Microsoft.EntityFrameworkCore;
+using Family.WebDb.AuthRepository;
+using Family.Logic.AuthService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
