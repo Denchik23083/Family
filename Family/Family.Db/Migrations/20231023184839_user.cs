@@ -15,7 +15,7 @@ namespace Family.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GenderType = table.Column<int>(type: "int", nullable: false)
+                    Type = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,7 +143,7 @@ namespace Family.Db.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
+                    BirthDay = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GenderId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -185,7 +185,7 @@ namespace Family.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Genders",
-                columns: new[] { "Id", "GenderType" },
+                columns: new[] { "Id", "Type" },
                 values: new object[,]
                 {
                     { 1, 0 },
@@ -234,15 +234,15 @@ namespace Family.Db.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Age", "Email", "FirstName", "GenderId", "LastName", "Password", "RoleId" },
+                columns: new[] { "Id", "BirthDay", "Email", "FirstName", "GenderId", "LastName", "Password", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, 5000, "god@gmail.com", "God", 1, "Full", "0000", 1 },
-                    { 2, 30, "admin@gmail.com", "Admin", 1, "Full", "0000", 2 },
-                    { 3, 45, "alex@gmail.com", "Alex", 1, "Kudryavov", "0000", 3 },
-                    { 4, 45, "anna@gmail.com", "Anna", 2, "Kudryavova", "0000", 3 },
-                    { 5, 20, "denis@gmail.com", "Denis", 1, "Kudryavov", "0000", 4 },
-                    { 6, 4, "daria@gmail.com", "Daria", 2, "Kudryavova", "0000", 4 }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "god@gmail.com", "God", 1, "Full", "0000", 1 },
+                    { 2, new DateTime(1993, 10, 23, 21, 48, 38, 814, DateTimeKind.Local).AddTicks(5933), "admin@gmail.com", "Admin", 1, "Full", "0000", 2 },
+                    { 3, new DateTime(1976, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "alex@gmail.com", "Alex", 1, "Kudryavov", "0000", 3 },
+                    { 4, new DateTime(1976, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "anna@gmail.com", "Anna", 2, "Kudryavova", "0000", 3 },
+                    { 5, new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "denis@gmail.com", "Denis", 1, "Kudryavov", "0000", 4 },
+                    { 6, new DateTime(2019, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "daria@gmail.com", "Daria", 2, "Kudryavova", "0000", 4 }
                 });
 
             migrationBuilder.CreateIndex(

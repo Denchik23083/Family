@@ -3,7 +3,11 @@ using Family.Auth.Models;
 using Family.Db.Entities;
 using Family.Logic.AuthService;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
+using System.Text;
 
 namespace Family.Auth.Controllers
 {
@@ -13,11 +17,13 @@ namespace Family.Auth.Controllers
     {
         private readonly IAuthService _service;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(IAuthService service, IMapper mapper)
+        public AuthController(IAuthService service, IMapper mapper, IConfiguration configuration)
         {
             _service = service;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
         [HttpPost("register")]
@@ -59,7 +65,46 @@ namespace Family.Auth.Controllers
 
         private TokenModel GetUserToken(User user)
         {
-            return new TokenModel { /*JwtToken = stringToken, RefreshToken = refreshToken*/ };
+            var secretKey = _configuration["SecretKey"];
+
+            var secret = Encoding.UTF8.GetBytes(secretKey);
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new Claim(ClaimTypes.Email, user.Email!),
+                new Claim(ClaimTypes.Gender, user.Gender!.Type.ToString()!),
+                new Claim(ClaimTypes.Role, user.Role!.RoleType.ToString()!),
+            };
+
+            var rolePermissions = user.Role!.RolePermission!
+                .Select(_ => new Claim("permission", _.PermissionType.ToString()!));
+
+            claims.AddRange(claims);
+
+            var now = DateTime.Now;
+
+            var jwt = new JwtSecurityToken(
+                notBefore: now,
+                expires: now.AddMinutes(10),
+                claims: claims,
+                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
+
+            var stringToken = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+            var refreshToken = Guid.NewGuid();
+
+            if (user.RefreshToken is null)
+            {
+                //await _service.CreateRefreshTokenAsync(refreshToken, user);
+            }
+            else
+            {
+                //await _service.UpdateRefreshTokenAsync(refreshToken, user);
+            }
+
+            return new TokenModel { JwtToken = stringToken, RefreshToken = refreshToken };
         }
     }
 }

@@ -11,18 +11,18 @@ namespace Family.Db.EntityConfiguration
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.GenderType).HasConversion<int>();
+            builder.Property(_ => _.Type).HasConversion<int>();
 
             builder.ToTable("Genders").HasData(
                 new Gender
                 {
                     Id = 1,
-                    GenderType = GenderType.Male
+                    Type = GenderType.Male
                 },
                 new Gender
                 {
                     Id = 2,
-                    GenderType = GenderType.Female
+                    Type = GenderType.Female
                 });
         }
     }
