@@ -11,23 +11,6 @@ namespace Family.Db.EntityConfiguration
             builder.HasKey(_ => _.Id);
 
             builder.Property(_ => _.Name).IsRequired();
-            
-            builder.HasOne(_ => _.Father)
-                .WithOne()
-                .HasForeignKey<Genus>(_ => _.FatherId);
-
-            builder.HasOne(_ => _.Mother)
-                .WithOne()
-                .HasForeignKey<Genus>(_ => _.MotherId);
-
-            builder.ToTable("Genus").HasData(
-                new Genus
-                {
-                    Id = 1,
-                    Name = "Kudryavovs",
-                    FatherId = 1,
-                    MotherId = 2,
-                });
         }
     }
 }

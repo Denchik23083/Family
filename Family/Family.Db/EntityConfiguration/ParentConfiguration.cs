@@ -13,28 +13,6 @@ namespace Family.Db.EntityConfiguration
             builder.Property(_ => _.FirstName).IsRequired();
             builder.Property(_ => _.LastName).IsRequired();
             builder.Property(_ => _.Age).IsRequired();
-
-            builder.HasOne(_ => _.Gender)
-                .WithMany(_ => _.Parents)
-                .HasForeignKey(_ => _.GenderId);
-
-            builder.ToTable("Parents").HasData(
-                new Parent
-                {
-                    Id = 1,
-                    FirstName = "Alex",
-                    LastName = "Kudryavov",
-                    Age = 45,
-                    GenderId = 2
-                },
-                new Parent
-                {
-                    Id = 2,
-                    FirstName = "Anna",
-                    LastName = "Kudryavova",
-                    Age = 45,
-                    GenderId = 1
-                });
         }
     }
 }

@@ -15,8 +15,8 @@ namespace Family.Client.Pages.GenusPage
 
         public Genus Genus { get; set; } = new()
         {
-            Father = new() { Gender = new() },
-            Mother = new() { Gender = new() },
+            //Father = new() { Gender = new() },
+            //Mother = new() { Gender = new() },
             Children = new List<Child>()
         };
 

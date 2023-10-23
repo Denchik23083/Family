@@ -57,8 +57,8 @@ namespace Family.Client.PageComponents.GenusComponent
                 Children = children.ToList();
 
                 Genus = await GenusHttpService.GetGenus(GenusId);
-                Mothers.Add(Genus.Mother);
-                Fathers.Add(Genus.Father);
+                //Mothers.Add(Genus.Mother);
+                //Fathers.Add(Genus.Father);
                 SelectedChildren = Genus.Children;
             }
         }

@@ -9,10 +9,12 @@ namespace Family.Db.Entities
 
         public GenderType GenderType { get; set; }
 
-        [JsonIgnore]
+        public List<User>? Users { get; set; }
+
+        /*[JsonIgnore]
         public List<Parent> Parents { get; set; }
 
         [JsonIgnore]
-        public List<Child> Children { get; set; }
+        public List<Child> Children { get; set; }*/
     }
 }

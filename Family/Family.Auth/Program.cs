@@ -1,5 +1,6 @@
 using Family.Db;
 using Family.Web.Utilities;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,12 @@ builder.Services.AddCors(options =>
         policyBuilder .AllowAnyMethod();
         policyBuilder .AllowAnyHeader();
     });
+});
+
+builder.Services.AddDbContext<FamilyContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Family");
+    options.UseSqlServer(connectionString);
 });
 
 var app = builder.Build();
