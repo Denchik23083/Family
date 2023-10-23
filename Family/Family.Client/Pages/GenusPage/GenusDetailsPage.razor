@@ -19,12 +19,12 @@
             </div>
         </div>
     </div>
-    <div class="from_details" @onclick="() => RouteToFather(Genus.Father.Id)" style="cursor: pointer;">
+    @*<div class="from_details" @onclick="() => RouteToFather(Genus.Father.Id)" style="cursor: pointer;">
         <IndividualParentsComponent Parent="Genus.Father"/>
     </div>
     <div class="from_details" @onclick="() => RouteToMother(Genus.Mother.Id)" style="cursor: pointer;">
         <IndividualParentsComponent Parent="Genus.Mother"/>
-    </div>
+    </div>*@
     @foreach (var child in Genus.Children)
     {
         <div class="from_all_click" @onclick="() => RouteToChild(child.Id)">

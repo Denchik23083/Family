@@ -5,6 +5,14 @@ namespace Family.Db
 {
     public class FamilyContext : DbContext
     {
+        public DbSet<User> Users { get; set; } = null!;
+
+        public DbSet<Role> Roles { get; set; } = null!;
+
+        public DbSet<RolePermission> RolePermissions { get; set; } = null!;
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
+        
         public DbSet<Parent> Parents { get; set; } = null!;
 
         public DbSet<Child> Children { get; set; } = null!;

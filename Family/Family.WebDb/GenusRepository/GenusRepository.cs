@@ -53,11 +53,11 @@ namespace Family.WebDb.GenusRepository
         public async Task<Genus> GetGenus(int id)
         {
             return (await _context.Genus
-                .Include(_ => _.Father)
+                /*.Include(_ => _.Father)
                 .ThenInclude(_ => _.Gender)
                 .Include(_ => _.Mother)
                 .ThenInclude(_ => _.Gender)
-                .Include(_ => _.Children)
+                .Include(_ => _.Children)*/
                 .FirstOrDefaultAsync(_ => _.Id == id))!;
         }
 

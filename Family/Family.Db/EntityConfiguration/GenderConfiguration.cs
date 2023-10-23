@@ -17,12 +17,12 @@ namespace Family.Db.EntityConfiguration
                 new Gender
                 {
                     Id = 1,
-                    GenderType = GenderType.Female
+                    GenderType = GenderType.Male
                 },
                 new Gender
                 {
                     Id = 2,
-                    GenderType = GenderType.Male
+                    GenderType = GenderType.Female
                 });
         }
     }

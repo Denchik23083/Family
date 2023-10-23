@@ -22,12 +22,14 @@ namespace Family.WebDb.ChildrenRepository
 
         public async Task<IEnumerable<Parent>> GetChildrenParents(int id)
         {
-            return (await _context.ParentsChildren
+            /*return (await _context.ParentsChildren
                 .Where(_ => _.ChildId == id)
                 .Include(_ => _.Parent)
                 .ThenInclude(_ => _.Gender)
                 .Select(_ => _.Parent)
-                .ToListAsync())!;
+                .ToListAsync())!;*/
+
+            return new List<Parent>();
         }
 
         public async Task<Child> GetChild(int id)
