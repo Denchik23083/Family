@@ -8,6 +8,6 @@ namespace Family.Db.Entities
 
         public RoleType? RoleType { get; set; }
 
-        public List<RolePermission>? RolePermission { get; set; }
+        public List<RolePermission>? RolePermissions { get; set; }
     }
 }

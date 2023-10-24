@@ -13,7 +13,7 @@ namespace Family.Db.EntityConfiguration
 
             builder.Property(_ => _.RoleType).HasConversion<int>();
 
-            builder.HasMany(_ => _.RolePermission)
+            builder.HasMany(_ => _.RolePermissions)
                 .WithOne(_ => _.Role)
                 .HasForeignKey(_ => _.RoleId);
 

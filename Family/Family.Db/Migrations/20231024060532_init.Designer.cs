@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    [Migration("20231023184839_user")]
-    partial class user
+    [Migration("20231024060532_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -288,84 +288,72 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 8,
-                            PermissionType = 7,
-                            RoleId = 1
+                            PermissionType = 0,
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 9,
-                            PermissionType = 0,
+                            PermissionType = 1,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 10,
-                            PermissionType = 1,
+                            PermissionType = 2,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 11,
-                            PermissionType = 2,
+                            PermissionType = 3,
                             RoleId = 2
                         },
                         new
                         {
                             Id = 12,
-                            PermissionType = 3,
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 13,
                             PermissionType = 4,
                             RoleId = 2
                         },
                         new
                         {
-                            Id = 14,
-                            PermissionType = 5,
-                            RoleId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
+                            Id = 13,
                             PermissionType = 0,
                             RoleId = 3
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 14,
                             PermissionType = 1,
                             RoleId = 3
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 15,
                             PermissionType = 2,
                             RoleId = 3
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 16,
                             PermissionType = 3,
                             RoleId = 3
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 17,
                             PermissionType = 0,
                             RoleId = 4
                         },
                         new
                         {
-                            Id = 20,
+                            Id = 18,
                             PermissionType = 1,
                             RoleId = 4
                         },
                         new
                         {
-                            Id = 21,
+                            Id = 19,
                             PermissionType = 0,
                             RoleId = 5
                         });
@@ -427,7 +415,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDay = new DateTime(1993, 10, 23, 21, 48, 38, 814, DateTimeKind.Local).AddTicks(5933),
+                            BirthDay = new DateTime(1993, 10, 24, 9, 5, 32, 350, DateTimeKind.Local).AddTicks(8044),
                             Email = "admin@gmail.com",
                             FirstName = "Admin",
                             GenderId = 1,

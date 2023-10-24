@@ -63,7 +63,24 @@ namespace Family.Auth.Controllers
             return Ok(tokenModel);
         }
 
-        private TokenModel GetUserToken(User user)
+        [HttpPost("login/refresh")]
+        public async Task<IActionResult> Refresh(RefreshTokenModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var mappedRefresh = _mapper.Map<RefreshToken>(model);
+
+            var user = await _service.RefreshAsync(mappedRefresh);
+
+            var tokenModel = GetUserToken(user);
+
+            return Ok(tokenModel);
+        }
+
+        private async Task<TokenModel> GetUserToken(User user)
         {
             var secretKey = _configuration["SecretKey"];
 
@@ -78,10 +95,10 @@ namespace Family.Auth.Controllers
                 new Claim(ClaimTypes.Role, user.Role!.RoleType.ToString()!),
             };
 
-            var rolePermissions = user.Role!.RolePermission!
+            var rolePermissions = user.Role!.RolePermissions!
                 .Select(_ => new Claim("permission", _.PermissionType.ToString()!));
 
-            claims.AddRange(claims);
+            claims.AddRange(rolePermissions);
 
             var now = DateTime.Now;
 
@@ -97,11 +114,11 @@ namespace Family.Auth.Controllers
 
             if (user.RefreshToken is null)
             {
-                //await _service.CreateRefreshTokenAsync(refreshToken, user);
+                await _service.CreateRefreshTokenAsync(refreshToken, user);
             }
             else
             {
-                //await _service.UpdateRefreshTokenAsync(refreshToken, user);
+                await _service.UpdateRefreshTokenAsync(refreshToken, user);
             }
 
             return new TokenModel { JwtToken = stringToken, RefreshToken = refreshToken };

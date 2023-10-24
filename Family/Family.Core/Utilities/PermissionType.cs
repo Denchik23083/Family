@@ -10,10 +10,9 @@
 
         //Parent, Admin, God
         GetParent,
-        GetGenus,
+        CrudGenus,
 
         //Admin, God
-        EditFamily,
         RemoveUser,
 
         //God
