@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Family.Db.Migrations
 {
-    public partial class user : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -216,20 +216,18 @@ namespace Family.Db.Migrations
                     { 5, 4, 1 },
                     { 6, 5, 1 },
                     { 7, 6, 1 },
-                    { 8, 7, 1 },
-                    { 9, 0, 2 },
-                    { 10, 1, 2 },
-                    { 11, 2, 2 },
-                    { 12, 3, 2 },
-                    { 13, 4, 2 },
-                    { 14, 5, 2 },
-                    { 15, 0, 3 },
-                    { 16, 1, 3 },
-                    { 17, 2, 3 },
-                    { 18, 3, 3 },
-                    { 19, 0, 4 },
-                    { 20, 1, 4 },
-                    { 21, 0, 5 }
+                    { 8, 0, 2 },
+                    { 9, 1, 2 },
+                    { 10, 2, 2 },
+                    { 11, 3, 2 },
+                    { 12, 4, 2 },
+                    { 13, 0, 3 },
+                    { 14, 1, 3 },
+                    { 15, 2, 3 },
+                    { 16, 3, 3 },
+                    { 17, 0, 4 },
+                    { 18, 1, 4 },
+                    { 19, 0, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -238,7 +236,7 @@ namespace Family.Db.Migrations
                 values: new object[,]
                 {
                     { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "god@gmail.com", "God", 1, "Full", "0000", 1 },
-                    { 2, new DateTime(1993, 10, 23, 21, 48, 38, 814, DateTimeKind.Local).AddTicks(5933), "admin@gmail.com", "Admin", 1, "Full", "0000", 2 },
+                    { 2, new DateTime(1993, 10, 24, 9, 5, 32, 350, DateTimeKind.Local).AddTicks(8044), "admin@gmail.com", "Admin", 1, "Full", "0000", 2 },
                     { 3, new DateTime(1976, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "alex@gmail.com", "Alex", 1, "Kudryavov", "0000", 3 },
                     { 4, new DateTime(1976, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "anna@gmail.com", "Anna", 2, "Kudryavova", "0000", 3 },
                     { 5, new DateTime(2003, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "denis@gmail.com", "Denis", 1, "Kudryavov", "0000", 4 },

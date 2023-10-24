@@ -14,7 +14,7 @@ namespace Family.Db.EntityConfiguration
             builder.Property(_ => _.PermissionType).HasConversion<int>();
 
             builder.HasOne(_ => _.Role)
-                .WithMany(_ => _.RolePermission)
+                .WithMany(_ => _.RolePermissions)
                 .HasForeignKey(_ => _.RoleId);
 
             builder.ToTable("RolePermissions").HasData(
@@ -40,107 +40,95 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 4,
                     RoleId = 1,
-                    PermissionType = PermissionType.GetGenus
+                    PermissionType = PermissionType.CrudGenus
                 },
                 new RolePermission
                 {
                     Id = 5,
                     RoleId = 1,
-                    PermissionType = PermissionType.EditFamily
+                    PermissionType = PermissionType.RemoveUser
                 },
                 new RolePermission
                 {
                     Id = 6,
                     RoleId = 1,
-                    PermissionType = PermissionType.RemoveUser
+                    PermissionType = PermissionType.UserToAdmin
                 },
                 new RolePermission
                 {
                     Id = 7,
                     RoleId = 1,
-                    PermissionType = PermissionType.UserToAdmin
+                    PermissionType = PermissionType.AdminToUser
                 },
                 new RolePermission
                 {
                     Id = 8,
-                    RoleId = 1,
-                    PermissionType = PermissionType.AdminToUser
+                    RoleId = 2,
+                    PermissionType = PermissionType.GetInfo
                 },
                 new RolePermission
                 {
                     Id = 9,
                     RoleId = 2,
-                    PermissionType = PermissionType.GetInfo
+                    PermissionType = PermissionType.GetChild
                 },
                 new RolePermission
                 {
                     Id = 10,
                     RoleId = 2,
-                    PermissionType = PermissionType.GetChild
+                    PermissionType = PermissionType.GetParent
                 },
                 new RolePermission
                 {
                     Id = 11,
                     RoleId = 2,
-                    PermissionType = PermissionType.GetParent
+                    PermissionType = PermissionType.CrudGenus
                 },
                 new RolePermission
                 {
                     Id = 12,
                     RoleId = 2,
-                    PermissionType = PermissionType.GetGenus
+                    PermissionType = PermissionType.RemoveUser
                 },
                 new RolePermission
                 {
                     Id = 13,
-                    RoleId = 2,
-                    PermissionType = PermissionType.EditFamily
+                    RoleId = 3,
+                    PermissionType = PermissionType.GetInfo
                 },
                 new RolePermission
                 {
                     Id = 14,
-                    RoleId = 2,
-                    PermissionType = PermissionType.RemoveUser
+                    RoleId = 3,
+                    PermissionType = PermissionType.GetChild
                 },
                 new RolePermission
                 {
                     Id = 15,
                     RoleId = 3,
-                    PermissionType = PermissionType.GetInfo
+                    PermissionType = PermissionType.GetParent
                 },
                 new RolePermission
                 {
                     Id = 16,
                     RoleId = 3,
-                    PermissionType = PermissionType.GetChild
+                    PermissionType = PermissionType.CrudGenus
                 },
                 new RolePermission
                 {
                     Id = 17,
-                    RoleId = 3,
-                    PermissionType = PermissionType.GetParent
-                },
-                new RolePermission
-                {
-                    Id = 18,
-                    RoleId = 3,
-                    PermissionType = PermissionType.GetGenus
-                },
-                new RolePermission
-                {
-                    Id = 19,
                     RoleId = 4,
                     PermissionType = PermissionType.GetInfo
                 },
                 new RolePermission
                 {
-                    Id = 20,
+                    Id = 18,
                     RoleId = 4,
                     PermissionType = PermissionType.GetChild
                 },
                 new RolePermission
                 {
-                    Id = 21,
+                    Id = 19,
                     RoleId = 5,
                     PermissionType = PermissionType.GetInfo
                 });

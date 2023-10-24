@@ -30,5 +30,36 @@ namespace Family.Logic.AuthService
 
             return user;
         }
+
+        public async Task<User> RefreshAsync(RefreshToken refresh)
+        {
+            var refreshToken = await _repository.RefreshAsync(refresh);
+
+            if (refreshToken is null)
+            {
+                throw new ArgumentNullException("RefreshToken not found");
+            }
+
+            if (refreshToken.User is null)
+            {
+                throw new ArgumentNullException("User not found");
+            }
+
+            return refreshToken.User;
+        }
+
+        public async Task CreateRefreshTokenAsync(Guid refreshToken, User user)
+        {
+            user.RefreshToken = new RefreshToken { Value = refreshToken };
+
+            await _repository.CreateRefreshTokenAsync(user);
+        }
+
+        public async Task UpdateRefreshTokenAsync(Guid refreshToken, User user)
+        {
+            user.RefreshToken!.Value = refreshToken;
+
+            await _repository.UpdateRefreshTokenAsync(user);
+        }
     }
 }
