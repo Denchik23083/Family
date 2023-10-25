@@ -16,7 +16,6 @@ namespace Family.WebDb.ChildrenRepository
         public async Task<IEnumerable<Child>> GetAllChildren()
         {
             return await _context.Children
-                .Include(_ => _.Gender)
                 .ToListAsync();
         }
 
@@ -35,7 +34,6 @@ namespace Family.WebDb.ChildrenRepository
         public async Task<Child> GetChild(int id)
         {
             return (await _context.Children
-                .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(p => p.Id == id))!;
         }
 

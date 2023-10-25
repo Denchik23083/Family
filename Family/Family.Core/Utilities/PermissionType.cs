@@ -2,13 +2,13 @@
 {
     public enum PermissionType
     {
-        //User, Child, Parent, Admin, God
+        //User, Child, ParentChild, Admin, God
         GetInfo,
 
-        //Child, Parent, Admin, God
+        //Child, ParentChild, Admin, God
         GetChild,
 
-        //Parent, Admin, God
+        //ParentChild, Admin, God
         GetParent,
         CrudGenus,
 

@@ -21,7 +21,8 @@ namespace Family.Web.Controllers.GenusController
         [HttpGet]
         public async Task<IActionResult> GetAllGenusParents()
         {
-            var parents = await _service.GetAllGenusParents();
+            var parents = new List<string>();
+            //var parents = await _service.GetAllGenusParents();
 
             var mapperParents = _mapper.Map<IEnumerable<ParentsReadModel>>(parents);
 

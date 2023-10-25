@@ -16,7 +16,6 @@ namespace Family.WebDb.ParentsRepository
         public async Task<IEnumerable<Parent>> GetAllParents()
         {
             return await _context.Parents
-                .Include(_ => _.Gender)
                 .ToListAsync();
         }
 
@@ -35,7 +34,6 @@ namespace Family.WebDb.ParentsRepository
         public async Task<Parent> GetParent(int id)
         {
             return (await _context.Parents
-                .Include(_ => _.Gender)
                 .FirstOrDefaultAsync(p => p.Id == id))!;
         }
 

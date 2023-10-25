@@ -4,6 +4,7 @@ using Family.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Family.Db.Migrations
 {
     [DbContext(typeof(FamilyContext))]
-    partial class FamilyContextModelSnapshot : ModelSnapshot
+    [Migration("20231025121022_gen")]
+    partial class gen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,21 +44,7 @@ namespace Family.Db.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Children", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenusId = 1,
-                            UserId = 5
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenusId = 1,
-                            UserId = 6
-                        });
+                    b.ToTable("Children");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Gender", b =>
@@ -101,14 +89,7 @@ namespace Family.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genus", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Kudryavovs"
-                        });
+                    b.ToTable("Genus");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.Parent", b =>
@@ -131,21 +112,7 @@ namespace Family.Db.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Parents", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenusId = 1,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenusId = 1,
-                            UserId = 4
-                        });
+                    b.ToTable("Parents");
                 });
 
             modelBuilder.Entity("Family.Db.Entities.RefreshToken", b =>
@@ -406,7 +373,7 @@ namespace Family.Db.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDay = new DateTime(1993, 10, 25, 15, 15, 31, 658, DateTimeKind.Local).AddTicks(8090),
+                            BirthDay = new DateTime(1993, 10, 25, 15, 10, 21, 948, DateTimeKind.Local).AddTicks(5145),
                             Email = "admin@gmail.com",
                             FirstName = "Admin",
                             GenderId = 1,

@@ -49,7 +49,7 @@ namespace Family.Web.Controllers.GenusController
 
             var createdGenus = _mapper.Map<Genus>(model);
 
-            await _service.CreateGenus(createdGenus);
+            //await _service.CreateGenus(createdGenus);
 
             return NoContent();
         }
@@ -64,7 +64,7 @@ namespace Family.Web.Controllers.GenusController
 
             var editedGenus = _mapper.Map<Genus>(model);
 
-            await _service.EditGenus(editedGenus, id);
+            //await _service.EditGenus(editedGenus, id);
 
             return NoContent();
         }
@@ -72,7 +72,7 @@ namespace Family.Web.Controllers.GenusController
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteGenus(int id)
         {
-            await _service.DeleteGenus(id);
+            //await _service.DeleteGenus(id);
 
             return NoContent();
         }

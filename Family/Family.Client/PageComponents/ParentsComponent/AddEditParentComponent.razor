@@ -3,17 +3,17 @@
     <ValidationSummary />
     <div class="row">
         <div class="col mb-2">
-            <InputText @bind-Value="Parent.FirstName" placeholder="FirstName" class="input"/>
+            <InputText @bind-Value="Parent.User.FirstName" placeholder="FirstName" class="input" />
         </div>
     </div>
     <div class="row">
         <div class="col mb-2">
-            <InputText @bind-Value="Parent.LastName" placeholder="LastName" class="input"/>
+            <InputText @bind-Value="Parent.User.LastName" placeholder="LastName" class="input" />
         </div>
     </div>
     <div class="row">
         <div class="col mb-2">
-            <InputNumber @bind-Value="Parent.Age" placeholder="Age" class="input" min="0" max="100"/>
+            <InputNumber @bind-Value="Parent.User.BirthDay" placeholder="Age" class="input" min="0" max="100" />
         </div>
     </div>
     <div class="row">
