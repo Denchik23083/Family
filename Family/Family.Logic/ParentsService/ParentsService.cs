@@ -41,10 +41,6 @@ namespace Family.Logic.ParentsService
                 throw new ArgumentNullException();
             }
 
-            parentToEdit.FirstName = editedParent.FirstName;
-            parentToEdit.LastName = editedParent.LastName;
-            parentToEdit.Age = editedParent.Age;
-
             await _repository.EditParent(parentToEdit);
         }
 

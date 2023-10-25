@@ -10,9 +10,30 @@ namespace Family.Db.EntityConfiguration
         {
             builder.HasKey(_ => _.Id);
 
-            builder.Property(_ => _.FirstName).IsRequired();
-            builder.Property(_ => _.LastName).IsRequired();
-            builder.Property(_ => _.Age).IsRequired();
+            builder.HasOne(_ => _.User)
+                .WithMany(_ => _.Children)
+                .HasForeignKey(_ => _.UserId);
+
+            builder.HasOne(_ => _.Genus)
+                .WithMany(_ => _.Children)
+                .HasForeignKey(_ => _.GenusId);
+
+            builder.ToTable("Children").HasData(
+                new List<Child>
+                {
+                    new()
+                    {
+                        Id = 1,
+                        UserId = 5,
+                        GenusId = 1
+                    },
+                    new()
+                    {
+                        Id = 2,
+                        UserId = 6,
+                        GenusId = 1
+                    }
+                });
         }
     }
 }

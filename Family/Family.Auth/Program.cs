@@ -3,7 +3,6 @@ using Family.Auth.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Family.WebDb.AuthRepository;
 using Family.Logic.AuthService;
-using System.Net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;

@@ -17,8 +17,6 @@ namespace Family.Db
 
         public DbSet<Child> Children { get; set; } = null!;
 
-        public DbSet<ParentsChildren> ParentsChildren { get; set; } = null!;
-
         public DbSet<Gender> Genders { get; set; } = null!;
 
         public DbSet<Genus> Genus { get; set; } = null!;

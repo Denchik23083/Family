@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using Family.Core.Utilities;
+﻿using Family.Core.Utilities;
 
 namespace Family.Db.Entities
 {

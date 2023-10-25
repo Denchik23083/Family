@@ -5,7 +5,6 @@ using Family.Logic.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -58,7 +57,7 @@ namespace Family.Auth.Controllers
 
             var user = await _service.LoginAsync(mappedUser);
 
-            var tokenModel = GetUserToken(user);
+            var tokenModel = await GetUserToken(user);
 
             return Ok(tokenModel);
         }
@@ -75,7 +74,7 @@ namespace Family.Auth.Controllers
 
             var user = await _service.RefreshAsync(mappedRefresh);
 
-            var tokenModel = GetUserToken(user);
+            var tokenModel = await GetUserToken(user);
 
             return Ok(tokenModel);
         }

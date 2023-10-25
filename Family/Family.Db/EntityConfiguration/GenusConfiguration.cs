@@ -11,6 +11,16 @@ namespace Family.Db.EntityConfiguration
             builder.HasKey(_ => _.Id);
 
             builder.Property(_ => _.Name).IsRequired();
+
+            builder.ToTable("Genus").HasData(
+                new List<Genus>
+                {
+                    new()
+                    {
+                        Id = 1,
+                        Name = "Kudryavovs"
+                    }
+                });
         }
     }
 }

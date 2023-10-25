@@ -4,7 +4,7 @@
     {
         God,
         Admin,
-        Parent,
+        ParentChild,
         Child,
         User
     }

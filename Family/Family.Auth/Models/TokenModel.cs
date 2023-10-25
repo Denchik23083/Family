@@ -1,6 +1,4 @@
-﻿using Family.Db.Entities;
-
-namespace Family.Auth.Models
+﻿namespace Family.Auth.Models
 {
     public class TokenModel
     {

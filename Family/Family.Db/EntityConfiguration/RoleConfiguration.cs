@@ -31,7 +31,7 @@ namespace Family.Db.EntityConfiguration
                 new Role
                 {
                     Id = 3,
-                    RoleType = RoleType.Parent
+                    RoleType = RoleType.ParentChild
                 },
                 new Role
                 {
