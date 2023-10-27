@@ -87,11 +87,11 @@ namespace Family.Auth.Controllers
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                new Claim(ClaimTypes.Email, user.Email!),
-                new Claim(ClaimTypes.Gender, user.Gender!.Type.ToString()!),
-                new Claim(ClaimTypes.Role, user.Role!.RoleType.ToString()!),
+                new (ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new (ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new (ClaimTypes.Email, user.Email!),
+                new (ClaimTypes.Gender, user.Gender!.Type.ToString()!),
+                new (ClaimTypes.Role, user.Role!.RoleType.ToString()!)
             };
 
             var rolePermissions = user.Role!.RolePermissions!

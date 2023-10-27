@@ -4,20 +4,18 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>6fd266b7-1b48-4574-ba95-a31426b15be7</UserSecretsId>
+    <UserSecretsId>dcfd683d-b26e-469e-bc7a-a77728836e5a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Family.Core\Family.Core.csproj" />
+    <ProjectReference Include="..\Family.Db\Family.Db.csproj" />
     <ProjectReference Include="..\Family.Logic\Family.Logic.csproj" />
   </ItemGroup>
 

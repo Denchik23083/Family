@@ -11,6 +11,8 @@ namespace Family.Auth.Utilities
             CreateMap<RegisterModel, User>();
 
             CreateMap<LoginModel, User>();
+
+            CreateMap<RefreshTokenModel, RefreshToken>();
         }
     }
 }
