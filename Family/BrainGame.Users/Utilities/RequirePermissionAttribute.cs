@@ -2,7 +2,7 @@
 using Family.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BrainGame.Users.Utilities
+namespace Family.Users.Utilities
 {
     public class RequirePermissionAttribute : TypeFilterAttribute
     {

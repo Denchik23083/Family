@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.Auth", "Family.Auth\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.Tests", "Family.Tests\Family.Tests.csproj", "{F8111BE8-0119-4648-8441-ECB3E6967115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainGame.Users", "BrainGame.Users\BrainGame.Users.csproj", "{7FC094CD-2FEB-4A8C-B969-E992FD6AC187}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Family.Users", "BrainGame.Users\Family.Users.csproj", "{7FC094CD-2FEB-4A8C-B969-E992FD6AC187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

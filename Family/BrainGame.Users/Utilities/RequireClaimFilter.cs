@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace BrainGame.Users.Utilities
+namespace Family.Users.Utilities
 {
     public class RequireClaimFilter : IAuthorizationFilter
     {
