@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "BrainGame.Users": {
+    "Family.Users": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       //"launchBrowser": true,

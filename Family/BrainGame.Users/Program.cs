@@ -1,6 +1,8 @@
 using Family.Users.Utilities;
 using Family.Logic.UserService;
 using Family.WebDb.UserRepository;
+using Family.Db;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,22 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("devCors", policyBuilder =>
+    {
+        policyBuilder.AllowAnyOrigin();
+        policyBuilder.AllowAnyMethod();
+        policyBuilder.AllowAnyHeader();
+    });
+});
+
+builder.Services.AddDbContext<FamilyContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Family");
+    options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
