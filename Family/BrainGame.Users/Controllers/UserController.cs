@@ -1,11 +1,11 @@
-﻿using BrainGame.Users.Utilities;
+﻿using Family.Users.Utilities;
 using Family.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Family.Core.Exceptions;
 using Family.Logic.UserService;
 
-namespace BrainGame.Users.Controllers
+namespace Family.Users.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,6 +18,7 @@ namespace BrainGame.Users.Controllers
             _service = service;
         }
 
+        [HttpGet]
         [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetUser()
         {

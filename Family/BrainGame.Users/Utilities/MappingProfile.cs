@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace BrainGame.Users.Utilities
+namespace Family.Users.Utilities
 {
     public class MappingProfile : Profile
     {
