@@ -13,6 +13,11 @@ namespace Family.Logic.UserService
             _repository = repository;
         }
 
+        public async Task<IEnumerable<Gender>> GetGendersAsync()
+        {
+            return await _repository.GetGendersAsync();
+        }
+
         public async Task<User> GetUserAsync(int id)
         {
             var user = await _repository.GetUserAsync(id);
