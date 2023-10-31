@@ -13,6 +13,8 @@ namespace Family.Auth.Utilities
             CreateMap<LoginModel, User>();
 
             CreateMap<RefreshTokenModel, RefreshToken>();
+
+            CreateMap<Gender, GenderModel>();
         }
     }
 }
