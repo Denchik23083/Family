@@ -11,8 +11,8 @@ namespace Family.Db.EntityConfiguration
             builder.HasKey(_ => _.Id);
 
             builder.HasOne(_ => _.User)
-                .WithMany(_ => _.Children)
-                .HasForeignKey(_ => _.UserId);
+                .WithOne(_ => _.Child)
+                .HasForeignKey<Child>(_ => _.UserId);
 
             builder.HasOne(_ => _.Genus)
                 .WithMany(_ => _.Children)

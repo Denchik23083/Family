@@ -1,4 +1,5 @@
 ﻿using Family.Core.Utilities;
+using System.Text.Json.Serialization;
 
 namespace Family.Db.Entities
 {
@@ -8,12 +9,7 @@ namespace Family.Db.Entities
 
         public GenderType? Type { get; set; }
 
-        public List<User>? Users { get; set; }
-
-        /*[JsonIgnore]
-        public List<Parent> Parents { get; set; }
-
         [JsonIgnore]
-        public List<Child> Children { get; set; }*/
+        public List<User>? Users { get; set; }
     }
 }

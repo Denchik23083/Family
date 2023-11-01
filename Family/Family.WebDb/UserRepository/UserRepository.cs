@@ -17,12 +17,22 @@ namespace Family.WebDb.UserRepository
         {
             return await _context.Users
                 .Include(_ => _.Gender)
-                .Include(_ => _.Parents)!
+                .Include(_ => _.Parent)
+                .ThenInclude(_ => _!.Genus)
+                .ThenInclude(_ => _!.Children)!
                 .ThenInclude(_ => _.User)
-                .ThenInclude(_ => _!.Gender)
-                .Include(_ => _.Children)!
+                .Include(_ => _.Parent)
+                .ThenInclude(_ => _!.Genus)
+                .ThenInclude(_ => _!.Parents)!
                 .ThenInclude(_ => _.User)
-                .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Child)
+                .ThenInclude(_ => _!.Genus)
+                .ThenInclude(_ => _!.Children)!
+                .ThenInclude(_ => _.User)
+                .Include(_ => _.Child)
+                .ThenInclude(_ => _!.Genus)
+                .ThenInclude(_ => _!.Parents)!
+                .ThenInclude(_ => _.User)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
     }

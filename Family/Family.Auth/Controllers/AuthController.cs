@@ -103,7 +103,7 @@ namespace Family.Auth.Controllers
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddMinutes(10),
+                expires: now.AddHours(10),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 
