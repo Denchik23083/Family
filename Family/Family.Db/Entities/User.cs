@@ -24,8 +24,8 @@
 
         public RefreshToken? RefreshToken { get; set; }
 
-        public List<Parent>? Parents { get; set; }
+        public Parent? Parent { get; set; }
 
-        public List<Child>? Children { get; set; }
+        public Child? Child { get; set; }
     }
 }

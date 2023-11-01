@@ -1,3 +1,5 @@
+using System.Text;
+using System.Text.Json.Serialization;
 using Family.Db;
 using Family.Logic.ChildrenService;
 using Family.Logic.GenusService;
@@ -6,11 +8,17 @@ using Family.Web.Utilities;
 using Family.WebDb.ChildrenRepository;
 using Family.WebDb.GenusRepository;
 using Family.WebDb.ParentsRepository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -22,6 +30,25 @@ builder.Services.AddScoped<IGenusService, GenusService>();
 builder.Services.AddScoped<IGenusRepository, GenusRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+
+        var secretKey = builder.Configuration["SecretKey"];
+
+        var secret = Encoding.UTF8.GetBytes(secretKey);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false,
+            ValidateIssuer = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secret)
+        };
+    });
 
 builder.Services.AddCors(options =>
 {
