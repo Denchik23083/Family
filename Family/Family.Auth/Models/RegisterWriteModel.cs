@@ -1,6 +1,6 @@
 ﻿namespace Family.Auth.Models
 {
-    public class RegisterModel
+    public class RegisterWriteModel
     {
         public string? FirstName { get; set; }
 

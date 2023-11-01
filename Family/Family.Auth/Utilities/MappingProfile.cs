@@ -8,13 +8,13 @@ namespace Family.Auth.Utilities
     {
         public MappingProfile()
         {
-            CreateMap<RegisterModel, User>();
+            CreateMap<RegisterWriteModel, User>();
 
-            CreateMap<LoginModel, User>();
+            CreateMap<LoginWriteModel, User>();
 
-            CreateMap<RefreshTokenModel, RefreshToken>();
+            CreateMap<RefreshTokenWriteModel, RefreshToken>();
 
-            CreateMap<Gender, GenderModel>();
+            CreateMap<Gender, GenderReadModel>();
         }
     }
 }

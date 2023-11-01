@@ -1,6 +1,6 @@
 ﻿namespace Family.Auth.Models
 {
-    public class GenderModel
+    public class GenderReadModel
     {
         public int Id { get; set; }
 

@@ -33,25 +33,25 @@ namespace Family.Auth.Controllers
         {
             var genders = await _userService.GetGendersAsync();
 
-            var mappedGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
+            var mappedGenders = _mapper.Map<IEnumerable<GenderReadModel>>(genders);
 
             return Ok(mappedGenders);
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterWriteModel writeModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (model.Password != model.ConfirmPassword)
+            if (writeModel.Password != writeModel.ConfirmPassword)
             {
                 return BadRequest("Your password must match confirmPassword");
             }
                 
-            var mappedUser = _mapper.Map<User>(model);
+            var mappedUser = _mapper.Map<User>(writeModel);
 
             await _service.RegisterAsync(mappedUser);
 
@@ -59,14 +59,14 @@ namespace Family.Auth.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginWriteModel writeModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var mappedUser = _mapper.Map<User>(model);
+            var mappedUser = _mapper.Map<User>(writeModel);
 
             var user = await _service.LoginAsync(mappedUser);
 
@@ -76,14 +76,14 @@ namespace Family.Auth.Controllers
         }
 
         [HttpPost("login/refresh")]
-        public async Task<IActionResult> Refresh(RefreshTokenModel model)
+        public async Task<IActionResult> Refresh(RefreshTokenWriteModel writeModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var mappedRefresh = _mapper.Map<RefreshToken>(model);
+            var mappedRefresh = _mapper.Map<RefreshToken>(writeModel);
 
             var user = await _service.RefreshAsync(mappedRefresh);
 
@@ -116,7 +116,7 @@ namespace Family.Auth.Controllers
 
             var jwt = new JwtSecurityToken(
                 notBefore: now,
-                expires: now.AddHours(10),
+                expires: now.AddMinutes(10),
                 claims: claims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256));
 

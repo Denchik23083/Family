@@ -1,6 +1,6 @@
 ﻿namespace Family.Auth.Models
 {
-    public class RefreshTokenModel
+    public class RefreshTokenWriteModel
     {
         public Guid Value { get; set; }
     }

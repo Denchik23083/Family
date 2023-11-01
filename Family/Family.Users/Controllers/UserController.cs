@@ -2,8 +2,10 @@
 using Family.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Logic.UserService;
+using Family.Users.Models;
 
 namespace Family.Users.Controllers
 {
@@ -12,10 +14,12 @@ namespace Family.Users.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -28,7 +32,9 @@ namespace Family.Users.Controllers
 
                 var user = await _service.GetUserAsync(userId);
 
-                return Ok(user);
+                var mappedUser = _mapper.Map<UserReadModel>(user);
+
+                return Ok(mappedUser);
             }
             catch (UserNotFoundException e)
             {
