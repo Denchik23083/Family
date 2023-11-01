@@ -1,6 +1,6 @@
 ﻿namespace Family.Auth.Models
 {
-    public class LoginModel
+    public class LoginWriteModel
     {
         public string? Email { get; set; }
         
