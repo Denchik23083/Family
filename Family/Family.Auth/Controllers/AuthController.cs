@@ -2,6 +2,7 @@
 using Family.Auth.Models;
 using Family.Db.Entities;
 using Family.Logic.AuthService;
+using Family.Logic.UserService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,14 +16,26 @@ namespace Family.Auth.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _service;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
 
-        public AuthController(IAuthService service, IMapper mapper, IConfiguration configuration)
+        public AuthController(IAuthService service, IUserService userService, IMapper mapper, IConfiguration configuration)
         {
             _service = service;
+            _userService = userService;
             _mapper = mapper;
             _configuration = configuration;
+        }
+
+        [HttpGet("register/gender")]
+        public async Task<IActionResult> GetGenders()
+        {
+            var genders = await _userService.GetGendersAsync();
+
+            var mappedGenders = _mapper.Map<IEnumerable<GenderModel>>(genders);
+
+            return Ok(mappedGenders);
         }
 
         [HttpPost("register")]
