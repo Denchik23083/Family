@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Logic.GenusService;
+using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
 

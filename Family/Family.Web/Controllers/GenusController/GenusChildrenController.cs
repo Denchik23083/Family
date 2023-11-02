@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Family.Logic.GenusService;
+using Family.Logic.WebService.GenusService;
 using Family.Web.Models.ChildrenModels;
 using Microsoft.AspNetCore.Mvc;
 

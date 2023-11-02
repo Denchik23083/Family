@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Logic.ChildrenService;
+using Family.Logic.WebService.ChildrenService;
 using Family.Web.Models.ChildrenModels;
 using Microsoft.AspNetCore.Mvc;
 
