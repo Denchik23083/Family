@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AutoMapper;
 using Family.Core.Exceptions;
-using Family.Logic.UserService;
+using Family.Logic.UsersService.UserService;
 using Family.Users.Models;
 
 namespace Family.Users.Controllers
@@ -22,7 +22,7 @@ namespace Family.Users.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("profile")]
         [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetUser()
         {
@@ -35,6 +35,24 @@ namespace Family.Users.Controllers
                 var mappedUser = _mapper.Map<UserReadModel>(user);
 
                 return Ok(mappedUser);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet]
+        [RequirePermission(PermissionType.GetInfo)]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _service.GetUsersAsync();
+
+                var mappedUsers = _mapper.Map<IEnumerable<UserReadModel>>(users);
+
+                return Ok(mappedUsers);
             }
             catch (UserNotFoundException e)
             {

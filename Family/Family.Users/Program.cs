@@ -1,12 +1,16 @@
 using System.Text;
 using Family.Users.Utilities;
-using Family.Logic.UserService;
-using Family.WebDb.UserRepository;
 using Family.Db;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json.Serialization;
+using Family.Logic.UsersService.UserService;
+using Family.WebDb.UsersRepository.UserRepository;
+using Family.Logic.UsersService.AdminService;
+using Family.WebDb.UsersRepository.AdminRepository;
+using Family.Logic.UsersService.GodService;
+using Family.WebDb.UsersRepository.GodRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +24,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IGodService, GodService>();
+builder.Services.AddScoped<IGodRepository, GodRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 

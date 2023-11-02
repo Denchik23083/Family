@@ -1,4 +1,4 @@
-﻿using Family.Logic.ChildrenService;
+﻿using Family.Logic.WebService.ChildrenService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Web.Controllers.ChildrenController

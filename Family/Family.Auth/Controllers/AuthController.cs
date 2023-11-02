@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Family.Auth.Models;
 using Family.Db.Entities;
-using Family.Logic.AuthService;
-using Family.Logic.UserService;
+using Family.Logic.AuthService.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Family.Logic.UsersService.UserService;
 
 namespace Family.Auth.Controllers
 {

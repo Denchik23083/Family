@@ -1,7 +1,7 @@
 using Family.Db.Entities;
-using Family.Logic.AuthService;
+using Family.Logic.AuthService.AuthService;
 using Family.Tests.Utilities;
-using Family.WebDb.AuthRepository;
+using Family.WebDb.AuthRepository.AuthRepository;
 using Moq;
 using Xunit;
 
