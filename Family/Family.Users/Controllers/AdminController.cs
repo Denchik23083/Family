@@ -38,5 +38,21 @@ namespace Family.Users.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpDelete("removeuser/id")]
+        [RequirePermission(PermissionType.RemoveUser)]
+        public async Task<IActionResult> RemoveUser(int id)
+        {
+            try
+            {
+                await _service.RemoveUserAsync(id);
+
+                return NoContent();
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

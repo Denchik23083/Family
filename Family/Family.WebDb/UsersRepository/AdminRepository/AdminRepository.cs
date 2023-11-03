@@ -22,5 +22,12 @@ namespace Family.WebDb.UsersRepository.AdminRepository
                 .Where(_ => _.RoleId == roleId)
                 .ToListAsync();
         }
+
+        public async Task RemoveUserAsync(User userToRemove)
+        {
+            _context.Users.Remove(userToRemove);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }
