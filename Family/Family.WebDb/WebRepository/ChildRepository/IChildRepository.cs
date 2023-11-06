@@ -4,11 +4,9 @@ namespace Family.WebDb.WebRepository.ChildRepository
 {
     public interface IChildRepository
     {
-        Task<IEnumerable<Child>> GetAllChildren();
+        Task<IEnumerable<Child>?> GetAllChildren();
 
-        Task<IEnumerable<Parent>> GetChildrenParents(int id);
-
-        Task<Child> GetChild(int id);
+        Task<Child?> GetChild(int id);
 
         Task CreateChild(Child createdChild);
 

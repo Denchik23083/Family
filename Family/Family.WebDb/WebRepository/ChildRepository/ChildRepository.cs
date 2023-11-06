@@ -13,7 +13,7 @@ namespace Family.WebDb.WebRepository.ChildRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Child>> GetAllChildren()
+        public async Task<IEnumerable<Child>?> GetAllChildren()
         {
             return await _context.Children
                 .Include(_ => _.User)
@@ -21,22 +21,9 @@ namespace Family.WebDb.WebRepository.ChildRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Parent>> GetChildrenParents(int id)
+        public async Task<Child?> GetChild(int id)
         {
-            /*return (await _context.ParentsChildren
-                .Where(_ => _.ChildId == id)
-                .Include(_ => _.Parent)
-                .ThenInclude(_ => _.Gender)
-                .Select(_ => _.Parent)
-                .ToListAsync())!;*/
-
-            return new List<Parent>();
-        }
-
-        public async Task<Child> GetChild(int id)
-        {
-            return (await _context.Children
-                .FirstOrDefaultAsync(p => p.Id == id))!;
+            return await _context.Children.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task CreateChild(Child createdChild)

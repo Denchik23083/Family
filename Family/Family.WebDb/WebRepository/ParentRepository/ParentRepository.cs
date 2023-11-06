@@ -19,18 +19,6 @@ namespace Family.WebDb.WebRepository.ParentRepository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Child>> GetParentsChildren(int id)
-        {
-            /*return (await _context.ParentsChildren
-                .Where(_ => _.ParentId == id)
-                .Include(_ => _.Child)
-                .ThenInclude(_ => _.Gender)
-                .Select(_ => _.Child)
-                .ToListAsync())!;*/
-
-            return new List<Child>();
-        }
-
         public async Task<Parent> GetParent(int id)
         {
             return (await _context.Parents

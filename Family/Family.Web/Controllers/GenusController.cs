@@ -10,13 +10,13 @@ namespace Family.Web.Controllers
     [ApiController]
     public class GenusController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly IGenusService _service;
+        private readonly IMapper _mapper;
 
-        public GenusController(IMapper mapper, IGenusService service)
+        public GenusController(IGenusService service, IMapper mapper)
         {
-            _mapper = mapper;
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
