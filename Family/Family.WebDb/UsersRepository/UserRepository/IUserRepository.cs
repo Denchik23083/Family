@@ -4,9 +4,9 @@ namespace Family.WebDb.UsersRepository.UserRepository
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<Gender>> GetGendersAsync();
+        Task<IEnumerable<Gender>?> GetGendersAsync();
 
-        Task<IEnumerable<User>> GetUsersAsync(int roleId);
+        Task<IEnumerable<User>?> GetUsersAsync(int roleId);
 
         Task<User?> GetUserAsync(int id);
     }

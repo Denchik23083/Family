@@ -6,8 +6,6 @@ namespace Family.Logic.WebService.ChildService
     {
         Task<IEnumerable<Child>> GetAllChildren();
 
-        Task<IEnumerable<Parent>> GetChildrenParents(int id);
-
         Task<Child> GetChild(int id);
 
         Task CreateChild(Child createdChild);

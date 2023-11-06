@@ -10,25 +10,19 @@ namespace Family.Web.Controllers
     [ApiController]
     public class ParentController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly IParentService _service;
+        private readonly IMapper _mapper;
 
-        public ParentController(IMapper mapper, IParentService service)
+        public ParentController(IParentService service, IMapper mapper)
         {
-            _mapper = mapper;
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllParents()
         {
             var parents = await _service.GetAllParents();
-
-            // С этой проверкой ошибка. Не понимает NoContent
-            /*if (!parents.Any())
-            {
-                return NoContent();
-            }*/
 
             var mapperParents = _mapper.Map<IEnumerable<ParentReadModel>>(parents);
 
@@ -39,12 +33,6 @@ namespace Family.Web.Controllers
         public async Task<IActionResult> GetParent(int id)
         {
             var parent = await _service.GetParent(id);
-
-            // С этой проверкой ошибка. Не понимает NoContent. И возвращает null
-            /*if (parent is null)
-            {
-                return NoContent();
-            }*/
 
             var mapperParent = _mapper.Map<ParentReadModel>(parent);
 

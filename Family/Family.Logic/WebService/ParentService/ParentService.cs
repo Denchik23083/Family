@@ -17,11 +17,6 @@ namespace Family.Logic.WebService.ParentService
             return await _repository.GetAllParents();
         }
 
-        public async Task<IEnumerable<Child>> GetParentsChildren(int id)
-        {
-            return await _repository.GetParentsChildren(id);
-        }
-
         public async Task<Parent> GetParent(int id)
         {
             return await _repository.GetParent(id);
