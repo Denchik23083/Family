@@ -1,5 +1,5 @@
 ﻿using Family.Db.Entities;
-using Family.WebDb.WebRepository.ChildrenRepository;
+using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
 
 namespace Family.Logic.WebService.GenusService
@@ -7,12 +7,12 @@ namespace Family.Logic.WebService.GenusService
     public class GenusService : IGenusService
     {
         private readonly IGenusRepository _repository;
-        private readonly IChildrenRepository _childrenRepository;
+        private readonly IChildRepository _childRepository;
 
-        public GenusService(IGenusRepository repository, IChildrenRepository childrenRepository)
+        public GenusService(IGenusRepository repository, IChildRepository childRepository)
         {
             _repository = repository;
-            _childrenRepository = childrenRepository;
+            _childRepository = childRepository;
         }
 
         public async Task<IEnumerable<Genus>> GetAllGenus()

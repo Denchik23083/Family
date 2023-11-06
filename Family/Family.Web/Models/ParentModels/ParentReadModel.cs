@@ -1,8 +1,8 @@
 ﻿using Family.Db.Entities;
 
-namespace Family.Web.Models.ParentsModels
+namespace Family.Web.Models.ParentModels
 {
-    public class ParentsReadModel
+    public class ParentReadModel
     {
         public int Id { get; set; }
 

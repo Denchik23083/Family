@@ -1,6 +1,6 @@
-﻿namespace Family.Web.Models.ChildrenModels
+﻿namespace Family.Web.Models.ParentModels
 {
-    public class ChildrenWriteModel
+    public class ParentWriteModel
     {
         public string? FirstName { get; set; }
 

@@ -1,13 +1,13 @@
 using System.Text;
 using System.Text.Json.Serialization;
 using Family.Db;
-using Family.Logic.WebService.ChildrenService;
+using Family.Logic.WebService.ChildService;
 using Family.Logic.WebService.GenusService;
-using Family.Logic.WebService.ParentsService;
+using Family.Logic.WebService.ParentService;
 using Family.Web.Utilities;
-using Family.WebDb.WebRepository.ChildrenRepository;
+using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
-using Family.WebDb.WebRepository.ParentsRepository;
+using Family.WebDb.WebRepository.ParentRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -22,10 +22,10 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IParentsService, ParentsService>();
-builder.Services.AddScoped<IParentsRepository, ParentsRepository>();
-builder.Services.AddScoped<IChildrenService, ChildrenService>();
-builder.Services.AddScoped<IChildrenRepository, ChildrenRepository>();
+builder.Services.AddScoped<IParentService, ParentService>();
+builder.Services.AddScoped<IParentRepository, ParentRepository>();
+builder.Services.AddScoped<IChildService, ChildService>();
+builder.Services.AddScoped<IChildRepository, ChildRepository>();
 builder.Services.AddScoped<IGenusService, GenusService>();
 builder.Services.AddScoped<IGenusRepository, GenusRepository>();
 

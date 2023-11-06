@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Logic.WebService.ParentsService;
-using Family.Web.Models.ParentsModels;
+using Family.Logic.WebService.ParentService;
+using Family.Web.Models.ParentModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Family.Web.Controllers.ParentsController
+namespace Family.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParentsController : ControllerBase
+    public class ParentController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IParentsService _service;
+        private readonly IParentService _service;
 
-        public ParentsController(IMapper mapper, IParentsService service)
+        public ParentController(IMapper mapper, IParentService service)
         {
             _mapper = mapper;
             _service = service;
@@ -30,7 +30,7 @@ namespace Family.Web.Controllers.ParentsController
                 return NoContent();
             }*/
 
-            var mapperParents = _mapper.Map<IEnumerable<ParentsReadModel>>(parents);
+            var mapperParents = _mapper.Map<IEnumerable<ParentReadModel>>(parents);
 
             return Ok(mapperParents);
         }
@@ -46,13 +46,13 @@ namespace Family.Web.Controllers.ParentsController
                 return NoContent();
             }*/
 
-            var mapperParent = _mapper.Map<ParentsReadModel>(parent);
+            var mapperParent = _mapper.Map<ParentReadModel>(parent);
 
             return Ok(mapperParent);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateParent(ParentsWriteModel model)
+        public async Task<IActionResult> CreateParent(ParentWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Family.Web.Controllers.ParentsController
         }
 
         [HttpPut("id")]
-        public async Task<IActionResult> EditParent(ParentsWriteModel model, int id)
+        public async Task<IActionResult> EditParent(ParentWriteModel model, int id)
         {
             if (!ModelState.IsValid)
             {

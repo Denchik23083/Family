@@ -4,7 +4,7 @@ using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Family.Web.Controllers.GenusController
+namespace Family.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
