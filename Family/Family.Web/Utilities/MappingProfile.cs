@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Web.Models.ChildrenModels;
+using Family.Web.Models.ChildModels;
 using Family.Web.Models.GenusModels;
-using Family.Web.Models.ParentsModels;
+using Family.Web.Models.ParentModels;
 
 namespace Family.Web.Utilities
 {
@@ -14,11 +14,11 @@ namespace Family.Web.Utilities
             CreateMap<Genus, GenusReadModel>();
             CreateMap<GenusWriteModel, Genus>();
 
-            CreateMap<Parent, ParentsReadModel>();
-            CreateMap<ParentsWriteModel, Parent>();
+            CreateMap<Parent, ParentReadModel>();
+            CreateMap<ParentWriteModel, Parent>();
 
-            CreateMap<Child, ChildrenReadModel>();
-            CreateMap<ChildrenWriteModel, Child>();
+            CreateMap<Child, ChildReadModel>();
+            CreateMap<ChildWriteModel, Child>();
         }
     }
 }

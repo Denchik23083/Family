@@ -2,13 +2,13 @@
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Family.WebDb.WebRepository.ParentsRepository
+namespace Family.WebDb.WebRepository.ParentRepository
 {
-    public class ParentsRepository : IParentsRepository
+    public class ParentRepository : IParentRepository
     {
         private readonly FamilyContext _context;
 
-        public ParentsRepository(FamilyContext context)
+        public ParentRepository(FamilyContext context)
         {
             _context = context;
         }

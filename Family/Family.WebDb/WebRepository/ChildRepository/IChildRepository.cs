@@ -1,8 +1,8 @@
 ﻿using Family.Db.Entities;
 
-namespace Family.Logic.WebService.ChildrenService
+namespace Family.WebDb.WebRepository.ChildRepository
 {
-    public interface IChildrenService
+    public interface IChildRepository
     {
         Task<IEnumerable<Child>> GetAllChildren();
 
@@ -12,8 +12,8 @@ namespace Family.Logic.WebService.ChildrenService
 
         Task CreateChild(Child createdChild);
 
-        Task EditChild(Child editedChild, int id);
+        Task EditChild(Child childToEdit);
 
-        Task DeleteChild(int id);
+        Task DeleteParent(Child childToDelete);
     }
 }

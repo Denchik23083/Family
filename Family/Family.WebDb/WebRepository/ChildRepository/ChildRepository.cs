@@ -2,13 +2,13 @@
 using Family.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Family.WebDb.WebRepository.ChildrenRepository
+namespace Family.WebDb.WebRepository.ChildRepository
 {
-    public class ChildrenRepository : IChildrenRepository
+    public class ChildRepository : IChildRepository
     {
         private readonly FamilyContext _context;
 
-        public ChildrenRepository(FamilyContext context)
+        public ChildRepository(FamilyContext context)
         {
             _context = context;
         }
@@ -16,6 +16,8 @@ namespace Family.WebDb.WebRepository.ChildrenRepository
         public async Task<IEnumerable<Child>> GetAllChildren()
         {
             return await _context.Children
+                .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .ToListAsync();
         }
 

@@ -1,13 +1,13 @@
 ﻿using Family.Db.Entities;
-using Family.WebDb.WebRepository.ParentsRepository;
+using Family.WebDb.WebRepository.ParentRepository;
 
-namespace Family.Logic.WebService.ParentsService
+namespace Family.Logic.WebService.ParentService
 {
-    public class ParentsService : IParentsService
+    public class ParentService : IParentService
     {
-        private readonly IParentsRepository _repository;
+        private readonly IParentRepository _repository;
 
-        public ParentsService(IParentsRepository repository)
+        public ParentService(IParentRepository repository)
         {
             _repository = repository;
         }

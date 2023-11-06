@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Logic.WebService.ChildrenService;
-using Family.Web.Models.ChildrenModels;
+using Family.Logic.WebService.ChildService;
+using Family.Web.Models.ChildModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Family.Web.Controllers.ChildrenController
+namespace Family.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ChildrenController : ControllerBase
+    public class ChildController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IChildrenService _service;
+        private readonly IChildService _service;
 
-        public ChildrenController(IMapper mapper, IChildrenService service)
+        public ChildController(IMapper mapper, IChildService service)
         {
             _mapper = mapper;
             _service = service;
@@ -24,7 +24,7 @@ namespace Family.Web.Controllers.ChildrenController
         {
             var children = await _service.GetAllChildren();
 
-            var mapperChildren = _mapper.Map<IEnumerable<ChildrenReadModel>>(children);
+            var mapperChildren = _mapper.Map<IEnumerable<ChildReadModel>>(children);
 
             return Ok(mapperChildren);
         }
@@ -34,13 +34,13 @@ namespace Family.Web.Controllers.ChildrenController
         {
             var child = await _service.GetChild(id);
 
-            var mapperChild = _mapper.Map<ChildrenReadModel>(child);
+            var mapperChild = _mapper.Map<ChildReadModel>(child);
 
             return Ok(mapperChild);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateChild(ChildrenWriteModel model)
+        public async Task<IActionResult> CreateChild(ChildWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace Family.Web.Controllers.ChildrenController
         }
 
         [HttpPut("id")]
-        public async Task<IActionResult> EditChild(ChildrenWriteModel model, int id)
+        public async Task<IActionResult> EditChild(ChildWriteModel model, int id)
         {
             if (!ModelState.IsValid)
             {
