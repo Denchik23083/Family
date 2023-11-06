@@ -9,7 +9,7 @@ namespace Family.Tests.AuthTests
 {
     public class AuthTests : AuthUser
     {
-        private Mock<IAuthRepository> _repository;
+        private readonly Mock<IAuthRepository> _repository;
 
         public AuthTests()
         {
