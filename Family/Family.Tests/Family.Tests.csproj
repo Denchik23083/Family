@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UsersTests\AdminTests.cs~RF6e66ac81.TMP\**" />
+    <EmbeddedResource Remove="UsersTests\AdminTests.cs~RF6e66ac81.TMP\**" />
+    <None Remove="UsersTests\AdminTests.cs~RF6e66ac81.TMP\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="xunit" Version="2.4.2" />
