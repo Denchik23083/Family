@@ -13,12 +13,12 @@ namespace Family.WebDb.UsersRepository.UserRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Gender>> GetGendersAsync()
+        public async Task<IEnumerable<Gender>?> GetGendersAsync()
         {
             return await _context.Genders.ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync(int roleId)
+        public async Task<IEnumerable<User>?> GetUsersAsync(int roleId)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
