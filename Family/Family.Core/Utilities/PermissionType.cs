@@ -4,13 +4,15 @@
     {
         //User, Child, ParentChild, Admin, God
         GetInfo,
+        CreateGenus,
 
         //Child, ParentChild, Admin, God
         GetChild,
+        GetGenus,
 
         //ParentChild, Admin, God
         GetParent,
-        CrudGenus,
+        EditDeleteGenus,
 
         //Admin, God
         RemoveUser,

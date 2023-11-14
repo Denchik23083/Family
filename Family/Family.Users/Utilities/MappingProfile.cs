@@ -9,6 +9,10 @@ namespace Family.Users.Utilities
         public MappingProfile()
         {
             CreateMap<User, UserReadModel>();
+
+            CreateMap<Gender, GenderReadModel>();
+
+            CreateMap<GenderReadModel, Gender>();
         }
     }
 }
