@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Family.Logic.UsersService.UserService;
+using Family.Core.Exceptions;
 
 namespace Family.Auth.Controllers
 {
@@ -31,11 +32,18 @@ namespace Family.Auth.Controllers
         [HttpGet("register/gender")]
         public async Task<IActionResult> GetGenders()
         {
-            var genders = await _userService.GetGendersAsync();
+            try
+            {
+                var genders = await _userService.GetGendersAsync();
 
-            var mappedGenders = _mapper.Map<IEnumerable<GenderReadModel>>(genders);
+                var mappedGenders = _mapper.Map<IEnumerable<GenderReadModel>>(genders);
 
-            return Ok(mappedGenders);
+                return Ok(mappedGenders);
+            }
+            catch (GenderNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("register")]
@@ -66,13 +74,20 @@ namespace Family.Auth.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mappedUser = _mapper.Map<User>(writeModel);
+            try
+            {
+                var mappedUser = _mapper.Map<User>(writeModel);
 
-            var user = await _service.LoginAsync(mappedUser);
+                var user = await _service.LoginAsync(mappedUser);
 
-            var tokenModel = await GetUserToken(user);
+                var tokenModel = await GetUserToken(user);
 
-            return Ok(tokenModel);
+                return Ok(tokenModel);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("login/refresh")]
@@ -83,13 +98,20 @@ namespace Family.Auth.Controllers
                 return BadRequest(ModelState);
             }
 
-            var mappedRefresh = _mapper.Map<RefreshToken>(writeModel);
+            try
+            {
+                var mappedRefresh = _mapper.Map<RefreshToken>(writeModel);
 
-            var user = await _service.RefreshAsync(mappedRefresh);
+                var user = await _service.RefreshAsync(mappedRefresh);
 
-            var tokenModel = await GetUserToken(user);
+                var tokenModel = await GetUserToken(user);
 
-            return Ok(tokenModel);
+                return Ok(tokenModel);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         private async Task<TokenModel> GetUserToken(User user)

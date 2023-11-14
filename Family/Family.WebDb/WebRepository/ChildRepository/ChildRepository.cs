@@ -23,7 +23,10 @@ namespace Family.WebDb.WebRepository.ChildRepository
 
         public async Task<Child?> GetChild(int id)
         {
-            return await _context.Children.FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Children
+                .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task CreateChild(Child createdChild)

@@ -54,7 +54,7 @@ namespace Family.Web.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("id")]
         public async Task<IActionResult> CreateChild(ChildWriteModel model)
         {
             if (!ModelState.IsValid)

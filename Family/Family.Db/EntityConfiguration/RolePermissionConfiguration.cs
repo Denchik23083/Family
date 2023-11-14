@@ -40,7 +40,7 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 4,
                     RoleId = 1,
-                    PermissionType = PermissionType.CrudGenus
+                    PermissionType = PermissionType.EditDeleteGenus
                 },
                 new RolePermission
                 {
@@ -82,7 +82,7 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 11,
                     RoleId = 2,
-                    PermissionType = PermissionType.CrudGenus
+                    PermissionType = PermissionType.EditDeleteGenus
                 },
                 new RolePermission
                 {
@@ -112,7 +112,7 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 16,
                     RoleId = 3,
-                    PermissionType = PermissionType.CrudGenus
+                    PermissionType = PermissionType.EditDeleteGenus
                 },
                 new RolePermission
                 {
