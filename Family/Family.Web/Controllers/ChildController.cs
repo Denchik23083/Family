@@ -62,9 +62,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createdChild = _mapper.Map<Child>(model);
+            var mappedChild = _mapper.Map<Child>(model);
 
-            await _service.CreateChild(createdChild);
+            await _service.CreateChild(mappedChild);
 
             return NoContent();
         }
@@ -79,9 +79,9 @@ namespace Family.Web.Controllers
 
             try
             {
-                var editedChild = _mapper.Map<Child>(model);
+                var mappedChild = _mapper.Map<Child>(model);
 
-                await _service.EditChild(editedChild, id);
+                await _service.EditChild(mappedChild, id);
 
                 return NoContent();
             }

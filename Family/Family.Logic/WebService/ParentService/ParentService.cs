@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities;
+﻿using Family.Core.Exceptions;
+using Family.Db.Entities;
 using Family.WebDb.WebRepository.ParentRepository;
 
 namespace Family.Logic.WebService.ParentService
@@ -12,14 +13,28 @@ namespace Family.Logic.WebService.ParentService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Parent>> GetAllParents()
+        public async Task<IEnumerable<Parent>?> GetAllParents()
         {
-            return await _repository.GetAllParents();
+            var parents = await _repository.GetAllParents();
+
+            if (parents is not null)
+            {
+                throw new ParentNotFoundException("Parents not found");
+            }
+
+            return parents;
         }
 
-        public async Task<Parent> GetParent(int id)
+        public async Task<Parent?> GetParent(int id)
         {
-            return await _repository.GetParent(id);
+            var parent = await _repository.GetParent(id);
+
+            if (parent is not null)
+            {
+                throw new ParentNotFoundException("Parent not found");
+            }
+
+            return parent;
         }
 
         public async Task CreateParent(Parent createdParent)
@@ -33,7 +48,7 @@ namespace Family.Logic.WebService.ParentService
 
             if (parentToEdit is null)
             {
-                throw new ArgumentNullException();
+                throw new ParentNotFoundException("Parent not found");
             }
 
             await _repository.EditParent(parentToEdit);
@@ -45,7 +60,7 @@ namespace Family.Logic.WebService.ParentService
 
             if (parentToDelete is null)
             {
-                throw new ArgumentNullException();
+                throw new ParentNotFoundException("Parent not found");
             }
 
             await _repository.DeleteParent(parentToDelete);

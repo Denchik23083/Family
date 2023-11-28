@@ -24,9 +24,9 @@ namespace Family.Web.Controllers
         {
             var genus = await _service.GetAllGenus();
 
-            var mapperGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
+            var mappedGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
 
-            return Ok(mapperGenus);
+            return Ok(mappedGenus);
         }
 
         [HttpGet("id")]
@@ -34,12 +34,12 @@ namespace Family.Web.Controllers
         {
             var genus = await _service.GetGenus(id);
 
-            var mapperGenus = _mapper.Map<GenusReadModel>(genus);
+            var mappedGenus = _mapper.Map<GenusReadModel>(genus);
 
-            return Ok(mapperGenus);
+            return Ok(mappedGenus);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> CreateGenus(GenusWriteModel model)
         {
             if (!ModelState.IsValid)
@@ -47,9 +47,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createdGenus = _mapper.Map<Genus>(model);
+            var mappedGenus = _mapper.Map<Genus>(model);
 
-            //await _service.CreateGenus(createdGenus);
+            await _service.CreateGenus(mappedGenus);
 
             return NoContent();
         }
@@ -62,9 +62,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var editedGenus = _mapper.Map<Genus>(model);
+            var mappedGenus = _mapper.Map<Genus>(model);
 
-            //await _service.EditGenus(editedGenus, id);
+            await _service.EditGenus(mappedGenus, id);
 
             return NoContent();
         }
@@ -72,9 +72,9 @@ namespace Family.Web.Controllers
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteGenus(int id)
         {
-            //await _service.DeleteGenus(id);
+            await _service.DeleteGenus(id);
 
             return NoContent();
-        }
+        }*/
     }
 }

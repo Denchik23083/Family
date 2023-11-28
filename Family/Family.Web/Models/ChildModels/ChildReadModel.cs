@@ -1,4 +1,5 @@
 ﻿using Family.Db.Entities;
+using Family.Users.Models;
 
 namespace Family.Web.Models.ChildModels
 {
@@ -6,14 +7,12 @@ namespace Family.Web.Models.ChildModels
     {
         public int Id { get; set; }
 
-        public string? FirstName { get; set; }
+        public UserReadModel? User { get; set; }
 
-        public string? LastName { get; set; }
+        public int UserId { get; set; }
 
-        public int Age { get; set; }
+        public int? GenusId { get; set; }
 
-        public Gender? Gender { get; set; }
-
-        public int GenderId { get; set; }
+        public Genus? Genus { get; set; }
     }
 }

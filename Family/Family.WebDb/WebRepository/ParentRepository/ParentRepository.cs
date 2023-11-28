@@ -13,16 +13,20 @@ namespace Family.WebDb.WebRepository.ParentRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Parent>> GetAllParents()
+        public async Task<IEnumerable<Parent>?> GetAllParents()
         {
             return await _context.Parents
+                .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .ToListAsync();
         }
 
-        public async Task<Parent> GetParent(int id)
+        public async Task<Parent?> GetParent(int id)
         {
-            return (await _context.Parents
-                .FirstOrDefaultAsync(p => p.Id == id))!;
+            return await _context.Parents
+                .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task CreateParent(Parent createdParent)
