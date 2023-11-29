@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Family.Core.Exceptions;
 using Family.Db.Entities;
 using Family.Logic.WebService.ParentService;
 using Family.Web.Models.ParentModels;
@@ -22,21 +23,35 @@ namespace Family.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllParents()
         {
-            var parents = await _service.GetAllParents();
+            try
+            {
+                var parents = await _service.GetAllParents();
 
-            var mapperParents = _mapper.Map<IEnumerable<ParentReadModel>>(parents);
+                var mappedParents = _mapper.Map<IEnumerable<ParentReadModel>>(parents);
 
-            return Ok(mapperParents);
+                return Ok(mappedParents);
+            }
+            catch (ParentNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }            
         }
 
         [HttpGet("id")]
         public async Task<IActionResult> GetParent(int id)
         {
-            var parent = await _service.GetParent(id);
+            try
+            {
+                var parent = await _service.GetParent(id);
 
-            var mapperParent = _mapper.Map<ParentReadModel>(parent);
+                var mappedParent = _mapper.Map<ParentReadModel>(parent);
 
-            return Ok(mapperParent);
+                return Ok(mappedParent);
+            }
+            catch (ParentNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
@@ -47,9 +62,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createdParent = _mapper.Map<Parent>(model);
+            var mappedParent = _mapper.Map<Parent>(model);
 
-            await _service.CreateParent(createdParent);
+            await _service.CreateParent(mappedParent);
 
             return NoContent();
         }
@@ -62,19 +77,33 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var editedParent = _mapper.Map<Parent>(model);
+            try
+            {
+                var mappedParent = _mapper.Map<Parent>(model);
 
-            await _service.EditParent(editedParent, id);
+                await _service.EditParent(mappedParent, id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (ParentNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteParent(int id)
         {
-            await _service.DeleteParent(id);
+            try
+            {
+                await _service.DeleteParent(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (ParentNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

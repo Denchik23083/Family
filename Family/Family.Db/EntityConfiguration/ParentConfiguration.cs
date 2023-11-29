@@ -18,16 +18,16 @@ namespace Family.Db.EntityConfiguration
                 .WithMany(_ => _.Parents)
                 .HasForeignKey(_ => _.GenusId);
 
-            builder.ToTable("Parents").HasData(
+            builder.HasData(
                 new List<Parent>
                 {
-                    new()
+                    new Parent
                     {
                         Id = 1,
                         UserId = 3,
                         GenusId = 1
                     },
-                    new()
+                    new Parent
                     {
                         Id = 2,
                         UserId = 4,

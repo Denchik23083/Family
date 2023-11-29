@@ -17,7 +17,7 @@ namespace Family.Db.EntityConfiguration
                 .WithMany(_ => _.RolePermissions)
                 .HasForeignKey(_ => _.RoleId);
 
-            builder.ToTable("RolePermissions").HasData(
+            builder.HasData(
                 new RolePermission
                 {
                     Id = 1,

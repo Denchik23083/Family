@@ -13,7 +13,7 @@ namespace Family.Db.EntityConfiguration
 
             builder.Property(_ => _.Type).HasConversion<int>();
 
-            builder.ToTable("Genders").HasData(
+            builder.HasData(
                 new Gender
                 {
                     Id = 1,

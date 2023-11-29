@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Family.Db.Entities;
+using Family.Core.Exceptions;
 using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
@@ -22,24 +22,38 @@ namespace Family.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllGenus()
         {
-            var genus = await _service.GetAllGenus();
+            try
+            {
+                var genus = await _service.GetAllGenus();
 
-            var mapperGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
+                var mappedGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
 
-            return Ok(mapperGenus);
+                return Ok(mappedGenus);
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id")]
         public async Task<IActionResult> GetGenus(int id)
         {
-            var genus = await _service.GetGenus(id);
+            try
+            {
+                var genus = await _service.GetGenus(id);
 
-            var mapperGenus = _mapper.Map<GenusReadModel>(genus);
+                var mappedGenus = _mapper.Map<GenusReadModel>(genus);
 
-            return Ok(mapperGenus);
+                return Ok(mappedGenus);
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> CreateGenus(GenusWriteModel model)
         {
             if (!ModelState.IsValid)
@@ -47,9 +61,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createdGenus = _mapper.Map<Genus>(model);
+            var mappedGenus = _mapper.Map<Genus>(model);
 
-            //await _service.CreateGenus(createdGenus);
+            await _service.CreateGenus(mappedGenus);
 
             return NoContent();
         }
@@ -62,9 +76,9 @@ namespace Family.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var editedGenus = _mapper.Map<Genus>(model);
+            var mappedGenus = _mapper.Map<Genus>(model);
 
-            //await _service.EditGenus(editedGenus, id);
+            await _service.EditGenus(mappedGenus, id);
 
             return NoContent();
         }
@@ -72,9 +86,9 @@ namespace Family.Web.Controllers
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteGenus(int id)
         {
-            //await _service.DeleteGenus(id);
+            await _service.DeleteGenus(id);
 
             return NoContent();
-        }
+        }*/
     }
 }

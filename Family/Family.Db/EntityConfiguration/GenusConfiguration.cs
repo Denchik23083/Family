@@ -12,10 +12,10 @@ namespace Family.Db.EntityConfiguration
 
             builder.Property(_ => _.Name).IsRequired();
 
-            builder.ToTable("Genus").HasData(
+            builder.HasData(
                 new List<Genus>
                 {
-                    new()
+                    new Genus
                     {
                         Id = 1,
                         Name = "Kudryavovs"

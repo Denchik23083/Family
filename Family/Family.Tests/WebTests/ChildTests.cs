@@ -104,41 +104,5 @@ namespace Family.Tests.WebTests
             Assert.NotNull(result);
             Assert.Equal(child, result);
         }
-
-        [Fact]
-        public async Task GetChild()
-        {
-            var expectedId = 1;
-
-            var child = new Child
-            {
-                Id = expectedId,
-                UserId = 5,
-                User = new User
-                {
-                    Id = 5,
-                    FirstName = "Denis",
-                    LastName = "Kudryavov",
-                    Email = "denis@gmail.com",
-                    Password = "0000",
-                    BirthDay = new DateTime(2003, 08, 23),
-                    GenderId = 1,
-                    RoleId = 4
-                }
-            };
-
-            _repository.Setup(_ => _.GetChild(expectedId))
-                .ReturnsAsync(child);
-
-            IChildService service = new ChildService(_repository.Object);
-
-            var result = await service.GetChild(expectedId);
-
-            _repository.Verify(_ => _.GetChild(expectedId),
-                Times.Once);
-
-            Assert.NotNull(result);
-            Assert.Equal(child, result);
-        }
     }
 }
