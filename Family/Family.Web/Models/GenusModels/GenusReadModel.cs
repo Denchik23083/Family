@@ -8,13 +8,7 @@ namespace Family.Web.Models.GenusModels
 
         public string? Name { get; set; }
 
-        public int FatherId { get; set; }
-
-        public Parent? Father { get; set; }
-
-        public int MotherId { get; set; }
-
-        public Parent? Mother { get; set; }
+        public List<Parent>? Parents { get; set; }
 
         public List<Child>? Children { get; set; }
     }

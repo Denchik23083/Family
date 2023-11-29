@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities;
+﻿using Family.Core.Exceptions;
+using Family.Db.Entities;
 using Family.WebDb.WebRepository.GenusRepository;
 
 namespace Family.Logic.WebService.GenusService
@@ -14,12 +15,26 @@ namespace Family.Logic.WebService.GenusService
 
         public async Task<IEnumerable<Genus>?> GetAllGenus()
         {
-            return await _repository.GetAllGenus();
+            var genus = await _repository.GetAllGenus();
+
+            if (genus is null)
+            {
+                throw new GenusNotFoundException("Genus not found");
+            }
+
+            return genus;
         }
 
         public async Task<Genus?> GetGenus(int id)
         {
-            return await _repository.GetGenus(id);
+            var genus = await _repository.GetGenus(id);
+
+            if (genus is null)
+            {
+                throw new GenusNotFoundException("Genus not found");
+            }
+
+            return genus;
         }
     }
 }

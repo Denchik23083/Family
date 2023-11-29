@@ -17,7 +17,7 @@ namespace Family.Logic.WebService.ParentService
         {
             var parents = await _repository.GetAllParents();
 
-            if (parents is not null)
+            if (parents is null)
             {
                 throw new ParentNotFoundException("Parents not found");
             }
@@ -29,7 +29,7 @@ namespace Family.Logic.WebService.ParentService
         {
             var parent = await _repository.GetParent(id);
 
-            if (parent is not null)
+            if (parent is null)
             {
                 throw new ParentNotFoundException("Parent not found");
             }

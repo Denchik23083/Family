@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Family.Db.Entities;
+using Family.Core.Exceptions;
 using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
@@ -22,21 +22,35 @@ namespace Family.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllGenus()
         {
-            var genus = await _service.GetAllGenus();
+            try
+            {
+                var genus = await _service.GetAllGenus();
 
-            var mappedGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
+                var mappedGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
 
-            return Ok(mappedGenus);
+                return Ok(mappedGenus);
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id")]
         public async Task<IActionResult> GetGenus(int id)
         {
-            var genus = await _service.GetGenus(id);
+            try
+            {
+                var genus = await _service.GetGenus(id);
 
-            var mappedGenus = _mapper.Map<GenusReadModel>(genus);
+                var mappedGenus = _mapper.Map<GenusReadModel>(genus);
 
-            return Ok(mappedGenus);
+                return Ok(mappedGenus);
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         /*[HttpPost]

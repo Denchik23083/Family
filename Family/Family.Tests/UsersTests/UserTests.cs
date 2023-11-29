@@ -1,8 +1,6 @@
 ﻿using Family.Core.Utilities;
-using Family.Db;
 using Family.Db.Entities;
 using Family.Logic.UsersService.UserService;
-using Family.Tests.AuthTests;
 using Family.Tests.Utilities;
 using Family.WebDb.UsersRepository.UserRepository;
 using Moq;

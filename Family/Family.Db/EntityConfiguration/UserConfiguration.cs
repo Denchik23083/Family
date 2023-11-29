@@ -24,7 +24,7 @@ namespace Family.Db.EntityConfiguration
                 .WithMany()
                 .HasForeignKey(_ => _.RoleId);
 
-            builder.ToTable("Users").HasData(
+            builder.HasData(
                 new User
                 {
                     Id = 1,
