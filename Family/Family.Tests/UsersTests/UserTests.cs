@@ -99,14 +99,14 @@ namespace Family.Tests.UsersTests
                 RoleId = 4
             };
 
-            _repository.Setup(_ => _.GetUserAsync(expectedId))
+            _repository.Setup(_ => _.DeleteUserAsync(expectedId))
                 .ReturnsAsync(user);
 
             IUserService service = new UserService(_repository.Object);
 
             var result = await service.GetUserAsync(expectedId);
 
-            _repository.Verify(_ => _.GetUserAsync(expectedId),
+            _repository.Verify(_ => _.DeleteUserAsync(expectedId),
                 Times.Once);
 
             Assert.NotNull(result);

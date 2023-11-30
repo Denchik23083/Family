@@ -23,9 +23,9 @@ namespace Family.WebDb.UsersRepository.AdminRepository
                 .ToListAsync();
         }
 
-        public async Task RemoveUserAsync(User userToRemove)
+        public async Task DeleteUserAsync(User userToDelete)
         {
-            _context.Users.Remove(userToRemove);
+            _context.Users.Remove(userToDelete);
 
             await _context.SaveChangesAsync();
         }

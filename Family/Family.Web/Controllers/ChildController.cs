@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Family.Core.Exceptions;
+using Family.Core.Utilities;
 using Family.Db.Entities;
 using Family.Logic.WebService.ChildService;
+using Family.Users.Utilities;
 using Family.Web.Models.ChildModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +23,7 @@ namespace Family.Web.Controllers
         }
 
         [HttpGet]
+        [RequirePermission(PermissionType.GetChild)]
         public async Task<IActionResult> GetAllChildren()
         {
             try
@@ -38,6 +41,7 @@ namespace Family.Web.Controllers
         }
 
         [HttpGet("id")]
+        [RequirePermission(PermissionType.GetChild)]
         public async Task<IActionResult> GetChild(int id)
         {
             try
@@ -70,7 +74,7 @@ namespace Family.Web.Controllers
         }
 
         [HttpPut("id")]
-        public async Task<IActionResult> EditChild(ChildWriteModel model, int id)
+        public async Task<IActionResult> UpdateChild(ChildWriteModel model, int id)
         {
             if (!ModelState.IsValid)
             {
@@ -81,7 +85,7 @@ namespace Family.Web.Controllers
             {
                 var mappedChild = _mapper.Map<Child>(model);
 
-                await _service.EditChild(mappedChild, id);
+                await _service.UpdateChild(mappedChild, id);
 
                 return NoContent();
             }

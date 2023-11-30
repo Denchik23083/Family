@@ -10,7 +10,7 @@ namespace Family.Logic.WebService.ParentService
 
         Task CreateParent(Parent createdParent);
 
-        Task EditParent(Parent editedParent, int id);
+        Task UpdateParent(Parent updatedParent, int id);
 
         Task DeleteParent(int id);
     }

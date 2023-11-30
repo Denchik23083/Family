@@ -30,16 +30,16 @@ namespace Family.Logic.UsersService.AdminService
             return admins;
         }
 
-        public async Task RemoveUserAsync(int id)
+        public async Task DeleteUserAsync(int id)
         {
-            var userToRemove = await _userRepository.GetUserAsync(id);
+            var userToDelete = await _userRepository.DeleteUserAsync(id);
 
-            if (userToRemove is null)
+            if (userToDelete is null)
             {
                 throw new UserNotFoundException("User not found");
             }
 
-            await _repository.RemoveUserAsync(userToRemove);
+            await _repository.DeleteUserAsync(userToDelete);
         }
     }
 }

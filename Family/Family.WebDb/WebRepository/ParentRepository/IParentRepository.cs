@@ -10,7 +10,7 @@ namespace Family.WebDb.WebRepository.ParentRepository
 
         Task CreateParent(Parent createdParent);
 
-        Task EditParent(Parent parentToEdit);
+        Task UpdateParent(Parent parentToUpdate);
 
         Task DeleteParent(Parent parentToDelete);
     }

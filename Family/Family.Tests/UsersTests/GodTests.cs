@@ -38,7 +38,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 5
             };
 
-            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
+            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
                 .ReturnsAsync(userToAdmin);
 
             _repository.Setup(_ => _.UserToAdminAsync(userToAdmin));
@@ -47,7 +47,7 @@ namespace Family.Tests.UsersTests
 
             await service.UserToAdminAsync(expectedId);
 
-            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
+            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.UserToAdminAsync(userToAdmin),
@@ -75,7 +75,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 2
             };
 
-            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
+            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
                 .ReturnsAsync(adminToUser);
 
             _repository.Setup(_ => _.AdminToUserAsync(adminToUser));
@@ -84,7 +84,7 @@ namespace Family.Tests.UsersTests
 
             await service.AdminToUserAsync(expectedId);
 
-            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
+            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.AdminToUserAsync(adminToUser),

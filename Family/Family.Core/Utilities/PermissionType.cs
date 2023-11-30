@@ -2,20 +2,22 @@
 {
     public enum PermissionType
     {
-        //User, Child, ParentChild, Admin, God
+        //User, Child, Parent, Admin, God
         GetInfo,
+
+        //User, Admin, God
         CreateGenus,
 
-        //Child, ParentChild, Admin, God
+        //Child, Parent, Admin, God
         GetChild,
-        GetGenus,
-
-        //ParentChild, Admin, God
+        
+        //Parent, Admin, God
         GetParent,
-        EditDeleteGenus,
+        GetGenus,
+        UpdateDeleteGenus,
 
         //Admin, God
-        RemoveUser,
+        DeleteUser,
 
         //God
         UserToAdmin,

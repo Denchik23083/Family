@@ -36,7 +36,7 @@ namespace Family.WebDb.WebRepository.ChildRepository
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditChild(Child childToEdit)
+        public async Task UpdateChild(Child childToUpdate)
         {
             await _context.SaveChangesAsync();
         }

@@ -51,11 +51,11 @@ namespace Family.Tests.UsersTests
         }
 
         [Fact]
-        public async Task RemoveUser()
+        public async Task DeleteUser()
         {
             var expectedId = 5;
 
-            var userToRemove = new User
+            var userToDelete = new User
             {
                 Id = expectedId,
                 FirstName = "Denis",
@@ -67,19 +67,19 @@ namespace Family.Tests.UsersTests
                 RoleId = 4
             };
 
-            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
-                .ReturnsAsync(userToRemove);
+            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
+                .ReturnsAsync(userToDelete);
 
-            _repository.Setup(_ => _.RemoveUserAsync(userToRemove));
+            _repository.Setup(_ => _.DeleteUserAsync(userToDelete));
 
             IAdminService service = new AdminService(_repository.Object, _userRepository.Object);
 
-            await service.RemoveUserAsync(expectedId);
+            await service.DeleteUserAsync(expectedId);
 
-            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
+            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
                 Times.Once);
 
-            _repository.Verify(_ => _.RemoveUserAsync(userToRemove),
+            _repository.Verify(_ => _.DeleteUserAsync(userToDelete),
                 Times.Once);
         }
     }
