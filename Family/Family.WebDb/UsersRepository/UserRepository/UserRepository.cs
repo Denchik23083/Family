@@ -28,7 +28,7 @@ namespace Family.WebDb.UsersRepository.UserRepository
                 .ToListAsync();
         }
 
-        public async Task<User?> GetUserAsync(int id)
+        public async Task<User?> DeleteUserAsync(int id)
         {
             return await _context.Users
                 .Include(_ => _.Gender)

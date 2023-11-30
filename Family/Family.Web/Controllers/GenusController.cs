@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Family.Core.Exceptions;
+using Family.Core.Utilities;
+using Family.Db.Entities;
 using Family.Logic.WebService.GenusService;
+using Family.Users.Utilities;
 using Family.Web.Models.GenusModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +23,7 @@ namespace Family.Web.Controllers
         }
 
         [HttpGet]
+        [RequirePermission(PermissionType.GetGenus)]
         public async Task<IActionResult> GetAllGenus()
         {
             try
@@ -37,6 +41,7 @@ namespace Family.Web.Controllers
         }
 
         [HttpGet("id")]
+        [RequirePermission(PermissionType.GetGenus)]
         public async Task<IActionResult> GetGenus(int id)
         {
             try
@@ -54,6 +59,7 @@ namespace Family.Web.Controllers
         }
 
         /*[HttpPost]
+        [RequirePermission(PermissionType.CreateGenus)]
         public async Task<IActionResult> CreateGenus(GenusWriteModel model)
         {
             if (!ModelState.IsValid)
@@ -69,7 +75,8 @@ namespace Family.Web.Controllers
         }
 
         [HttpPut("id")]
-        public async Task<IActionResult> EditGenus(GenusWriteModel model, int id)
+        [RequirePermission(PermissionType.UpdateDeleteGenus)]
+        public async Task<IActionResult> UpdateGenus(GenusWriteModel model, int id)
         {
             if (!ModelState.IsValid)
             {
@@ -78,12 +85,13 @@ namespace Family.Web.Controllers
 
             var mappedGenus = _mapper.Map<Genus>(model);
 
-            await _service.EditGenus(mappedGenus, id);
+            await _service.UpdateGenus(mappedGenus, id);
 
             return NoContent();
         }
 
         [HttpDelete("id")]
+        [RequirePermission(PermissionType.UpdateDeleteGenus)]
         public async Task<IActionResult> DeleteGenus(int id)
         {
             await _service.DeleteGenus(id);

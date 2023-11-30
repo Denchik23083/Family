@@ -42,16 +42,16 @@ namespace Family.Logic.WebService.ParentService
             await _repository.CreateParent(createdParent);
         }
 
-        public async Task EditParent(Parent editedParent, int id)
+        public async Task UpdateParent(Parent updatedParent, int id)
         {
-            var parentToEdit = await _repository.GetParent(id);
+            var parentToUpdate = await _repository.GetParent(id);
 
-            if (parentToEdit is null)
+            if (parentToUpdate is null)
             {
                 throw new ParentNotFoundException("Parent not found");
             }
 
-            await _repository.EditParent(parentToEdit);
+            await _repository.UpdateParent(parentToUpdate);
         }
 
         public async Task DeleteParent(int id)

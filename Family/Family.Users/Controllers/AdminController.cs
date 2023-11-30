@@ -39,13 +39,13 @@ namespace Family.Users.Controllers
             }
         }
 
-        [HttpDelete("removeuser/id")]
-        [RequirePermission(PermissionType.RemoveUser)]
-        public async Task<IActionResult> RemoveUser(int id)
+        [HttpDelete("deleteuser/id")]
+        [RequirePermission(PermissionType.DeleteUser)]
+        public async Task<IActionResult> DeleteUser(int id)
         {
             try
             {
-                await _service.RemoveUserAsync(id);
+                await _service.DeleteUserAsync(id);
 
                 return NoContent();
             }

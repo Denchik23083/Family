@@ -19,7 +19,7 @@ namespace Family.Logic.UsersService.GodService
         {
             var roleId = 2;
 
-            var userToAdmin = await _userRepository.GetUserAsync(id);
+            var userToAdmin = await _userRepository.DeleteUserAsync(id);
 
             if (userToAdmin is null)
             {
@@ -35,7 +35,7 @@ namespace Family.Logic.UsersService.GodService
         {
             var roleId = 5;
 
-            var adminToUser = await _userRepository.GetUserAsync(id);
+            var adminToUser = await _userRepository.DeleteUserAsync(id);
 
             if (adminToUser is null)
             {

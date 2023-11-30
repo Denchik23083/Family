@@ -6,6 +6,6 @@ namespace Family.Logic.UsersService.AdminService
     {
         Task<IEnumerable<User>> GetAdminsAsync();
 
-        Task RemoveUserAsync(int id);
+        Task DeleteUserAsync(int id);
     }
 }

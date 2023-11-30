@@ -6,6 +6,6 @@ namespace Family.WebDb.UsersRepository.AdminRepository
     {
         Task<IEnumerable<User>?> GetAdminsAsync(int roleId);
 
-        Task RemoveUserAsync(User userToRemove);
+        Task DeleteUserAsync(User userToDelete);
     }
 }
