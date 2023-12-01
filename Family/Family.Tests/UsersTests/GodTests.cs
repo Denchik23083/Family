@@ -30,7 +30,6 @@ namespace Family.Tests.UsersTests
             {
                 Id = expectedId,
                 FirstName = "Denis",
-                LastName = "Kudryavov",
                 Email = "denis@gmail.com",
                 Password = "0000",
                 BirthDay = new DateTime(2003, 08, 23),
@@ -38,7 +37,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 5
             };
 
-            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
+            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
                 .ReturnsAsync(userToAdmin);
 
             _repository.Setup(_ => _.UserToAdminAsync(userToAdmin));
@@ -47,7 +46,7 @@ namespace Family.Tests.UsersTests
 
             await service.UserToAdminAsync(expectedId);
 
-            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
+            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.UserToAdminAsync(userToAdmin),
@@ -67,7 +66,6 @@ namespace Family.Tests.UsersTests
             {
                 Id = expectedId,
                 FirstName = "Admin",
-                LastName = "Full",
                 Email = "admin@gmail.com",
                 Password = "0000",
                 BirthDay = DateTime.Now.AddYears(-30),
@@ -75,7 +73,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 2
             };
 
-            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
+            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
                 .ReturnsAsync(adminToUser);
 
             _repository.Setup(_ => _.AdminToUserAsync(adminToUser));
@@ -84,7 +82,7 @@ namespace Family.Tests.UsersTests
 
             await service.AdminToUserAsync(expectedId);
 
-            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
+            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.AdminToUserAsync(adminToUser),

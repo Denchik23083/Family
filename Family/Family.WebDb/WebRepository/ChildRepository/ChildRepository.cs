@@ -13,7 +13,7 @@ namespace Family.WebDb.WebRepository.ChildRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Child>?> GetAllChildren()
+        public async Task<IEnumerable<Child>?> GetAllChildrenAsync()
         {
             return await _context.Children
                 .Include(_ => _.User)
@@ -21,7 +21,7 @@ namespace Family.WebDb.WebRepository.ChildRepository
                 .ToListAsync();
         }
 
-        public async Task<Child?> GetChild(int id)
+        public async Task<Child?> GetChildAsync(int id)
         {
             return await _context.Children
                 .Include(_ => _.User)

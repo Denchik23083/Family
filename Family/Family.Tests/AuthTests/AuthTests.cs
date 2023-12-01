@@ -22,7 +22,6 @@ namespace Family.Tests.AuthTests
             var userModel = new User
             {
                 FirstName = "Test",
-                LastName = "Test",
                 BirthDay = new DateTime(2000, 10, 10),
                 Email = "new@gmail.com",
                 Password = "0000",

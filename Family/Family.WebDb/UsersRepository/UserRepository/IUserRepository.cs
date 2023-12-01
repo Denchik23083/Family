@@ -8,6 +8,6 @@ namespace Family.WebDb.UsersRepository.UserRepository
 
         Task<IEnumerable<User>?> GetUsersAsync(int roleId);
 
-        Task<User?> DeleteUserAsync(int id);
+        Task<User?> GetUserAsync(int id);
     }
 }

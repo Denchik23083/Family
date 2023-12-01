@@ -11,7 +11,6 @@ namespace Family.Db.EntityConfiguration
             builder.HasKey(_ => _.Id);
 
             builder.Property(_ => _.FirstName).IsRequired();
-            builder.Property(_ => _.LastName).IsRequired();
             builder.Property(_ => _.Email).IsRequired();
             builder.Property(_ => _.Password).IsRequired();
             builder.Property(_ => _.BirthDay).IsRequired();
@@ -29,7 +28,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 1,
                     FirstName = "God",
-                    LastName = "Full",
                     Email = "god@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(),
@@ -40,7 +38,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 2,
                     FirstName = "Admin",
-                    LastName = "Full",
                     Email = "admin@gmail.com",
                     Password = "0000",
                     BirthDay = DateTime.Now.AddYears(-30),
@@ -51,7 +48,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 3,
                     FirstName = "Alex",
-                    LastName = "Kudryavov",
                     Email = "alex@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(1976, 10, 16),
@@ -62,7 +58,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 4,
                     FirstName = "Anna",
-                    LastName = "Kudryavova",
                     Email = "anna@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(1976, 08, 25),
@@ -73,7 +68,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 5,
                     FirstName = "Denis",
-                    LastName = "Kudryavov",
                     Email = "denis@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2003, 08, 23),
@@ -84,7 +78,6 @@ namespace Family.Db.EntityConfiguration
                 {
                     Id = 6,
                     FirstName = "Daria",
-                    LastName = "Kudryavova",
                     Email = "daria@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2019, 09, 19),

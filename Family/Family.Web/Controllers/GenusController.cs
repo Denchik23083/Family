@@ -28,7 +28,7 @@ namespace Family.Web.Controllers
         {
             try
             {
-                var genus = await _service.GetAllGenus();
+                var genus = await _service.GetAllGenusAsync();
 
                 var mappedGenus = _mapper.Map<IEnumerable<GenusReadNameModel>>(genus);
 
@@ -46,7 +46,7 @@ namespace Family.Web.Controllers
         {
             try
             {
-                var genus = await _service.GetGenus(id);
+                var genus = await _service.GetGenusAsync(id);
 
                 var mappedGenus = _mapper.Map<GenusReadModel>(genus);
 

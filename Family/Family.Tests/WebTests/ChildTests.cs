@@ -29,7 +29,6 @@ namespace Family.Tests.WebTests
                     {
                         Id = 5,
                         FirstName = "Denis",
-                        LastName = "Kudryavov",
                         Email = "denis@gmail.com",
                         Password = "0000",
                         BirthDay = new DateTime(2003, 08, 23),
@@ -45,7 +44,6 @@ namespace Family.Tests.WebTests
                     {
                         Id = 6,
                         FirstName = "Daria",
-                        LastName = "Kudryavova",
                         Email = "daria@gmail.com",
                         Password = "0000",
                         BirthDay = new DateTime(2019, 09, 19),
@@ -55,14 +53,14 @@ namespace Family.Tests.WebTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllChildren())
+            _repository.Setup(_ => _.GetAllChildrenAsync())
                 .ReturnsAsync(children);
 
             IChildService service = new ChildService(_repository.Object);
 
-            var result = await service.GetAllChildren();
+            var result = await service.GetAllChildrenAsync();
 
-            _repository.Verify(_ => _.GetAllChildren(), 
+            _repository.Verify(_ => _.GetAllChildrenAsync(), 
                 Times.Once);
 
             Assert.NotNull(result);
@@ -82,7 +80,6 @@ namespace Family.Tests.WebTests
                 {
                     Id = 5,
                     FirstName = "Denis",
-                    LastName = "Kudryavov",
                     Email = "denis@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2003, 08, 23),
@@ -91,14 +88,14 @@ namespace Family.Tests.WebTests
                 }
             };
 
-            _repository.Setup(_ => _.GetChild(expectedId))
+            _repository.Setup(_ => _.GetChildAsync(expectedId))
                 .ReturnsAsync(child);
 
             IChildService service = new ChildService(_repository.Object);
 
-            var result = await service.GetChild(expectedId);
+            var result = await service.GetChildAsync(expectedId);
 
-            _repository.Verify(_ => _.GetChild(expectedId), 
+            _repository.Verify(_ => _.GetChildAsync(expectedId), 
                 Times.Once);
 
             Assert.NotNull(result);

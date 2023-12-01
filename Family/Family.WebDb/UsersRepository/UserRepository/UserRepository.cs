@@ -28,7 +28,7 @@ namespace Family.WebDb.UsersRepository.UserRepository
                 .ToListAsync();
         }
 
-        public async Task<User?> DeleteUserAsync(int id)
+        public async Task<User?> GetUserAsync(int id)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
@@ -36,18 +36,22 @@ namespace Family.WebDb.UsersRepository.UserRepository
                 .ThenInclude(_ => _!.Genus)
                 .ThenInclude(_ => _!.Children)!
                 .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .Include(_ => _.Parent)
                 .ThenInclude(_ => _!.Genus)
                 .ThenInclude(_ => _!.Parents)!
                 .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .Include(_ => _.Child)
                 .ThenInclude(_ => _!.Genus)
                 .ThenInclude(_ => _!.Children)!
                 .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .Include(_ => _.Child)
                 .ThenInclude(_ => _!.Genus)
                 .ThenInclude(_ => _!.Parents)!
                 .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
     }

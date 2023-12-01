@@ -30,7 +30,6 @@ namespace Family.Tests.UsersTests
                 {
                     Id = 2,
                     FirstName = "Admin",
-                    LastName = "Full",
                     Email = "admin@gmail.com",
                     Password = "0000",
                     BirthDay = DateTime.Now.AddYears(-30),
@@ -59,7 +58,6 @@ namespace Family.Tests.UsersTests
             {
                 Id = expectedId,
                 FirstName = "Denis",
-                LastName = "Kudryavov",
                 Email = "denis@gmail.com",
                 Password = "0000",
                 BirthDay = new DateTime(2003, 08, 23),
@@ -67,7 +65,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 4
             };
 
-            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
+            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
                 .ReturnsAsync(userToDelete);
 
             _repository.Setup(_ => _.DeleteUserAsync(userToDelete));
@@ -76,7 +74,7 @@ namespace Family.Tests.UsersTests
 
             await service.DeleteUserAsync(expectedId);
 
-            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
+            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.DeleteUserAsync(userToDelete),
