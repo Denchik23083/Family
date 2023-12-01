@@ -29,7 +29,6 @@ namespace Family.Tests.WebTests
                     {
                         Id = 5,
                         FirstName = "Denis",
-                        LastName = "Kudryavov",
                         Email = "denis@gmail.com",
                         Password = "0000",
                         BirthDay = new DateTime(2003, 08, 23),
@@ -45,7 +44,6 @@ namespace Family.Tests.WebTests
                     {
                         Id = 6,
                         FirstName = "Daria",
-                        LastName = "Kudryavova",
                         Email = "daria@gmail.com",
                         Password = "0000",
                         BirthDay = new DateTime(2019, 09, 19),
@@ -82,7 +80,6 @@ namespace Family.Tests.WebTests
                 {
                     Id = 5,
                     FirstName = "Denis",
-                    LastName = "Kudryavov",
                     Email = "denis@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2003, 08, 23),

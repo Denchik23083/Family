@@ -59,7 +59,6 @@ namespace Family.Tests.UsersTests
                 {
                     Id = 6,
                     FirstName = "Test",
-                    LastName = "Test",
                     Email = "test@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2000, 01, 01),
@@ -91,7 +90,6 @@ namespace Family.Tests.UsersTests
             {
                 Id = expectedId,
                 FirstName = "Denis",
-                LastName = "Kudryavov",
                 Email = "denis@gmail.com",
                 Password = "0000",
                 BirthDay = new DateTime(2003, 08, 23),

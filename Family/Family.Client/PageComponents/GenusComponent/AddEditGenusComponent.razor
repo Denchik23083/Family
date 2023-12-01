@@ -12,7 +12,7 @@
                 <option value="0" selected="selected">Mother</option>
                 @foreach (var item in Mothers)
                 {
-                    <option value="@item.Id">@item.User.FirstName @item.User.LastName</option>
+                    <option value="@item.Id">@item.User.FirstName</option>
                 }
             </select>
         </div>
@@ -23,7 +23,7 @@
                 <option value="0" selected="selected">Father</option>
                 @foreach (var item in Fathers)
                 {
-                    <option value="@item.Id">@item.User.FirstName @item.User.LastName</option>
+                    <option value="@item.Id">@item.User.FirstName</option>
                 }
             </select>
         </div>
@@ -44,7 +44,7 @@
                     <div class="input mb-2">
                         @foreach (var item in Children)
                         {
-                            <span class="item mb-2" @onclick="() => AddSelectedChild(item)">@item.User.FirstName @item.User.LastName</span>
+                            <span class="item mb-2" @onclick="() => AddSelectedChild(item)">@item.User.FirstName</span>
 
                             <br />
                         }
@@ -65,7 +65,7 @@
                     @foreach (var item in SelectedChildren)
                     {
                         <span class="foo">
-                            @item.User.FirstName @item.User.LastName
+                            @item.User.FirstName
                             <button class="selectedChildClose p-0 mr-3" @onclick="() => RemoveSelectedChild(item)" type="button">
                                 <span aria-hidden="true">&times;</span>
                             </button>

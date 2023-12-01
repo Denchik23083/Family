@@ -10,7 +10,6 @@ namespace Family.Tests.Utilities
             {
                 Id = 5,
                 FirstName = "Denis",
-                LastName = "Kudryavov",
                 Email = "denis@gmail.com",
                 Password = "0000",
                 BirthDay = new DateTime(2003, 08, 23),

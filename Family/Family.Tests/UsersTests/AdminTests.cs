@@ -30,7 +30,6 @@ namespace Family.Tests.UsersTests
                 {
                     Id = 2,
                     FirstName = "Admin",
-                    LastName = "Full",
                     Email = "admin@gmail.com",
                     Password = "0000",
                     BirthDay = DateTime.Now.AddYears(-30),
@@ -59,7 +58,6 @@ namespace Family.Tests.UsersTests
             {
                 Id = expectedId,
                 FirstName = "Denis",
-                LastName = "Kudryavov",
                 Email = "denis@gmail.com",
                 Password = "0000",
                 BirthDay = new DateTime(2003, 08, 23),

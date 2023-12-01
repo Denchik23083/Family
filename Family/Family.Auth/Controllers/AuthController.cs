@@ -123,7 +123,7 @@ namespace Family.Auth.Controllers
             var claims = new List<Claim>
             {
                 new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new (ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new (ClaimTypes.Name, user.FirstName!),
                 new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.Gender, user.Gender!.Type.ToString()!),
                 new (ClaimTypes.Role, user.Role!.RoleType.ToString()!)
