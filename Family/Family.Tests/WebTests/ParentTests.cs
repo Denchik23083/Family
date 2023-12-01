@@ -55,14 +55,14 @@ namespace Family.Tests.WebTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllParents())
+            _repository.Setup(_ => _.GetAllParentsAsync())
                 .ReturnsAsync(parents);
 
             IParentService service = new ParentService(_repository.Object);
 
-            var result = await service.GetAllParents();
+            var result = await service.GetAllParentsAsync();
 
-            _repository.Verify(_ => _.GetAllParents(), 
+            _repository.Verify(_ => _.GetAllParentsAsync(), 
                 Times.Once);
 
             Assert.NotNull(result);
@@ -91,14 +91,14 @@ namespace Family.Tests.WebTests
                 }
             };
 
-            _repository.Setup(_ => _.GetParent(expectedId))
+            _repository.Setup(_ => _.GetParentAsync(expectedId))
                 .ReturnsAsync(parent);
 
             IParentService service = new ParentService(_repository.Object);
 
-            var result = await service.GetParent(expectedId);
+            var result = await service.GetParentAsync(expectedId);
 
-            _repository.Verify(_ => _.GetParent(expectedId), 
+            _repository.Verify(_ => _.GetParentAsync(expectedId), 
                 Times.Once);
 
             Assert.NotNull(result);

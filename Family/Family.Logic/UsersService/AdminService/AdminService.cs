@@ -32,7 +32,7 @@ namespace Family.Logic.UsersService.AdminService
 
         public async Task DeleteUserAsync(int id)
         {
-            var userToDelete = await _userRepository.DeleteUserAsync(id);
+            var userToDelete = await _userRepository.GetUserAsync(id);
 
             if (userToDelete is null)
             {

@@ -28,14 +28,14 @@ namespace Family.Tests.WebTests
                 }
             };
 
-            _repository.Setup(_ => _.GetAllGenus())
+            _repository.Setup(_ => _.GetAllGenusAsync())
                 .ReturnsAsync(genus);
 
             IGenusService service = new GenusService(_repository.Object);
 
-            var result = await service.GetAllGenus();
+            var result = await service.GetAllGenusAsync();
 
-            _repository.Verify(_ => _.GetAllGenus(), 
+            _repository.Verify(_ => _.GetAllGenusAsync(), 
                 Times.Once);
 
             Assert.NotNull(result);
@@ -53,14 +53,14 @@ namespace Family.Tests.WebTests
                 Name = "Kudryavovs"
             };
 
-            _repository.Setup(_ => _.GetGenus(expectedId))
+            _repository.Setup(_ => _.GetGenusAsync(expectedId))
                 .ReturnsAsync(genus);
 
             IGenusService service = new GenusService(_repository.Object);
 
-            var result = await service.GetGenus(expectedId);
+            var result = await service.GetGenusAsync(expectedId);
 
-            _repository.Verify(_ => _.GetGenus(expectedId), 
+            _repository.Verify(_ => _.GetGenusAsync(expectedId), 
                 Times.Once);
 
             Assert.NotNull(result);

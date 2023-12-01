@@ -4,8 +4,8 @@ namespace Family.WebDb.WebRepository.GenusRepository
 {
     public interface IGenusRepository
     {
-        Task<IEnumerable<Genus>?> GetAllGenus();
+        Task<IEnumerable<Genus>?> GetAllGenusAsync();
 
-        Task<Genus?> GetGenus(int id);
+        Task<Genus?> GetGenusAsync(int id);
     }
 }

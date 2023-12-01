@@ -67,7 +67,7 @@ namespace Family.Tests.UsersTests
                 RoleId = 4
             };
 
-            _userRepository.Setup(_ => _.DeleteUserAsync(expectedId))
+            _userRepository.Setup(_ => _.GetUserAsync(expectedId))
                 .ReturnsAsync(userToDelete);
 
             _repository.Setup(_ => _.DeleteUserAsync(userToDelete));
@@ -76,7 +76,7 @@ namespace Family.Tests.UsersTests
 
             await service.DeleteUserAsync(expectedId);
 
-            _userRepository.Verify(_ => _.DeleteUserAsync(expectedId),
+            _userRepository.Verify(_ => _.GetUserAsync(expectedId),
                 Times.Once);
 
             _repository.Verify(_ => _.DeleteUserAsync(userToDelete),

@@ -13,9 +13,9 @@ namespace Family.Logic.WebService.GenusService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Genus>?> GetAllGenus()
+        public async Task<IEnumerable<Genus>?> GetAllGenusAsync()
         {
-            var genus = await _repository.GetAllGenus();
+            var genus = await _repository.GetAllGenusAsync();
 
             if (genus is null)
             {
@@ -25,9 +25,9 @@ namespace Family.Logic.WebService.GenusService
             return genus;
         }
 
-        public async Task<Genus?> GetGenus(int id)
+        public async Task<Genus?> GetGenusAsync(int id)
         {
-            var genus = await _repository.GetGenus(id);
+            var genus = await _repository.GetGenusAsync(id);
 
             if (genus is null)
             {

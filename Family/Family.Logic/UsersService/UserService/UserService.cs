@@ -41,7 +41,7 @@ namespace Family.Logic.UsersService.UserService
 
         public async Task<User> GetUserAsync(int id)
         {
-            var user = await _repository.DeleteUserAsync(id);
+            var user = await _repository.GetUserAsync(id);
 
             if (user is null)
             {

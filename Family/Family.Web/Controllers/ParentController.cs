@@ -28,7 +28,7 @@ namespace Family.Web.Controllers
         {
             try
             {
-                var parents = await _service.GetAllParents();
+                var parents = await _service.GetAllParentsAsync();
 
                 var mappedParents = _mapper.Map<IEnumerable<ParentReadModel>>(parents);
 
@@ -46,7 +46,7 @@ namespace Family.Web.Controllers
         {
             try
             {
-                var parent = await _service.GetParent(id);
+                var parent = await _service.GetParentAsync(id);
 
                 var mappedParent = _mapper.Map<ParentReadModel>(parent);
 

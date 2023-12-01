@@ -13,9 +13,9 @@ namespace Family.Logic.WebService.ParentService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Parent>?> GetAllParents()
+        public async Task<IEnumerable<Parent>?> GetAllParentsAsync()
         {
-            var parents = await _repository.GetAllParents();
+            var parents = await _repository.GetAllParentsAsync();
 
             if (parents is null)
             {
@@ -25,9 +25,9 @@ namespace Family.Logic.WebService.ParentService
             return parents;
         }
 
-        public async Task<Parent?> GetParent(int id)
+        public async Task<Parent?> GetParentAsync(int id)
         {
-            var parent = await _repository.GetParent(id);
+            var parent = await _repository.GetParentAsync(id);
 
             if (parent is null)
             {
@@ -44,7 +44,7 @@ namespace Family.Logic.WebService.ParentService
 
         public async Task UpdateParent(Parent updatedParent, int id)
         {
-            var parentToUpdate = await _repository.GetParent(id);
+            var parentToUpdate = await _repository.GetParentAsync(id);
 
             if (parentToUpdate is null)
             {
@@ -56,7 +56,7 @@ namespace Family.Logic.WebService.ParentService
 
         public async Task DeleteParent(int id)
         {
-            var parentToDelete = await _repository.GetParent(id);
+            var parentToDelete = await _repository.GetParentAsync(id);
 
             if (parentToDelete is null)
             {

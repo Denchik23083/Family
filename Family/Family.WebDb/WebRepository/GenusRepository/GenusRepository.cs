@@ -13,12 +13,12 @@ namespace Family.WebDb.WebRepository.GenusRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<Genus>?> GetAllGenus()
+        public async Task<IEnumerable<Genus>?> GetAllGenusAsync()
         {
             return await _context.Genus.ToListAsync();
         }
 
-        public async Task<Genus?> GetGenus(int id)
+        public async Task<Genus?> GetGenusAsync(int id)
         {
             return await _context.Genus
                 .Include(_ => _.Parents)!

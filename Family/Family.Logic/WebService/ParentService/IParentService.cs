@@ -4,9 +4,9 @@ namespace Family.Logic.WebService.ParentService
 {
     public interface IParentService
     {
-        Task<IEnumerable<Parent>?> GetAllParents();
+        Task<IEnumerable<Parent>?> GetAllParentsAsync();
 
-        Task<Parent?> GetParent(int id);
+        Task<Parent?> GetParentAsync(int id);
 
         Task CreateParent(Parent createdParent);
 
