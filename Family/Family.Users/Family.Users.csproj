@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Family.Db\Family.Db.csproj" />
     <ProjectReference Include="..\Family.Logic\Family.Logic.csproj" />
     <ProjectReference Include="..\Family.WebDb\Family.WebDb.csproj" />
+    <ProjectReference Include="..\Family.Web\Family.Web.csproj" />
   </ItemGroup>
 
 </Project>

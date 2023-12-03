@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Family.Db.Entities;
-using Family.Users.Models;
+using Family.Web.Models.GenderModels;
+using Family.Web.Models.UserModels;
 
 namespace Family.Users.Utilities
 {
@@ -9,10 +10,10 @@ namespace Family.Users.Utilities
         public MappingProfile()
         {
             CreateMap<User, UserReadModel>();
+            CreateMap<UserWriteModel, User>();
 
             CreateMap<Gender, GenderReadModel>();
-
-            CreateMap<GenderReadModel, Gender>();
+            CreateMap<GenderWriteModel, Gender>();
         }
     }
 }

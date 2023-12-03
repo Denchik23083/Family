@@ -1,6 +1,8 @@
-﻿using Family.Db.Entities;
+﻿using Family.Web.Models.GenderModels;
+using Family.Web.Models.ChildModels;
+using Family.Web.Models.ParentModels;
 
-namespace Family.Users.Models
+namespace Family.Web.Models.UserModels
 {
     public class UserReadModel
     {
@@ -14,8 +16,8 @@ namespace Family.Users.Models
 
         public GenderReadModel? Gender { get; set; }
 
-        public Parent? Parent { get; set; }
+        public ParentReadModel? Parent { get; set; }
 
-        public Child? Child { get; set; }
+        public ChildReadModel? Child { get; set; }
     }
 }
