@@ -1,7 +1,7 @@
-﻿using Family.Db.Entities;
+﻿using Family.Web.Models.UserModels;
 using System.Text.Json.Serialization;
 
-namespace Family.Users.Models
+namespace Family.Web.Models.GenderModels
 {
     public class GenderReadModel
     {
@@ -10,6 +10,6 @@ namespace Family.Users.Models
         public string? Type { get; set; }
 
         [JsonIgnore]
-        public List<User>? Users { get; set; }
+        public List<UserReadModel>? Users { get; set; }
     }
 }

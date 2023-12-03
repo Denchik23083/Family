@@ -2,8 +2,8 @@
 using Family.Core.Exceptions;
 using Family.Core.Utilities;
 using Family.Logic.UsersService.AdminService;
-using Family.Users.Models;
 using Family.Users.Utilities;
+using Family.Web.Models.UserModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Family.Users.Controllers

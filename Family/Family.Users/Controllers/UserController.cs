@@ -5,7 +5,7 @@ using System.Security.Claims;
 using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Logic.UsersService.UserService;
-using Family.Users.Models;
+using Family.Web.Models.UserModels;
 
 namespace Family.Users.Controllers
 {

@@ -1,4 +1,6 @@
 ﻿using Family.Db.Entities;
+using Family.Web.Models.ChildModels;
+using Family.Web.Models.ParentModels;
 
 namespace Family.Web.Models.GenusModels
 {
@@ -8,8 +10,8 @@ namespace Family.Web.Models.GenusModels
 
         public string? Name { get; set; }
 
-        public List<Parent>? Parents { get; set; }
+        public List<ParentReadModel>? Parents { get; set; }
 
-        public List<Child>? Children { get; set; }
+        public List<ChildReadModel>? Children { get; set; }
     }
 }

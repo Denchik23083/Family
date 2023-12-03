@@ -1,5 +1,6 @@
 ﻿using Family.Db.Entities;
-using Family.Users.Models;
+using Family.Web.Models.GenusModels;
+using Family.Web.Models.UserModels;
 
 namespace Family.Web.Models.ParentModels
 {
@@ -13,6 +14,6 @@ namespace Family.Web.Models.ParentModels
 
         public int? GenusId { get; set; }
 
-        public Genus? Genus { get; set; }
+        public GenusReadModel? Genus { get; set; }
     }
 }
