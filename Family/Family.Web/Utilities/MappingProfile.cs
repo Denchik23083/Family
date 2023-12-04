@@ -12,6 +12,10 @@ namespace Family.Web.Utilities
     {
         public MappingProfile()
         {
+            CreateMap<User, UserReadModel>();
+
+            CreateMap<Gender, GenderReadModel>();
+
             CreateMap<Genus, GenusReadNameModel>();
             CreateMap<Genus, GenusReadModel>();
             CreateMap<GenusWriteModel, Genus>();
