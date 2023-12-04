@@ -16,17 +16,12 @@ namespace Family.Users.Utilities
             CreateMap<UserWriteModel, User>();
 
             CreateMap<Gender, GenderReadModel>();
-            CreateMap<GenderWriteModel, Gender>();
-
-            CreateMap<Genus, GenusReadNameModel>();
+            
             CreateMap<Genus, GenusReadModel>();
-            CreateMap<GenusWriteModel, Genus>();
 
             CreateMap<Parent, ParentReadModel>();
-            CreateMap<ParentWriteModel, Parent>();
 
             CreateMap<Child, ChildReadModel>();
-            CreateMap<ChildWriteModel, Child>();
         }
     }
 }
