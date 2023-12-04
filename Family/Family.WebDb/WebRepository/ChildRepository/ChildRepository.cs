@@ -18,6 +18,7 @@ namespace Family.WebDb.WebRepository.ChildRepository
             return await _context.Children
                 .Include(_ => _.User)
                 .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Genus)
                 .ToListAsync();
         }
 
@@ -25,6 +26,14 @@ namespace Family.WebDb.WebRepository.ChildRepository
         {
             return await _context.Children
                 .Include(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Genus)
+                .ThenInclude(_ => _!.Children)!
+                .ThenInclude(_ => _.User)
+                .ThenInclude(_ => _!.Gender)
+                .Include(_ => _.Genus)
+                .ThenInclude(_ => _!.Parents)!
+                .ThenInclude(_ => _.User)
                 .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
