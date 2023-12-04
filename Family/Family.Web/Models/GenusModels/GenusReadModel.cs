@@ -1,5 +1,4 @@
-﻿using Family.Db.Entities;
-using Family.Web.Models.ChildModels;
+﻿using Family.Web.Models.ChildModels;
 using Family.Web.Models.ParentModels;
 
 namespace Family.Web.Models.GenusModels
