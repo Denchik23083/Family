@@ -6,6 +6,9 @@ using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Logic.UsersService.UserService;
 using Family.Web.Models.UserModels;
+using Family.Db.Entities;
+using Family.Users.Models.UserModels;
+using Family.Users.Models.PasswordModels;
 
 namespace Family.Users.Controllers
 {
@@ -50,9 +53,77 @@ namespace Family.Users.Controllers
             {
                 var users = await _service.GetUsersAsync();
 
-                var mappedUsers = _mapper.Map<IEnumerable<UserReadModel>>(users);
+                var mappedUsers = _mapper.Map<IEnumerable<UserReadNameModel>>(users);
 
                 return Ok(mappedUsers);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut]
+        [RequirePermission(PermissionType.GetInfo)]
+        public async Task<IActionResult> EditUser(UserWriteModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var userId = GetUserId();
+
+                var mappedUser = _mapper.Map<User>(model);
+
+                //await _service.EditUserAsync(mappedUser, userId);
+
+                return NoContent();
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("password")]
+        [RequirePermission(PermissionType.GetInfo)]
+        public async Task<IActionResult> EditPassword(PasswordWriteModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var userId = GetUserId();
+
+                var mappedPassword = _mapper.Map<Password>(model);
+
+                //await _service.EditPasswordAsync(mappedPassword, userId);
+
+                return NoContent();
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [RequirePermission(PermissionType.GetInfo)]
+        public async Task<IActionResult> LeaveGenus()
+        {
+            try
+            {
+                var userId = GetUserId();
+
+                await _service.LeaveGenusAsync(userId);
+
+                return NoContent();
             }
             catch (UserNotFoundException e)
             {

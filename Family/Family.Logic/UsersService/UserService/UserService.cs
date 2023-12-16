@@ -50,5 +50,27 @@ namespace Family.Logic.UsersService.UserService
 
             return user;
         }
+
+        public async Task LeaveGenusAsync(int userId)
+        {
+            var user = await _repository.GetUserAsync(userId);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            if (user.Parent is not null)
+            {
+                user.Parent.GenusId = null;
+            }
+
+            if (user.Child is not null)
+            {
+                user.Child.GenusId = null;
+            }
+
+            await _repository.LeaveGenusAsync(user);
+        }
     }
 }
