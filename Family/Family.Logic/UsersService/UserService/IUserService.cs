@@ -9,5 +9,7 @@ namespace Family.Logic.UsersService.UserService
         Task<IEnumerable<User>> GetUsersAsync();
 
         Task<User> GetUserAsync(int id);
+
+        Task LeaveGenusAsync(int userId);
     }
 }
