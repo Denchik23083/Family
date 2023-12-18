@@ -1,9 +1,9 @@
 ﻿using Family.Core.Utilities;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Users
 {
     public class GenderConfiguration : IEntityTypeConfiguration<Gender>
     {

@@ -1,5 +1,5 @@
 ﻿using Family.Core.Utilities;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
 using Family.Logic.UsersService.UserService;
 using Family.Tests.Utilities;
 using Family.WebDb.UsersRepository.UserRepository;

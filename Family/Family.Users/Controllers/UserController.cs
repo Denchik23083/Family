@@ -1,4 +1,4 @@
-﻿using Family.Users.Utilities;
+using Family.Users.Utilities;
 using Family.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -6,9 +6,9 @@ using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Logic.UsersService.UserService;
 using Family.Web.Models.UserModels;
-using Family.Db.Entities;
 using Family.Users.Models.UserModels;
 using Family.Users.Models.PasswordModels;
+using Family.Db.Entities.Users;
 
 namespace Family.Users.Controllers
 {
@@ -113,7 +113,7 @@ namespace Family.Users.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("leave")]
         [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> LeaveGenus()
         {

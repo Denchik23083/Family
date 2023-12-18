@@ -1,5 +1,5 @@
 ﻿using Family.Client.PageComponents.GenusComponent;
-using Family.Db.Entities;
+using Family.Db.Entities.Web;
 using Family.Http.GenusHttpService;
 using Microsoft.AspNetCore.Components;
 

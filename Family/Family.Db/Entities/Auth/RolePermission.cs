@@ -1,6 +1,6 @@
 ﻿using Family.Core.Utilities;
 
-namespace Family.Db.Entities
+namespace Family.Db.Entities.Auth
 {
     public class RolePermission
     {

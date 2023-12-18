@@ -1,5 +1,5 @@
 ﻿using Family.Client.PageComponents.ChildrenComponent;
-using Family.Db.Entities;
+using Family.Db.Entities.Web;
 using Family.Http.ChildrenHttpService;
 using Microsoft.AspNetCore.Components;
 

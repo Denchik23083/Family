@@ -1,4 +1,4 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Web;
 using Microsoft.AspNetCore.Components;
 
 namespace Family.Client.PageComponents.ParentsComponent

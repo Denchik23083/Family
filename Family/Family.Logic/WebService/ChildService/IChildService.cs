@@ -1,4 +1,4 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Web;
 
 namespace Family.Logic.WebService.ChildService
 {

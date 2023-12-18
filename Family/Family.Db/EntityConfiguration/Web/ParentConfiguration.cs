@@ -1,8 +1,8 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Web
 {
     public class ParentConfiguration : IEntityTypeConfiguration<Parent>
     {
@@ -19,20 +19,23 @@ namespace Family.Db.EntityConfiguration
                 .HasForeignKey(_ => _.GenusId);
 
             builder.HasData(
-                new List<Parent>
+                new Parent
                 {
-                    new Parent
-                    {
-                        Id = 1,
-                        UserId = 3,
-                        GenusId = 1
-                    },
-                    new Parent
-                    {
-                        Id = 2,
-                        UserId = 4,
-                        GenusId = 1
-                    }
+                    Id = 1,
+                    UserId = 3,
+                    GenusId = 1
+                },
+                new Parent
+                {
+                    Id = 2,
+                    UserId = 4,
+                    GenusId = 1
+                },
+                new Parent
+                {
+                    Id = 3,
+                    UserId = 7,
+                    GenusId = 2
                 });
         }
     }

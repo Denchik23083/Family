@@ -1,5 +1,5 @@
 ﻿using Family.Db;
-using Family.Db.Entities;
+using Family.Db.Entities.Web;
 using Microsoft.EntityFrameworkCore;
 
 namespace Family.WebDb.WebRepository.GenusRepository

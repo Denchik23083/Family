@@ -1,4 +1,4 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Users;
 using Family.Logic.UsersService.GodService;
 using Family.Tests.Utilities;
 using Family.WebDb.UsersRepository.GodRepository;

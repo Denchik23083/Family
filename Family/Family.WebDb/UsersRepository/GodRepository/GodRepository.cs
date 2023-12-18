@@ -1,5 +1,5 @@
 ﻿using Family.Db;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
 
 namespace Family.WebDb.UsersRepository.GodRepository
 {

@@ -1,5 +1,5 @@
 ﻿using Family.Core.Exceptions;
-using Family.Db.Entities;
+using Family.Db.Entities.Web;
 using Family.WebDb.WebRepository.ParentRepository;
 
 namespace Family.Logic.WebService.ParentService

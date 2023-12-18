@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Users;
+using Family.Db.Entities.Web;
 using Family.Logic.WebService.ChildService;
 using Family.Tests.Utilities;
 using Family.WebDb.WebRepository.ChildRepository;

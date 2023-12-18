@@ -1,6 +1,7 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Family.Core.Utilities;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
+using Family.Db.Entities.Web;
 using Family.Users.Models.AdminModels;
 using Family.Users.Models.PasswordModels;
 using Family.Users.Models.UserModels;
