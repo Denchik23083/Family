@@ -1,4 +1,4 @@
-﻿using Family.Users.Utilities;
+using Family.Users.Utilities;
 using Family.Core.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
