@@ -54,5 +54,10 @@ namespace Family.WebDb.UsersRepository.UserRepository
                 .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
+
+        public async Task LeaveGenusAsync(User user)
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
