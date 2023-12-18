@@ -1,7 +1,9 @@
 ﻿using Family.Db.Entities.Web;
 using Family.Logic.WebService.GenusService;
 using Family.Tests.Utilities;
+using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
+using Family.WebDb.WebRepository.ParentRepository;
 using Moq;
 using Xunit;
 
@@ -10,10 +12,14 @@ namespace Family.Tests.WebTests
     public class GenusTests : AuthUser
     {
         private readonly Mock<IGenusRepository> _repository;
+        private readonly Mock<IParentRepository> _parentRepository;
+        private readonly Mock<IChildRepository> _childRepository;
 
         public GenusTests()
         {
             _repository = new Mock<IGenusRepository>();
+            _parentRepository = new Mock<IParentRepository>();
+            _childRepository = new Mock<IChildRepository>();
         }
 
         [Fact]
@@ -31,7 +37,7 @@ namespace Family.Tests.WebTests
             _repository.Setup(_ => _.GetAllGenusAsync())
                 .ReturnsAsync(genus);
 
-            IGenusService service = new GenusService(_repository.Object);
+            IGenusService service = new GenusService(_repository.Object, _parentRepository.Object, _childRepository.Object);
 
             var result = await service.GetAllGenusAsync();
 
@@ -56,7 +62,7 @@ namespace Family.Tests.WebTests
             _repository.Setup(_ => _.GetGenusAsync(expectedId))
                 .ReturnsAsync(genus);
 
-            IGenusService service = new GenusService(_repository.Object);
+            IGenusService service = new GenusService(_repository.Object, _parentRepository.Object, _childRepository.Object);
 
             var result = await service.GetGenusAsync(expectedId);
 
