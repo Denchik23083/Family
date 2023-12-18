@@ -29,5 +29,34 @@ namespace Family.WebDb.WebRepository.GenusRepository
                 .ThenInclude(_ => _!.Gender)
                 .FirstOrDefaultAsync(_ => _.Id == id);
         }
+
+        public async Task CreateGenusAsync(Genus mappedGenus)
+        {
+            await _context.Genus.AddAsync(mappedGenus);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateGenusAsync(Genus genusToUpdate)
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddParentAsync(Genus genus)
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddChildAsync(Genus genus)
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteGenusAsync(Genus genusToDelete)
+        {
+            _context.Genus.Remove(genusToDelete);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

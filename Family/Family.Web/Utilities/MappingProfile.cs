@@ -19,6 +19,7 @@ namespace Family.Web.Utilities
 
             CreateMap<Genus, GenusReadNameModel>();
             CreateMap<Genus, GenusReadModel>();
+            CreateMap<GenusWriteNameModel, Genus>();
             CreateMap<GenusWriteModel, Genus>();
 
             CreateMap<Parent, ParentReadModel>();

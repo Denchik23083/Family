@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Core.Utilities;
+using Family.Db.Entities.Web;
 using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
 using Family.Web.Utilities;
@@ -57,7 +58,7 @@ namespace Family.Web.Controllers
             }
         }
 
-        /*[HttpPost]
+        [HttpPost]
         [RequirePermission(PermissionType.CreateGenus)]
         public async Task<IActionResult> CreateGenus(GenusWriteModel model)
         {
@@ -68,34 +69,88 @@ namespace Family.Web.Controllers
 
             var mappedGenus = _mapper.Map<Genus>(model);
 
-            await _service.CreateGenus(mappedGenus);
+            await _service.CreateGenusAsync(mappedGenus);
 
             return NoContent();
         }
 
         [HttpPut("id")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
-        public async Task<IActionResult> UpdateGenus(GenusWriteModel model, int id)
+        public async Task<IActionResult> UpdateGenus(GenusWriteNameModel model, int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var mappedGenus = _mapper.Map<Genus>(model);
+            try
+            {
+                var mappedGenus = _mapper.Map<Genus>(model);
 
-            await _service.UpdateGenus(mappedGenus, id);
+                await _service.UpdateGenusAsync(mappedGenus, id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("parent/id")]
+        [RequirePermission(PermissionType.UpdateDeleteGenus)]
+        public async Task<IActionResult> AddParent(int id)
+        {
+            try
+            {
+                await _service.AddParentAsync(id);
+
+                return NoContent();
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (ParentNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("child/id")]
+        [RequirePermission(PermissionType.UpdateDeleteGenus)]
+        public async Task<IActionResult> AddChild(int id)
+        {
+            try
+            {
+                await _service.AddChildAsync(id);
+
+                return NoContent();
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (ChildNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("id")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
         public async Task<IActionResult> DeleteGenus(int id)
         {
-            await _service.DeleteGenus(id);
+            try
+            {
+                await _service.DeleteGenusAsync(id);
 
-            return NoContent();
-        }*/
+                return NoContent();
+            }
+            catch (GenusNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
