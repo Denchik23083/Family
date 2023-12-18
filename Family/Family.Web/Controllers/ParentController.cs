@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Core.Utilities;
-using Family.Db.Entities;
 using Family.Logic.WebService.ParentService;
 using Family.Web.Models.ParentModels;
 using Family.Web.Utilities;
@@ -51,58 +50,6 @@ namespace Family.Web.Controllers
                 var mappedParent = _mapper.Map<ParentReadModel>(parent);
 
                 return Ok(mappedParent);
-            }
-            catch (ParentNotFoundException e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateParent(ParentWriteModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var mappedParent = _mapper.Map<Parent>(model);
-
-            await _service.CreateParent(mappedParent);
-
-            return NoContent();
-        }
-
-        [HttpPut("id")]
-        public async Task<IActionResult> UpdateParent(ParentWriteModel model, int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            try
-            {
-                var mappedParent = _mapper.Map<Parent>(model);
-
-                await _service.UpdateParent(mappedParent, id);
-
-                return NoContent();
-            }
-            catch (ParentNotFoundException e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        [HttpDelete("id")]
-        public async Task<IActionResult> DeleteParent(int id)
-        {
-            try
-            {
-                await _service.DeleteParent(id);
-
-                return NoContent();
             }
             catch (ParentNotFoundException e)
             {

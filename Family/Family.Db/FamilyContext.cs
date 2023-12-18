@@ -1,4 +1,6 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Auth;
+using Family.Db.Entities.Users;
+using Family.Db.Entities.Web;
 using Microsoft.EntityFrameworkCore;
 
 namespace Family.Db

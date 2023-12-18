@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Family.Auth.Models;
-using Family.Db.Entities;
+using Family.Db.Entities.Auth;
+using Family.Db.Entities.Users;
 
 namespace Family.Auth.Utilities
 {

@@ -1,4 +1,4 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Users;
 
 namespace Family.Logic.UsersService.UserService
 {

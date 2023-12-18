@@ -1,8 +1,8 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Web
 {
     public class GenusConfiguration : IEntityTypeConfiguration<Genus>
     {
@@ -13,13 +13,15 @@ namespace Family.Db.EntityConfiguration
             builder.Property(_ => _.Name).IsRequired();
 
             builder.HasData(
-                new List<Genus>
+                new Genus
                 {
-                    new Genus
-                    {
-                        Id = 1,
-                        Name = "Kudryavovs"
-                    }
+                    Id = 1,
+                    Name = "Kudryavovs"
+                },
+                new Genus
+                {
+                    Id = 2,
+                    Name = "TestGenus"
                 });
         }
     }

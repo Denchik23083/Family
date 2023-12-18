@@ -1,8 +1,8 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Users
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
@@ -81,6 +81,26 @@ namespace Family.Db.EntityConfiguration
                     Email = "daria@gmail.com",
                     Password = "0000",
                     BirthDay = new DateTime(2019, 09, 19),
+                    GenderId = 2,
+                    RoleId = 4
+                },
+                new User
+                {
+                    Id = 7,
+                    FirstName = "TestParent",
+                    Email = "testParent@gmail.com",
+                    Password = "0000",
+                    BirthDay = new DateTime(1990, 09, 10),
+                    GenderId = 1,
+                    RoleId = 3
+                },
+                new User
+                {
+                    Id = 8,
+                    FirstName = "TestChild",
+                    Email = "testChild@gmail.com",
+                    Password = "0000",
+                    BirthDay = new DateTime(2015, 08, 12),
                     GenderId = 2,
                     RoleId = 4
                 });

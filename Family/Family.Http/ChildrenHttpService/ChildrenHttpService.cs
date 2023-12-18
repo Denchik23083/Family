@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 using System.Text.Json;
-using Family.Db.Entities;
+using Family.Db.Entities.Web;
 
 namespace Family.Http.ChildrenHttpService
 {

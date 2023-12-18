@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Family.Auth.Models;
-using Family.Db.Entities;
 using Family.Logic.AuthService.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -9,6 +8,8 @@ using System.Security.Claims;
 using System.Text;
 using Family.Logic.UsersService.UserService;
 using Family.Core.Exceptions;
+using Family.Db.Entities.Auth;
+using Family.Db.Entities.Users;
 
 namespace Family.Auth.Controllers
 {

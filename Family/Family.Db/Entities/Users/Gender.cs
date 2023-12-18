@@ -1,7 +1,7 @@
 ﻿using Family.Core.Utilities;
 using System.Text.Json.Serialization;
 
-namespace Family.Db.Entities
+namespace Family.Db.Entities.Users
 {
     public class Gender
     {

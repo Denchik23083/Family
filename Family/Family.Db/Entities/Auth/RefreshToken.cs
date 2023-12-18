@@ -1,4 +1,6 @@
-﻿namespace Family.Db.Entities
+﻿using Family.Db.Entities.Users;
+
+namespace Family.Db.Entities.Auth
 {
     public class RefreshToken
     {

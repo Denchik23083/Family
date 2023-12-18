@@ -1,5 +1,5 @@
 ﻿using Family.Core.Exceptions;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
 using Family.WebDb.UsersRepository.UserRepository;
 
 namespace Family.Logic.UsersService.UserService
@@ -59,16 +59,10 @@ namespace Family.Logic.UsersService.UserService
             {
                 throw new UserNotFoundException("User not found");
             }
-
-            if (user.Parent is not null)
-            {
-                user.Parent.GenusId = null;
-            }
-
-            if (user.Child is not null)
-            {
-                user.Child.GenusId = null;
-            }
+            
+            user.Parent = null;
+            user.Child = null;
+            user.RoleId = 5;
 
             await _repository.LeaveGenusAsync(user);
         }

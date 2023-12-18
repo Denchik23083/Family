@@ -1,4 +1,5 @@
-using Family.Db.Entities;
+using Family.Db.Entities.Auth;
+using Family.Db.Entities.Users;
 using Family.Logic.AuthService.AuthService;
 using Family.Tests.Utilities;
 using Family.WebDb.AuthRepository.AuthRepository;

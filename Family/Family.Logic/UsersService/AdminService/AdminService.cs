@@ -1,5 +1,5 @@
 ﻿using Family.Core.Exceptions;
-using Family.Db.Entities;
+using Family.Db.Entities.Users;
 using Family.WebDb.UsersRepository.AdminRepository;
 using Family.WebDb.UsersRepository.UserRepository;
 

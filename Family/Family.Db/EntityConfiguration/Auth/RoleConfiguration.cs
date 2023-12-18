@@ -1,9 +1,9 @@
-﻿using Family.Db.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using Family.Core.Utilities;
+using Family.Db.Entities.Auth;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Auth
 {
     public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {

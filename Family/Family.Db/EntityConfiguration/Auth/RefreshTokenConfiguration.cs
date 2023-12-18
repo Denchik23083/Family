@@ -1,8 +1,8 @@
-﻿using Family.Db.Entities;
+﻿using Family.Db.Entities.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Family.Db.EntityConfiguration
+namespace Family.Db.EntityConfiguration.Auth
 {
     public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
     {

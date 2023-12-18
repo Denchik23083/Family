@@ -1,5 +1,6 @@
 ﻿using Family.Db;
-using Family.Db.Entities;
+using Family.Db.Entities.Auth;
+using Family.Db.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Family.WebDb.AuthRepository.AuthRepository
