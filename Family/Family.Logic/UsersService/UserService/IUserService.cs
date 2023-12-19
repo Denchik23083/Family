@@ -6,7 +6,9 @@ namespace Family.Logic.UsersService.UserService
     {
         Task<IEnumerable<Gender>> GetGendersAsync();
 
-        Task<IEnumerable<User>> GetUsersAsync();
+        Task<IEnumerable<User>> GetParentsChildrenUsersAsync();
+
+        Task<IEnumerable<User>?> GetUsersAsync();
 
         Task<User> GetUserAsync(int id);
 

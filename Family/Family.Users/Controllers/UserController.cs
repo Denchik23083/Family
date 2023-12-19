@@ -46,7 +46,25 @@ namespace Family.Users.Controllers
         }
 
         [HttpGet]
-        [RequirePermission(PermissionType.GetInfo)]
+        [RequirePermission(PermissionType.DeleteUser)]
+        public async Task<IActionResult> GetParentsChildrenUsersAsync()
+        {
+            try
+            {
+                var users = await _service.GetParentsChildrenUsersAsync();
+
+                var mappedUsers = _mapper.Map<IEnumerable<UserReadNameModel>>(users);
+
+                return Ok(mappedUsers);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("users")]
+        [RequirePermission(PermissionType.UserToAdmin)]
         public async Task<IActionResult> GetUsers()
         {
             try
