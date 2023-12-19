@@ -27,10 +27,9 @@ namespace Family.Logic.UsersService.UserService
 
         public async Task<IEnumerable<User>> GetParentsChildrenUsersAsync()
         {
-            var godRoleId = 1;
-            var adminRoleId = 2;
+            var roles = new int[3] { 3, 4, 5 };
 
-            var users = await _repository.GetParentsChildrenUsersAsync(godRoleId, adminRoleId);
+            var users = await _repository.GetParentsChildrenUsersAsync(roles);
 
             if (users is null)
             {

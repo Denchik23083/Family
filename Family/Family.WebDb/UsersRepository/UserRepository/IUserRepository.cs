@@ -6,7 +6,7 @@ namespace Family.WebDb.UsersRepository.UserRepository
     {
         Task<IEnumerable<Gender>?> GetGendersAsync();
 
-        Task<IEnumerable<User>?> GetParentsChildrenUsersAsync(int godRoleId, int adminRoleId);
+        Task<IEnumerable<User>?> GetParentsChildrenUsersAsync(int[] roles);
 
         Task<IEnumerable<User>?> GetUsersAsync(int roleId);
 
