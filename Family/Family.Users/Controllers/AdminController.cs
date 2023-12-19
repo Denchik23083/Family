@@ -22,7 +22,7 @@ namespace Family.Users.Controllers
         }
 
         [HttpGet]
-        [RequirePermission(PermissionType.GetInfo)]
+        [RequirePermission(PermissionType.AdminToUser)]
         public async Task<IActionResult> GetAdmins()
         {
             try

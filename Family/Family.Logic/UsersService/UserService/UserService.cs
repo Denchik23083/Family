@@ -25,6 +25,21 @@ namespace Family.Logic.UsersService.UserService
             return genders;
         }
 
+        public async Task<IEnumerable<User>> GetParentsChildrenUsersAsync()
+        {
+            var godRoleId = 1;
+            var adminRoleId = 2;
+
+            var users = await _repository.GetParentsChildrenUsersAsync(godRoleId, adminRoleId);
+
+            if (users is null)
+            {
+                throw new UserNotFoundException("Users not found");
+            }
+
+            return users;
+        }
+
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
             var roleId = 5;

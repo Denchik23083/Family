@@ -21,7 +21,7 @@ namespace Family.Users.Controllers
         }
 
         [HttpPut("usertoadmin/id")]
-        [RequirePermission(PermissionType.DeleteUser)]
+        [RequirePermission(PermissionType.UserToAdmin)]
         public async Task<IActionResult> UserToAdmin(int id)
         {
             try
@@ -37,7 +37,7 @@ namespace Family.Users.Controllers
         }
 
         [HttpPut("admintouser/id")]
-        [RequirePermission(PermissionType.DeleteUser)]
+        [RequirePermission(PermissionType.AdminToUser)]
         public async Task<IActionResult> AdminToUser(int id)
         {
             try
