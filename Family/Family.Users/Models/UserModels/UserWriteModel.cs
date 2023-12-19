@@ -15,9 +15,5 @@ namespace Family.Users.Models.UserModels
         public DateTime BirthDay { get; set; }
 
         public GenderReadModel? Gender { get; set; }
-
-        public ParentReadModel? Parent { get; set; }
-
-        public ChildReadModel? Child { get; set; }
     }
 }

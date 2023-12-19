@@ -8,7 +8,7 @@ namespace Family.Logic.UsersService.UserService
 
         Task<IEnumerable<User>> GetParentsChildrenUsersAsync();
 
-        Task<IEnumerable<User>?> GetUsersAsync();
+        Task<IEnumerable<User>> GetUsersAsync();
 
         Task<User> GetUserAsync(int id);
 

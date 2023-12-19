@@ -18,13 +18,15 @@ namespace Family.WebDb.UsersRepository.UserRepository
             return await _context.Genders.ToListAsync();
         }
 
-        public async Task<IEnumerable<User>?> GetParentsChildrenUsersAsync(int godRoleId, int adminRoleId)
+        public async Task<IEnumerable<User>?> GetParentsChildrenUsersAsync(int[] roles)
         {
             return await _context.Users
                 .Include(_ => _.Gender)
                 .Include(_ => _.Parent)
                 .Include(_ => _.Child)
-                .Where(_ => _.RoleId != godRoleId && _.RoleId != adminRoleId)
+                .Where(_ => _.RoleId == roles[0] 
+                        || _.RoleId == roles[1] 
+                        || _.RoleId == roles[2])
                 .ToListAsync();
         }
 

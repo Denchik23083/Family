@@ -45,7 +45,7 @@ namespace Family.Users.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         [RequirePermission(PermissionType.DeleteUser)]
         public async Task<IActionResult> GetParentsChildrenUsersAsync()
         {
@@ -63,7 +63,7 @@ namespace Family.Users.Controllers
             }
         }
 
-        [HttpGet("users")]
+        [HttpGet]
         [RequirePermission(PermissionType.UserToAdmin)]
         public async Task<IActionResult> GetUsers()
         {
