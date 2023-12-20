@@ -3,7 +3,7 @@ using Family.Db.Entities.Auth;
 using Family.Db.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Family.WebDb.AuthRepository.AuthRepository
+namespace Family.WebDb.AuthRepository
 {
     public class AuthRepository : IAuthRepository
     {

@@ -1,7 +1,7 @@
 ﻿using Family.Db.Entities.Auth;
 using Family.Db.Entities.Users;
 
-namespace Family.WebDb.AuthRepository.AuthRepository
+namespace Family.WebDb.AuthRepository
 {
     public interface IAuthRepository
     {

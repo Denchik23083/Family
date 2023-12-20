@@ -1,9 +1,9 @@
 ﻿using Family.Core.Exceptions;
 using Family.Db.Entities.Auth;
 using Family.Db.Entities.Users;
-using Family.WebDb.AuthRepository.AuthRepository;
+using Family.WebDb.AuthRepository;
 
-namespace Family.Logic.AuthService.AuthService
+namespace Family.Logic.AuthService
 {
     public class AuthService : IAuthService
     {

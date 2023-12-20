@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities.Users;
+﻿using Family.Core.Utilities;
+using Family.Db.Entities.Users;
 
 namespace Family.Logic.UsersService.UserService
 {
@@ -13,5 +14,9 @@ namespace Family.Logic.UsersService.UserService
         Task<User> GetUserAsync(int id);
 
         Task LeaveGenusAsync(int userId);
+
+        Task UpdateUserAsync(User mappedUser, int userId);
+        
+        Task UpdatePasswordAsync(Password mappedPassword, int userId);
     }
 }

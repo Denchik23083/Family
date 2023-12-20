@@ -83,7 +83,7 @@ namespace Family.Users.Controllers
 
         [HttpPut]
         [RequirePermission(PermissionType.GetInfo)]
-        public async Task<IActionResult> EditUser(UserWriteModel model)
+        public async Task<IActionResult> UpdateUser(UserWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Family.Users.Controllers
 
                 var mappedUser = _mapper.Map<User>(model);
 
-                //await _service.EditUserAsync(mappedUser, userId);
+                await _service.UpdateUserAsync(mappedUser, userId);
 
                 return NoContent();
             }
@@ -108,11 +108,16 @@ namespace Family.Users.Controllers
 
         [HttpPut("password")]
         [RequirePermission(PermissionType.GetInfo)]
-        public async Task<IActionResult> EditPassword(PasswordWriteModel model)
+        public async Task<IActionResult> UpdatePassword(PasswordWriteModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (model.NewPassword != model.ConfirmPassword)
+            {
+                return BadRequest("Your password must match confirmPassword");
             }
 
             try
@@ -121,7 +126,7 @@ namespace Family.Users.Controllers
 
                 var mappedPassword = _mapper.Map<Password>(model);
 
-                //await _service.EditPasswordAsync(mappedPassword, userId);
+                await _service.UpdatePasswordAsync(mappedPassword, userId);
 
                 return NoContent();
             }

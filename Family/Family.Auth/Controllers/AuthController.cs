@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Family.Auth.Models;
-using Family.Logic.AuthService.AuthService;
+using Family.Logic.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -48,19 +48,19 @@ namespace Family.Auth.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterWriteModel writeModel)
+        public async Task<IActionResult> Register(RegisterWriteModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (writeModel.Password != writeModel.ConfirmPassword)
+            if (model.Password != model.ConfirmPassword)
             {
                 return BadRequest("Your password must match confirmPassword");
             }
                 
-            var mappedUser = _mapper.Map<User>(writeModel);
+            var mappedUser = _mapper.Map<User>(model);
 
             await _service.RegisterAsync(mappedUser);
 
@@ -68,7 +68,7 @@ namespace Family.Auth.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginWriteModel writeModel)
+        public async Task<IActionResult> Login(LoginWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace Family.Auth.Controllers
 
             try
             {
-                var mappedUser = _mapper.Map<User>(writeModel);
+                var mappedUser = _mapper.Map<User>(model);
 
                 var user = await _service.LoginAsync(mappedUser);
 
@@ -92,7 +92,7 @@ namespace Family.Auth.Controllers
         }
 
         [HttpPost("login/refresh")]
-        public async Task<IActionResult> Refresh(RefreshTokenWriteModel writeModel)
+        public async Task<IActionResult> Refresh(RefreshTokenWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace Family.Auth.Controllers
 
             try
             {
-                var mappedRefresh = _mapper.Map<RefreshToken>(writeModel);
+                var mappedRefresh = _mapper.Map<RefreshToken>(model);
 
                 var user = await _service.RefreshAsync(mappedRefresh);
 
