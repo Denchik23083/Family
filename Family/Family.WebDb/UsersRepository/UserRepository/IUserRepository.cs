@@ -15,5 +15,7 @@ namespace Family.WebDb.UsersRepository.UserRepository
         Task LeaveGenusAsync(User user);
 
         Task UpdateUserAsync(User user);
+
+        Task UpdatePasswordAsync(User user);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Family.Core.Exceptions;
+using Family.Core.Utilities;
 using Family.Db.Entities.Users;
 using Family.WebDb.UsersRepository.UserRepository;
 
@@ -96,6 +97,20 @@ namespace Family.Logic.UsersService.UserService
             user.GenderId = mappedUser.GenderId;
 
             await _repository.UpdateUserAsync(user);
+        }
+
+        public async Task UpdatePasswordAsync(Password mappedPassword, int userId)
+        {
+            var user = await _repository.GetUserAsync(userId);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            user.Password = mappedPassword.NewPassword;
+
+            await _repository.UpdatePasswordAsync(user);
         }
     }
 }

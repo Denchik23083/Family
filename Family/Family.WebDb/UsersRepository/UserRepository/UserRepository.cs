@@ -76,5 +76,10 @@ namespace Family.WebDb.UsersRepository.UserRepository
         {
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdatePasswordAsync(User user)
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
