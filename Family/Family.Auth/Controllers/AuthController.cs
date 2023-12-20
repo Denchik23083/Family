@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Family.Auth.Models;
-using Family.Logic.AuthService.AuthService;
+using Family.Logic.AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

@@ -73,12 +73,29 @@ namespace Family.Logic.UsersService.UserService
             {
                 throw new UserNotFoundException("User not found");
             }
-            
+
             user.Parent = null;
             user.Child = null;
             user.RoleId = 5;
 
             await _repository.LeaveGenusAsync(user);
+        }
+
+        public async Task UpdateUserAsync(User mappedUser, int userId)
+        {
+            var user = await _repository.GetUserAsync(userId);
+
+            if (user is null)
+            {
+                throw new UserNotFoundException("User not found");
+            }
+
+            user.FirstName = mappedUser.FirstName;
+            user.Email = mappedUser.Email;
+            user.BirthDay = mappedUser.BirthDay;
+            user.GenderId = mappedUser.GenderId;
+
+            await _repository.UpdateUserAsync(user);
         }
     }
 }

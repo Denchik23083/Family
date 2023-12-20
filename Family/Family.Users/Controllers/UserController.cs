@@ -83,7 +83,7 @@ namespace Family.Users.Controllers
 
         [HttpPut]
         [RequirePermission(PermissionType.GetInfo)]
-        public async Task<IActionResult> EditUser(UserWriteModel model)
+        public async Task<IActionResult> UpdateUser(UserWriteModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Family.Users.Controllers
 
                 var mappedUser = _mapper.Map<User>(model);
 
-                //await _service.EditUserAsync(mappedUser, userId);
+                await _service.UpdateUserAsync(mappedUser, userId);
 
                 return NoContent();
             }

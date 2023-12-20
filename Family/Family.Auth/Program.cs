@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
-using Family.WebDb.AuthRepository.AuthRepository;
 using Family.WebDb.UsersRepository.UserRepository;
-using Family.Logic.AuthService.AuthService;
 using Family.Logic.UsersService.UserService;
+using Family.WebDb.AuthRepository;
+using Family.Logic.AuthService;
 
 var builder = WebApplication.CreateBuilder(args);
 

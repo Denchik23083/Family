@@ -13,5 +13,7 @@ namespace Family.WebDb.UsersRepository.UserRepository
         Task<User?> GetUserAsync(int id);
 
         Task LeaveGenusAsync(User user);
+
+        Task UpdateUserAsync(User user);
     }
 }

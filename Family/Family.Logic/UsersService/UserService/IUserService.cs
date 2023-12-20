@@ -13,5 +13,7 @@ namespace Family.Logic.UsersService.UserService
         Task<User> GetUserAsync(int id);
 
         Task LeaveGenusAsync(int userId);
+
+        Task UpdateUserAsync(User mappedUser, int userId);
     }
 }

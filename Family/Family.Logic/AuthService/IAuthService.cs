@@ -1,7 +1,7 @@
 ﻿using Family.Db.Entities.Auth;
 using Family.Db.Entities.Users;
 
-namespace Family.Logic.AuthService.AuthService
+namespace Family.Logic.AuthService
 {
     public interface IAuthService
     {
