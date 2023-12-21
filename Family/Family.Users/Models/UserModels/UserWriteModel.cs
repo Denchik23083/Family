@@ -1,8 +1,4 @@
-﻿using Family.Web.Models.ChildModels;
-using Family.Web.Models.GenderModels;
-using Family.Web.Models.ParentModels;
-
-namespace Family.Users.Models.UserModels
+﻿namespace Family.Users.Models.UserModels
 {
     public class UserWriteModel
     {
