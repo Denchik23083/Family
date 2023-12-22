@@ -25,6 +25,24 @@ namespace Family.Users.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [RequirePermission(PermissionType.UserToAdmin)]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _service.GetUsersAsync();
+
+                var mappedUsers = _mapper.Map<IEnumerable<UserReadNameModel>>(users);
+
+                return Ok(mappedUsers);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet("profile")]
         [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetUser()
@@ -62,18 +80,54 @@ namespace Family.Users.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-        [HttpGet]
-        [RequirePermission(PermissionType.UserToAdmin)]
-        public async Task<IActionResult> GetUsers()
+        
+        [HttpGet("maleadults")]
+        [RequirePermission(PermissionType.CreateGenus)]
+        public async Task<IActionResult> GetMaleAdults()
         {
             try
             {
-                var users = await _service.GetUsersAsync();
+                var maleAdults = await _service.GetMaleAdultsAsync();
 
-                var mappedUsers = _mapper.Map<IEnumerable<UserReadNameModel>>(users);
+                var mappedMaleAdults = _mapper.Map<IEnumerable<UserReadNameModel>>(maleAdults);
 
-                return Ok(mappedUsers);
+                return Ok(mappedMaleAdults);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("femaleadults")]
+        [RequirePermission(PermissionType.CreateGenus)]
+        public async Task<IActionResult> GetFemaleAdults()
+        {
+            try
+            {
+                var femaleAdults = await _service.GetFemaleAdultsAsync();
+
+                var mappedFemaleAdults = _mapper.Map<IEnumerable<UserReadNameModel>>(femaleAdults);
+
+                return Ok(mappedFemaleAdults);
+            }
+            catch (UserNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("youths")]
+        [RequirePermission(PermissionType.CreateGenus)]
+        public async Task<IActionResult> GetYouths()
+        {
+            try
+            {
+                var youths = await _service.GetYouthsAsync();
+
+                var mappedYouths = _mapper.Map<IEnumerable<UserReadNameModel>>(youths);
+
+                return Ok(mappedYouths);
             }
             catch (UserNotFoundException e)
             {

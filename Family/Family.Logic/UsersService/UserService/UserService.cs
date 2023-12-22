@@ -54,6 +54,51 @@ namespace Family.Logic.UsersService.UserService
             return users;
         }
 
+        public async Task<IEnumerable<User>> GetMaleAdultsAsync()
+        {
+            var adult = 18;
+            var roleId = 5;
+
+            var maleAdults = await _repository.GetMaleAdultsAsync(adult, roleId);
+
+            if (maleAdults is null)
+            {
+                throw new UserNotFoundException("Male Adults not found");
+            }
+
+            return maleAdults;
+        }
+
+        public async Task<IEnumerable<User>> GetFemaleAdultsAsync()
+        {
+            var adult = 18;
+            var roleId = 5;
+
+            var femaleAdults = await _repository.GetFemaleAdultsAsync(adult, roleId);
+
+            if (femaleAdults is null)
+            {
+                throw new UserNotFoundException("Female Adults not found");
+            }
+
+            return femaleAdults;
+        }
+
+        public async Task<IEnumerable<User>> GetYouthsAsync()
+        {
+            var youth = 18;
+            var roleId = 5;
+
+            var youths = await _repository.GetYouthsAsync(youth, roleId);
+
+            if (youths is null)
+            {
+                throw new UserNotFoundException("Youths not found");
+            }
+
+            return youths;
+        }
+
         public async Task<User> GetUserAsync(int id)
         {
             var user = await _repository.GetUserAsync(id);
