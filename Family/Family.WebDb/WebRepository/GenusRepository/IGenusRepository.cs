@@ -11,11 +11,11 @@ namespace Family.WebDb.WebRepository.GenusRepository
         Task CreateGenusAsync(Genus mappedGenus);
 
         Task UpdateGenusAsync(Genus genusToUpdate);
+                
+        Task DeleteGenusAsync(Genus genusToDelete);
 
         Task AddParentAsync(Genus genus);
 
         Task AddChildAsync(Genus genus);
-
-        Task DeleteGenusAsync(Genus genusToDelete);
     }
 }

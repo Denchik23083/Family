@@ -42,6 +42,13 @@ namespace Family.WebDb.WebRepository.GenusRepository
             await _context.SaveChangesAsync();
         }
 
+        public async Task DeleteGenusAsync(Genus genusToDelete)
+        {
+            _context.Genus.Remove(genusToDelete);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task AddParentAsync(Genus genus)
         {
             await _context.SaveChangesAsync();
@@ -49,13 +56,6 @@ namespace Family.WebDb.WebRepository.GenusRepository
 
         public async Task AddChildAsync(Genus genus)
         {
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteGenusAsync(Genus genusToDelete)
-        {
-            _context.Genus.Remove(genusToDelete);
-
             await _context.SaveChangesAsync();
         }
     }
