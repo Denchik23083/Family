@@ -1,10 +1,12 @@
 using System.Text;
 using System.Text.Json.Serialization;
 using Family.Db;
+using Family.Logic.UsersService.UserService;
 using Family.Logic.WebService.ChildService;
 using Family.Logic.WebService.GenusService;
 using Family.Logic.WebService.ParentService;
 using Family.Web.Utilities;
+using Family.WebDb.UsersRepository.UserRepository;
 using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
 using Family.WebDb.WebRepository.ParentRepository;
@@ -22,6 +24,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IParentService, ParentService>();
 builder.Services.AddScoped<IParentRepository, ParentRepository>();
 builder.Services.AddScoped<IChildService, ChildService>();

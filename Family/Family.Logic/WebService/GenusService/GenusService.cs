@@ -1,5 +1,6 @@
 ﻿using Family.Core.Exceptions;
 using Family.Db.Entities.Web;
+using Family.WebDb.UsersRepository.UserRepository;
 using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
 using Family.WebDb.WebRepository.ParentRepository;
@@ -9,16 +10,12 @@ namespace Family.Logic.WebService.GenusService
     public class GenusService : IGenusService
     {
         private readonly IGenusRepository _repository;
-        private readonly IParentRepository _parentRepository;
-        private readonly IChildRepository _childRepository;
+        private readonly IUserRepository _userRepository;
 
-        public GenusService(IGenusRepository repository, 
-            IParentRepository parentRepository, 
-            IChildRepository childRepository)
+        public GenusService(IGenusRepository repository, IUserRepository userRepository)
         {
             _repository = repository;
-            _parentRepository = parentRepository;
-            _childRepository = childRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<IEnumerable<Genus>?> GetAllGenusAsync()
@@ -47,6 +44,17 @@ namespace Family.Logic.WebService.GenusService
 
         public async Task CreateGenusAsync(Genus mappedGenus)
         {
+            //TODO: Testing
+            /*foreach (var item in mappedGenus.Parents!)
+            {
+                item.User!.RoleId = 3;
+            }
+
+            foreach (var item in mappedGenus.Parents!)
+            {
+                item.User!.RoleId = 4;
+            }*/
+
             await _repository.CreateGenusAsync(mappedGenus);
         }
 
@@ -64,6 +72,29 @@ namespace Family.Logic.WebService.GenusService
             await _repository.UpdateGenusAsync(genusToUpdate);
         }
 
+        public async Task DeleteGenusAsync(int id)
+        {
+            var genusToDelete = await _repository.GetGenusAsync(id);
+
+            if (genusToDelete is null)
+            {
+                throw new GenusNotFoundException("Genus not found");
+            }
+
+            //TODO: Testing
+            /*foreach (var item in genusToDelete.Parents!)
+            {
+                item.User!.RoleId = 5;
+            }
+
+            foreach (var item in genusToDelete.Children!)
+            {
+                item.User!.RoleId = 5;
+            }*/
+
+            await _repository.DeleteGenusAsync(genusToDelete);
+        }
+
         public async Task AddParentAsync(int id)
         {
             var genus = await _repository.GetGenusAsync(id);
@@ -73,14 +104,17 @@ namespace Family.Logic.WebService.GenusService
                 throw new GenusNotFoundException("Genus not found");
             }
 
-            var parentToAdd = await _parentRepository.GetParentAsync(id);
+            //TODO: UserId, not GenusId
+            var parentToAdd = await _userRepository.GetUserAsync(id);
 
             if (parentToAdd is null)
             {
-                throw new ParentNotFoundException("Parent not found");
+                throw new UserNotFoundException("User not found");
             }
 
-            genus.Parents!.Add(parentToAdd);
+            parentToAdd.RoleId = 3;
+
+            genus.Parents!.Add(new Parent { User = parentToAdd });
 
             await _repository.AddParentAsync(genus);
         }
@@ -94,28 +128,19 @@ namespace Family.Logic.WebService.GenusService
                 throw new GenusNotFoundException("Genus not found");
             }
 
-            var childToAdd = await _childRepository.GetChildAsync(id);
+            //TODO: UserId, not GenusId
+            var childToAdd = await _userRepository.GetUserAsync(id);
 
             if (childToAdd is null)
             {
-                throw new ChildNotFoundException("Child not found");
+                throw new UserNotFoundException("User not found");
             }
 
-            genus.Children!.Add(childToAdd);
+            childToAdd.RoleId = 4;
+
+            genus.Children!.Add(new Child { User = childToAdd });
 
             await _repository.AddChildAsync(genus);
-        }
-
-        public async Task DeleteGenusAsync(int id)
-        {
-            var genusToDelete = await _repository.GetGenusAsync(id);
-
-            if (genusToDelete is null)
-            {
-                throw new GenusNotFoundException("Genus not found");
-            }
-
-            await _repository.DeleteGenusAsync(genusToDelete);
         }
     }
 }
