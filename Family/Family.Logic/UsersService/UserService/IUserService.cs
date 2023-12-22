@@ -11,6 +11,12 @@ namespace Family.Logic.UsersService.UserService
 
         Task<IEnumerable<User>> GetUsersAsync();
 
+        Task<IEnumerable<User>> GetMaleAdultsAsync();
+
+        Task<IEnumerable<User>> GetFemaleAdultsAsync();
+
+        Task<IEnumerable<User>> GetYouthsAsync();
+
         Task<User> GetUserAsync(int id);
 
         Task LeaveGenusAsync(int userId);

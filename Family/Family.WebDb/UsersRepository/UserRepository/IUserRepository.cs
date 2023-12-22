@@ -10,6 +10,12 @@ namespace Family.WebDb.UsersRepository.UserRepository
 
         Task<IEnumerable<User>?> GetUsersAsync(int roleId);
 
+        Task<IEnumerable<User>?> GetMaleAdultsAsync(int adult, int roleId);
+
+        Task<IEnumerable<User>?> GetFemaleAdultsAsync(int adult, int roleId);
+
+        Task<IEnumerable<User>?> GetYouthsAsync(int youth, int roleId);
+
         Task<User?> GetUserAsync(int id);
 
         Task LeaveGenusAsync(User user);

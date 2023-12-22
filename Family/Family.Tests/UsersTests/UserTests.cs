@@ -136,6 +136,111 @@ namespace Family.Tests.UsersTests
         }
 
         [Fact]
+        public async Task GetMaleAdults()
+        {
+            var adult = 18;
+            var roleId = 5;
+
+            var maleAdults = new List<User>
+            {
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Test",
+                    Email = "test@gmail.com",
+                    Password = "0000",
+                    BirthDay = new DateTime(2000, 01, 01),
+                    GenderId = 1,
+                    Gender = new Gender() { Type = GenderType.Male },
+                    RoleId = roleId
+                }
+            };
+
+            _repository.Setup(_ => _.GetMaleAdultsAsync(adult, roleId))
+                .ReturnsAsync(maleAdults);
+
+            IUserService service = new UserService(_repository.Object);
+
+            var result = await service.GetMaleAdultsAsync();
+
+            _repository.Verify(_ => _.GetMaleAdultsAsync(adult, roleId),
+                Times.Once);
+
+            Assert.NotNull(result);
+            Assert.Equal(maleAdults.Count, result.Count());
+        }
+
+        [Fact]
+        public async Task GetFemaleAdults()
+        {
+            var adult = 18;
+            var roleId = 5;
+
+            var femaleAdults = new List<User>
+            {
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Test",
+                    Email = "test@gmail.com",
+                    Password = "0000",
+                    BirthDay = new DateTime(2000, 01, 01),
+                    GenderId = 2,
+                    Gender = new Gender() { Type = GenderType.Female },
+                    RoleId = roleId
+                }
+            };
+
+            _repository.Setup(_ => _.GetFemaleAdultsAsync(adult, roleId))
+                .ReturnsAsync(femaleAdults);
+
+            IUserService service = new UserService(_repository.Object);
+
+            var result = await service.GetFemaleAdultsAsync();
+
+            _repository.Verify(_ => _.GetFemaleAdultsAsync(adult, roleId),
+                Times.Once);
+
+            Assert.NotNull(result);
+            Assert.Equal(femaleAdults.Count, result.Count());
+        }
+
+        [Fact]
+        public async Task GetYouths()
+        {
+            var youth = 18;
+            var roleId = 5;
+
+            var youths = new List<User>
+            {
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Test",
+                    Email = "test@gmail.com",
+                    Password = "0000",
+                    BirthDay = new DateTime(2010, 01, 01),
+                    GenderId = 1,
+                    Gender = new Gender() { Type = GenderType.Male },
+                    RoleId = roleId
+                }
+            };
+
+            _repository.Setup(_ => _.GetYouthsAsync(youth, roleId))
+                .ReturnsAsync(youths);
+
+            IUserService service = new UserService(_repository.Object);
+
+            var result = await service.GetYouthsAsync();
+
+            _repository.Verify(_ => _.GetYouthsAsync(youth, roleId),
+                Times.Once);
+
+            Assert.NotNull(result);
+            Assert.Equal(youths.Count, result.Count());
+        }
+
+        [Fact]
         public async Task GetUser()
         {
             var expectedId = 5;

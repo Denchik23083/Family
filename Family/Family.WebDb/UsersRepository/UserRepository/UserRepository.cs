@@ -1,4 +1,5 @@
-﻿using Family.Db;
+﻿using Family.Core.Utilities;
+using Family.Db;
 using Family.Db.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,35 @@ namespace Family.WebDb.UsersRepository.UserRepository
                 .Include(_ => _.Parent)
                 .Include(_ => _.Child)
                 .Where(_ => _.RoleId == roleId)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<User>?> GetMaleAdultsAsync(int adult, int roleId)
+        {
+            return await _context.Users
+                .Include(_ => _.Gender)
+                .Where(_ => _.RoleId == roleId 
+                        && DateTime.Now >= _.BirthDay.AddYears(adult)
+                        && _.Gender!.Type == GenderType.Male)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<User>?> GetFemaleAdultsAsync(int adult, int roleId)
+        {
+            return await _context.Users
+                .Include(_ => _.Gender)
+                .Where(_ => _.RoleId == roleId
+                        && DateTime.Now >= _.BirthDay.AddYears(adult)
+                        && _.Gender!.Type == GenderType.Female)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<User>?> GetYouthsAsync(int youth, int roleId)
+        {
+            return await _context.Users
+                .Include(_ => _.Gender)
+                .Where(_ => _.RoleId == roleId
+                        && DateTime.Now <= _.BirthDay.AddYears(youth))
                 .ToListAsync();
         }
 
