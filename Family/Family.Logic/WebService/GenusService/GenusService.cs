@@ -45,15 +45,15 @@ namespace Family.Logic.WebService.GenusService
         public async Task CreateGenusAsync(Genus mappedGenus)
         {
             //TODO: Testing
-            /*foreach (var item in mappedGenus.Parents!)
+            foreach (var item in mappedGenus.Parents!)
             {
                 item.User!.RoleId = 3;
             }
 
-            foreach (var item in mappedGenus.Parents!)
+            foreach (var item in mappedGenus.Children!)
             {
                 item.User!.RoleId = 4;
-            }*/
+            }
 
             await _repository.CreateGenusAsync(mappedGenus);
         }
@@ -82,7 +82,7 @@ namespace Family.Logic.WebService.GenusService
             }
 
             //TODO: Testing
-            /*foreach (var item in genusToDelete.Parents!)
+            foreach (var item in genusToDelete.Parents!)
             {
                 item.User!.RoleId = 5;
             }
@@ -90,7 +90,7 @@ namespace Family.Logic.WebService.GenusService
             foreach (var item in genusToDelete.Children!)
             {
                 item.User!.RoleId = 5;
-            }*/
+            }
 
             await _repository.DeleteGenusAsync(genusToDelete);
         }
