@@ -75,6 +75,9 @@ namespace Family.Tests.WebTests
         [Fact]
         public async Task CreateGenus()
         {
+            var parentRoleId = 3;
+            var childRoleId = 4;
+
             var genusModel = new Genus
             {
                 Name = "Tests",
@@ -130,6 +133,9 @@ namespace Family.Tests.WebTests
 
             _repository.Verify(_ => _.CreateGenusAsync(genusModel),
                 Times.Once);
+
+            Assert.True(genusModel.Parents.All(_ => _.User!.RoleId == parentRoleId));
+            Assert.True(genusModel.Children.All(_ => _.User!.RoleId == childRoleId));
         }
 
         [Fact]
@@ -204,12 +210,15 @@ namespace Family.Tests.WebTests
 
             _repository.Verify(_ => _.UpdateGenusAsync(genus),
                 Times.Once);
+
+            Assert.Equal(genusModel.Name, genus.Name);
         }
 
         [Fact]
         public async Task DeleteGenus()
         {
             var expectedId = 1;
+            var userRoleId = 5;
 
             var genus = new Genus
             {
@@ -273,6 +282,9 @@ namespace Family.Tests.WebTests
 
             _repository.Verify(_ => _.DeleteGenusAsync(genus),
                 Times.Once);
+
+            Assert.True(genus.Parents.All(_ => _.User!.RoleId == userRoleId));
+            Assert.True(genus.Children.All(_ => _.User!.RoleId == userRoleId));
         }
     }
 }
