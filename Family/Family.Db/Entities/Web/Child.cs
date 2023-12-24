@@ -10,7 +10,7 @@ namespace Family.Db.Entities.Web
 
         public int UserId { get; set; }
 
-        public int? GenusId { get; set; }
+        public int GenusId { get; set; }
 
         public Genus? Genus { get; set; }
     }

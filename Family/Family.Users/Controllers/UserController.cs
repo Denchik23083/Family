@@ -65,7 +65,7 @@ namespace Family.Users.Controllers
 
         [HttpGet("all")]
         [RequirePermission(PermissionType.DeleteUser)]
-        public async Task<IActionResult> GetParentsChildrenUsersAsync()
+        public async Task<IActionResult> GetParentsChildrenUsers()
         {
             try
             {

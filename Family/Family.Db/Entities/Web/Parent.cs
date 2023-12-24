@@ -9,9 +9,8 @@ namespace Family.Db.Entities.Web
         public User? User { get; set; }
 
         public int UserId { get; set; }
-
-        //TODO: Remove nullable type
-        public int? GenusId { get; set; }
+        
+        public int GenusId { get; set; }
 
         public Genus? Genus { get; set; }
     }
