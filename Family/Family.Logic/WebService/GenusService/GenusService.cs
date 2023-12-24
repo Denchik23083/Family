@@ -1,9 +1,7 @@
 ﻿using Family.Core.Exceptions;
 using Family.Db.Entities.Web;
 using Family.WebDb.UsersRepository.UserRepository;
-using Family.WebDb.WebRepository.ChildRepository;
 using Family.WebDb.WebRepository.GenusRepository;
-using Family.WebDb.WebRepository.ParentRepository;
 
 namespace Family.Logic.WebService.GenusService
 {

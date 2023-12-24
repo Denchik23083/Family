@@ -1,5 +1,4 @@
-﻿using Family.Db.Entities.Auth;
-using Family.Db.Entities.Users;
+﻿using Family.Db.Entities.Users;
 using Family.Db.Entities.Web;
 using Family.Logic.WebService.GenusService;
 using Family.Tests.Utilities;
