@@ -39,7 +39,7 @@ namespace Family.Web.Controllers
             }            
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         [RequirePermission(PermissionType.GetParent)]
         public async Task<IActionResult> GetParent(int id)
         {

@@ -14,6 +14,7 @@ namespace Family.Web.Utilities
         public MappingProfile()
         {
             CreateMap<User, UserReadModel>();
+            CreateMap<UserWriteModel, User>();
 
             CreateMap<Gender, GenderReadModel>();
 

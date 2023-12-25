@@ -1,4 +1,5 @@
-﻿using Family.Db.Entities.Web;
+﻿using Family.Db.Entities.Users;
+using Family.Db.Entities.Web;
 
 namespace Family.Logic.WebService.GenusService
 {
@@ -12,10 +13,10 @@ namespace Family.Logic.WebService.GenusService
 
         Task UpdateGenusAsync(Genus mappedGenus, int id);
 
-        Task AddParentAsync(int id);
-
-        Task AddChildAsync(int id);
-
         Task DeleteGenusAsync(int id);
+
+        Task AddParentAsync(User mappedUser, int id);
+
+        Task AddChildAsync(User mappedUser, int id);        
     }
 }

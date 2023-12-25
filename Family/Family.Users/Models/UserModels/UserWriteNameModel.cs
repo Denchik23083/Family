@@ -1,6 +1,6 @@
 ﻿namespace Family.Users.Models.UserModels
 {
-    public class UserWriteModel
+    public class UserWriteNameModel
     {
         public string? FirstName { get; set; }
 

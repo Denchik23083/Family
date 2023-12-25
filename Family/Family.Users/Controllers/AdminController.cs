@@ -39,7 +39,7 @@ namespace Family.Users.Controllers
             }
         }
 
-        [HttpDelete("deleteuser/id")]
+        [HttpDelete("deleteuser/{id}")]
         [RequirePermission(PermissionType.DeleteUser)]
         public async Task<IActionResult> DeleteUser(int id)
         {

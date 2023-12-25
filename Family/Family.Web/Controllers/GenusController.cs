@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Family.Core.Exceptions;
 using Family.Core.Utilities;
+using Family.Db.Entities.Users;
 using Family.Db.Entities.Web;
 using Family.Logic.WebService.GenusService;
 using Family.Web.Models.GenusModels;
+using Family.Web.Models.UserModels;
 using Family.Web.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +42,7 @@ namespace Family.Web.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         [RequirePermission(PermissionType.GetGenus)]
         public async Task<IActionResult> GetGenus(int id)
         {
@@ -74,7 +76,7 @@ namespace Family.Web.Controllers
             return NoContent();
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
         public async Task<IActionResult> UpdateGenus(GenusWriteNameModel model, int id)
         {
@@ -97,13 +99,15 @@ namespace Family.Web.Controllers
             }
         }
 
-        [HttpPut("parent/id")]
+        [HttpPut("parent/{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
-        public async Task<IActionResult> AddParent(int id)
+        public async Task<IActionResult> AddParent(UserWriteModel model, int id)
         {
             try
             {
-                await _service.AddParentAsync(id);
+                var mappedUser = _mapper.Map<User>(model);
+
+                await _service.AddParentAsync(mappedUser, id);
 
                 return NoContent();
             }
@@ -111,19 +115,21 @@ namespace Family.Web.Controllers
             {
                 return BadRequest(e.Message);
             }
-            catch (ParentNotFoundException e)
+            catch (UserNotFoundException e)
             {
                 return BadRequest(e.Message);
             }
         }
 
-        [HttpPut("child/id")]
+        [HttpPut("child/{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
-        public async Task<IActionResult> AddChild(int id)
+        public async Task<IActionResult> AddChild(UserWriteModel model, int id)
         {
             try
             {
-                await _service.AddChildAsync(id);
+                var mappedUser = _mapper.Map<User>(model);
+
+                await _service.AddChildAsync(mappedUser, id);
 
                 return NoContent();
             }
@@ -131,13 +137,13 @@ namespace Family.Web.Controllers
             {
                 return BadRequest(e.Message);
             }
-            catch (ChildNotFoundException e)
+            catch (UserNotFoundException e)
             {
                 return BadRequest(e.Message);
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
         public async Task<IActionResult> DeleteGenus(int id)
         {

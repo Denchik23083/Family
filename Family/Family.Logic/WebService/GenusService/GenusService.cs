@@ -1,4 +1,5 @@
 ﻿using Family.Core.Exceptions;
+using Family.Db.Entities.Users;
 using Family.Db.Entities.Web;
 using Family.WebDb.UsersRepository.UserRepository;
 using Family.WebDb.WebRepository.GenusRepository;
@@ -93,7 +94,7 @@ namespace Family.Logic.WebService.GenusService
             await _repository.DeleteGenusAsync(genusToDelete);
         }
 
-        public async Task AddParentAsync(int id)
+        public async Task AddParentAsync(User parentToAdd, int id)
         {
             var genus = await _repository.GetGenusAsync(id);
 
@@ -101,9 +102,6 @@ namespace Family.Logic.WebService.GenusService
             {
                 throw new GenusNotFoundException("Genus not found");
             }
-
-            //TODO: UserId, not GenusId
-            var parentToAdd = await _userRepository.GetUserAsync(id);
 
             if (parentToAdd is null)
             {
@@ -117,7 +115,7 @@ namespace Family.Logic.WebService.GenusService
             await _repository.AddParentAsync(genus);
         }
 
-        public async Task AddChildAsync(int id)
+        public async Task AddChildAsync(User childToAdd, int id)
         {
             var genus = await _repository.GetGenusAsync(id);
 
@@ -125,9 +123,6 @@ namespace Family.Logic.WebService.GenusService
             {
                 throw new GenusNotFoundException("Genus not found");
             }
-
-            //TODO: UserId, not GenusId
-            var childToAdd = await _userRepository.GetUserAsync(id);
 
             if (childToAdd is null)
             {
