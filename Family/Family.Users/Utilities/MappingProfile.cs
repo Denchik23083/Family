@@ -19,7 +19,7 @@ namespace Family.Users.Utilities
         {
             CreateMap<User, UserReadNameModel>();
             CreateMap<User, UserReadModel>();
-            CreateMap<UserWriteModel, User>();
+            CreateMap<UserWriteNameModel, User>();
             CreateMap<User, AdminReadNameModel>();
 
             CreateMap<Gender, GenderReadModel>();

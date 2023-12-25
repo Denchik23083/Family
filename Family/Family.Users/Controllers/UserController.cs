@@ -137,7 +137,7 @@ namespace Family.Users.Controllers
 
         [HttpPut]
         [RequirePermission(PermissionType.GetInfo)]
-        public async Task<IActionResult> UpdateUser(UserWriteModel model)
+        public async Task<IActionResult> UpdateUser(UserWriteNameModel model)
         {
             if (!ModelState.IsValid)
             {
