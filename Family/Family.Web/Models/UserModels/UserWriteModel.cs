@@ -12,6 +12,6 @@ namespace Family.Web.Models.UserModels
 
         public DateTime BirthDay { get; set; }
 
-        public GenderReadModel? Gender { get; set; }
+        public GenderWriteModel? Gender { get; set; }
     }
 }

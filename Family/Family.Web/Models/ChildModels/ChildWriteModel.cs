@@ -1,9 +1,9 @@
 ﻿using Family.Web.Models.GenusModels;
 using Family.Web.Models.UserModels;
 
-namespace Family.Web.Models.ParentModels
+namespace Family.Web.Models.ChildModels
 {
-    public class ParentWriteModel
+    public class ChildWriteModel
     {
         public int Id { get; set; }
 

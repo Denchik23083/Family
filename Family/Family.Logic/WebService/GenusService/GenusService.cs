@@ -43,15 +43,28 @@ namespace Family.Logic.WebService.GenusService
 
         public async Task CreateGenusAsync(Genus mappedGenus)
         {
-            //TODO: Testing
             foreach (var item in mappedGenus.Parents!)
             {
-                item.User!.RoleId = 3;
+                var user = await _userRepository.GetUserAsync(item.UserId);
+
+                if (user is null)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
+
+                user.RoleId = 3;
             }
 
             foreach (var item in mappedGenus.Children!)
             {
-                item.User!.RoleId = 4;
+                var user = await _userRepository.GetUserAsync(item.UserId);
+
+                if (user is null)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
+
+                user.RoleId = 4;
             }
 
             await _repository.CreateGenusAsync(mappedGenus);
@@ -80,15 +93,28 @@ namespace Family.Logic.WebService.GenusService
                 throw new GenusNotFoundException("Genus not found");
             }
 
-            //TODO: Testing
             foreach (var item in genusToDelete.Parents!)
             {
-                item.User!.RoleId = 5;
+                var user = await _userRepository.GetUserAsync(item.UserId);
+                
+                if (user is null)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
+
+                user.RoleId = 5;
             }
 
             foreach (var item in genusToDelete.Children!)
             {
-                item.User!.RoleId = 5;
+                var user = await _userRepository.GetUserAsync(item.UserId);
+                
+                if (user is null)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
+
+                user.RoleId = 5;
             }
 
             await _repository.DeleteGenusAsync(genusToDelete);

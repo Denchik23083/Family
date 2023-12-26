@@ -17,6 +17,7 @@ namespace Family.Web.Utilities
             CreateMap<UserWriteModel, User>();
 
             CreateMap<Gender, GenderReadModel>();
+            CreateMap<GenderWriteModel, Gender>();
 
             CreateMap<Genus, GenusReadNameModel>();
             CreateMap<Genus, GenusReadModel>();
@@ -24,8 +25,10 @@ namespace Family.Web.Utilities
             CreateMap<GenusWriteModel, Genus>();
 
             CreateMap<Parent, ParentReadModel>();
+            CreateMap<ParentWriteModel, Parent>();
 
             CreateMap<Child, ChildReadModel>();
+            CreateMap<ChildWriteModel, Child>();
         }
     }
 }

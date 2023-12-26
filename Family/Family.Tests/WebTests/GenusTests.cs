@@ -77,6 +77,36 @@ namespace Family.Tests.WebTests
             var parentRoleId = 3;
             var childRoleId = 4;
 
+            var father = new User
+            {
+                Id = 1,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 1
+            };
+
+            var mother = new User
+            {
+                Id = 2,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 2
+            };
+
+            var child = new User
+            {
+                Id = 3,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(2010, 01, 01),
+                GenderId = 1
+            };
+
             var genusModel = new Genus
             {
                 Name = "Tests",
@@ -84,45 +114,33 @@ namespace Family.Tests.WebTests
                 {
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 1,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 1
-                        }                        
+                        User = father,
+                        UserId = father.Id
                     },
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 2,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 2
-                        }
+                        User = mother,
+                        UserId = mother.Id
                     }
                 },
                 Children = new List<Child>
                 {
                     new Child
                     {
-                        User = new User
-                        {
-                            Id = 3,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(2010, 01, 01),
-                            GenderId = 1
-                        }
+                        User = child,
+                        UserId = child.Id
                     }
                 }
             };
+
+            _userRepository.Setup(_ => _.GetUserAsync(father.Id))
+                .ReturnsAsync(father);
+
+            _userRepository.Setup(_ => _.GetUserAsync(mother.Id))
+                .ReturnsAsync(mother);
+
+            _userRepository.Setup(_ => _.GetUserAsync(child.Id))
+                .ReturnsAsync(child);
 
             _repository.Setup(_ => _.CreateGenusAsync(genusModel));
 
@@ -130,17 +148,57 @@ namespace Family.Tests.WebTests
 
             await service.CreateGenusAsync(genusModel);
 
+            _userRepository.Verify(_ => _.GetUserAsync(father.Id),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(mother.Id),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(child.Id),
+                Times.Once);
+
             _repository.Verify(_ => _.CreateGenusAsync(genusModel),
                 Times.Once);
 
-            Assert.True(genusModel.Parents.All(_ => _.User!.RoleId == parentRoleId));
-            Assert.True(genusModel.Children.All(_ => _.User!.RoleId == childRoleId));
+            Assert.Equal(parentRoleId, father.RoleId);
+            Assert.Equal(parentRoleId, mother.RoleId);
+            Assert.Equal(childRoleId, child.RoleId);
         }
 
         [Fact]
         public async Task UpdateGenus()
         {
             var expectedId = 1;
+
+            var father = new User
+            {
+                Id = 1,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 1
+            };
+
+            var mother = new User
+            {
+                Id = 2,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 2
+            };
+
+            var child = new User
+            {
+                Id = 3,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(2010, 01, 01),
+                GenderId = 1
+            };
 
             var genus = new Genus
             {
@@ -150,42 +208,21 @@ namespace Family.Tests.WebTests
                 {
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 1,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 1
-                        }
+                        User = father,
+                        UserId = father.Id
                     },
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 2,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 2
-                        }
+                        User = mother,
+                        UserId = mother.Id
                     }
                 },
                 Children = new List<Child>
                 {
                     new Child
                     {
-                        User = new User
-                        {
-                            Id = 3,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(2010, 01, 01),
-                            GenderId = 1
-                        }
+                        User = child,
+                        UserId = child.Id
                     }
                 }
             };
@@ -219,6 +256,36 @@ namespace Family.Tests.WebTests
             var expectedId = 1;
             var userRoleId = 5;
 
+            var father = new User
+            {
+                Id = 1,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 1
+            };
+
+            var mother = new User
+            {
+                Id = 2,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 2
+            };
+
+            var child = new User
+            {
+                Id = 3,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(2010, 01, 01),
+                GenderId = 1
+            };
+
             var genus = new Genus
             {
                 Id = expectedId,
@@ -227,48 +294,36 @@ namespace Family.Tests.WebTests
                 {
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 1,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 1
-                        }
+                        User = father,
+                        UserId = father.Id
                     },
                     new Parent
                     {
-                        User = new User
-                        {
-                            Id = 2,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(1980, 01, 01),
-                            GenderId = 2
-                        }
+                        User = mother,
+                        UserId = mother.Id
                     }
                 },
                 Children = new List<Child>
                 {
                     new Child
                     {
-                        User = new User
-                        {
-                            Id = 3,
-                            FirstName = "Test",
-                            Email = "test@gmail.com",
-                            Password = "0000",
-                            BirthDay = new DateTime(2010, 01, 01),
-                            GenderId = 1
-                        }
+                        User = child,
+                        UserId = child.Id
                     }
                 }
             };
 
             _repository.Setup(_ => _.GetGenusAsync(expectedId))
                 .ReturnsAsync(genus);
+
+            _userRepository.Setup(_ => _.GetUserAsync(father.Id))
+                .ReturnsAsync(father);
+
+            _userRepository.Setup(_ => _.GetUserAsync(mother.Id))
+                .ReturnsAsync(mother);
+
+            _userRepository.Setup(_ => _.GetUserAsync(child.Id))
+                .ReturnsAsync(child);
 
             _repository.Setup(_ => _.DeleteGenusAsync(genus));
 
@@ -279,11 +334,21 @@ namespace Family.Tests.WebTests
             _repository.Verify(_ => _.GetGenusAsync(expectedId),
                 Times.Once);
 
+            _userRepository.Verify(_ => _.GetUserAsync(father.Id),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(mother.Id),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(child.Id),
+                Times.Once);
+
             _repository.Verify(_ => _.DeleteGenusAsync(genus),
                 Times.Once);
 
-            Assert.True(genus.Parents.All(_ => _.User!.RoleId == userRoleId));
-            Assert.True(genus.Children.All(_ => _.User!.RoleId == userRoleId));
+            Assert.Equal(userRoleId, father.RoleId);
+            Assert.Equal(userRoleId, mother.RoleId);
+            Assert.Equal(userRoleId, child.RoleId);
         }
     }
 }
