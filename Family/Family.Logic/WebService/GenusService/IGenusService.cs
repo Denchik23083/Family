@@ -15,8 +15,8 @@ namespace Family.Logic.WebService.GenusService
 
         Task DeleteGenusAsync(int id);
 
-        Task AddParentAsync(User mappedUser, int id);
+        Task AddParentAsync(Parent mappedParent, int id);
 
-        Task AddChildAsync(User mappedUser, int id);        
+        Task AddChildAsync(Child mappedChild, int id);        
     }
 }
