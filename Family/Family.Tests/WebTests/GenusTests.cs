@@ -350,5 +350,181 @@ namespace Family.Tests.WebTests
             Assert.Equal(userRoleId, mother.RoleId);
             Assert.Equal(userRoleId, child.RoleId);
         }
+
+        [Fact]
+        public async Task AddParent()
+        {
+            var expectedId = 1;
+            var expectedParentsCount = 2;
+            var parentRoleId = 3;
+
+            var father = new User
+            {
+                Id = 1,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 1
+            };
+
+            var mother = new User
+            {
+                Id = 2,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 2
+            };
+
+            var child = new User
+            {
+                Id = 3,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(2010, 01, 01),
+                GenderId = 1
+            };
+
+            var genus = new Genus
+            {
+                Id = expectedId,
+                Name = "Tests",
+                Parents = new List<Parent>
+                {
+                    new Parent
+                    {
+                        User = mother,
+                        UserId = mother.Id
+                    }
+                },
+                Children = new List<Child>
+                {
+                    new Child
+                    {
+                        User = child,
+                        UserId = child.Id
+                    }
+                }
+            };
+
+            var parentModel = new Parent
+            {
+                UserId = father.Id,
+                User = father
+            };
+
+            _repository.Setup(_ => _.GetGenusAsync(expectedId))
+                .ReturnsAsync(genus);
+
+            _userRepository.Setup(_ => _.GetUserAsync(parentModel.UserId))
+                .ReturnsAsync(father);
+
+            _repository.Setup(_ => _.AddParentAsync(genus));
+
+            IGenusService service = new GenusService(_repository.Object, _userRepository.Object);
+
+            await service.AddParentAsync(parentModel, expectedId);
+
+            _repository.Verify(_ => _.GetGenusAsync(expectedId),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(parentModel.UserId),
+                Times.Once);
+
+            _repository.Verify(_ => _.AddParentAsync(genus),
+                Times.Once);
+
+            Assert.Equal(parentRoleId, father.RoleId);
+            Assert.Equal(expectedParentsCount, genus.Parents.Count());
+        }
+
+        [Fact]
+        public async Task AddChild()
+        {
+            var expectedId = 1;
+            var expectedChildrenCount = 1;
+            var childRoleId = 4;
+
+            var father = new User
+            {
+                Id = 1,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 1
+            };
+
+            var mother = new User
+            {
+                Id = 2,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(1980, 01, 01),
+                GenderId = 2
+            };
+
+            var child = new User
+            {
+                Id = 3,
+                FirstName = "Test",
+                Email = "test@gmail.com",
+                Password = "0000",
+                BirthDay = new DateTime(2010, 01, 01),
+                GenderId = 1
+            };
+
+            var genus = new Genus
+            {
+                Id = expectedId,
+                Name = "Tests",
+                Parents = new List<Parent>
+                {
+                    new Parent
+                    {
+                        User = mother,
+                        UserId = mother.Id
+                    }
+                },
+                Children = new List<Child>
+                {
+                    
+                }
+            };
+
+            var childModel = new Child
+            {
+                UserId = child.Id,
+                User = child
+            };
+
+            _repository.Setup(_ => _.GetGenusAsync(expectedId))
+                .ReturnsAsync(genus);
+
+            _userRepository.Setup(_ => _.GetUserAsync(childModel.UserId))
+                .ReturnsAsync(child);
+
+            _repository.Setup(_ => _.AddChildAsync(genus));
+
+            IGenusService service = new GenusService(_repository.Object, _userRepository.Object);
+
+            await service.AddChildAsync(childModel, expectedId);
+
+            _repository.Verify(_ => _.GetGenusAsync(expectedId),
+                Times.Once);
+
+            _userRepository.Verify(_ => _.GetUserAsync(childModel.UserId),
+                Times.Once);
+
+            _repository.Verify(_ => _.AddChildAsync(genus),
+                Times.Once);
+
+            Assert.Equal(childRoleId, child.RoleId);
+            Assert.Equal(expectedChildrenCount, genus.Children.Count());
+        }
     }
 }

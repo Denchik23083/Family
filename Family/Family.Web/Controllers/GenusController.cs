@@ -4,7 +4,9 @@ using Family.Core.Utilities;
 using Family.Db.Entities.Users;
 using Family.Db.Entities.Web;
 using Family.Logic.WebService.GenusService;
+using Family.Web.Models.ChildModels;
 using Family.Web.Models.GenusModels;
+using Family.Web.Models.ParentModels;
 using Family.Web.Models.UserModels;
 using Family.Web.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -101,13 +103,13 @@ namespace Family.Web.Controllers
 
         [HttpPut("parent/{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
-        public async Task<IActionResult> AddParent(UserWriteModel model, int id)
+        public async Task<IActionResult> AddParent(ParentWriteModel model, int id)
         {
             try
             {
-                var mappedUser = _mapper.Map<User>(model);
+                var mappedParent = _mapper.Map<Parent>(model);
 
-                await _service.AddParentAsync(mappedUser, id);
+                await _service.AddParentAsync(mappedParent, id);
 
                 return NoContent();
             }
@@ -123,13 +125,13 @@ namespace Family.Web.Controllers
 
         [HttpPut("child/{id}")]
         [RequirePermission(PermissionType.UpdateDeleteGenus)]
-        public async Task<IActionResult> AddChild(UserWriteModel model, int id)
+        public async Task<IActionResult> AddChild(ChildWriteModel model, int id)
         {
             try
             {
-                var mappedUser = _mapper.Map<User>(model);
+                var mappedChild = _mapper.Map<Child>(model);
 
-                await _service.AddChildAsync(mappedUser, id);
+                await _service.AddChildAsync(mappedChild, id);
 
                 return NoContent();
             }

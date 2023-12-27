@@ -120,7 +120,7 @@ namespace Family.Logic.WebService.GenusService
             await _repository.DeleteGenusAsync(genusToDelete);
         }
 
-        public async Task AddParentAsync(User parentToAdd, int id)
+        public async Task AddParentAsync(Parent mappedParent, int id)
         {
             var genus = await _repository.GetGenusAsync(id);
 
@@ -128,6 +128,8 @@ namespace Family.Logic.WebService.GenusService
             {
                 throw new GenusNotFoundException("Genus not found");
             }
+
+            var parentToAdd = await _userRepository.GetUserAsync(mappedParent.UserId);
 
             if (parentToAdd is null)
             {
@@ -136,12 +138,16 @@ namespace Family.Logic.WebService.GenusService
 
             parentToAdd.RoleId = 3;
 
-            genus.Parents!.Add(new Parent { User = parentToAdd });
+            genus.Parents!.Add(new Parent 
+            {
+                UserId = parentToAdd.Id,
+                User = parentToAdd
+            });
 
             await _repository.AddParentAsync(genus);
         }
 
-        public async Task AddChildAsync(User childToAdd, int id)
+        public async Task AddChildAsync(Child mappedChild, int id)
         {
             var genus = await _repository.GetGenusAsync(id);
 
@@ -150,6 +156,8 @@ namespace Family.Logic.WebService.GenusService
                 throw new GenusNotFoundException("Genus not found");
             }
 
+            var childToAdd = await _userRepository.GetUserAsync(mappedChild.UserId);
+
             if (childToAdd is null)
             {
                 throw new UserNotFoundException("User not found");
@@ -157,7 +165,11 @@ namespace Family.Logic.WebService.GenusService
 
             childToAdd.RoleId = 4;
 
-            genus.Children!.Add(new Child { User = childToAdd });
+            genus.Children!.Add(new Child 
+            { 
+                UserId = childToAdd.Id, 
+                User = childToAdd 
+            });
 
             await _repository.AddChildAsync(genus);
         }
