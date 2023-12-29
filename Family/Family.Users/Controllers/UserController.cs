@@ -82,7 +82,7 @@ namespace Family.Users.Controllers
         }
         
         [HttpGet("maleadults")]
-        [RequirePermission(PermissionType.CreateGenus)]
+        [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetMaleAdults()
         {
             try
@@ -100,7 +100,7 @@ namespace Family.Users.Controllers
         }
 
         [HttpGet("femaleadults")]
-        [RequirePermission(PermissionType.CreateGenus)]
+        [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetFemaleAdults()
         {
             try
@@ -118,7 +118,7 @@ namespace Family.Users.Controllers
         }
 
         [HttpGet("youths")]
-        [RequirePermission(PermissionType.CreateGenus)]
+        [RequirePermission(PermissionType.GetInfo)]
         public async Task<IActionResult> GetYouths()
         {
             try
